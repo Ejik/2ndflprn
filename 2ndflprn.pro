@@ -6,6 +6,7 @@
 TARGET = 2ndflprn
 #CONFIG += console
 # CONFIG -= app_bundle
+CONFIG += static
 
 TEMPLATE = app
 
