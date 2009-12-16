@@ -1,0 +1,5 @@
+*.o
+*.moc
+*.log
+*.usr
+*.exe
