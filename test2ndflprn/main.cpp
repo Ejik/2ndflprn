@@ -29,8 +29,8 @@ void TestImporter::testParsing()
     QVERIFY(importer.params["IFNS"] == "5190");
     QVERIFY(importer.params["INN/CPP"] == "  5190309146/519001001");
 
-    qDebug(Importer::WINtoUnicode(importer.params["Orgname"]).toLatin1());
-    QVERIFY(importer.params["Orgname"] == Importer::WINtoUnicode("ннн 'юянр-жемрп яепбхя'"));
+    qDebug(Importer::WINtoUnicode(importer.params["Orgname"]).toLocal8Bit());
+    QVERIFY(importer.params["Orgname"] == Importer::WINtoUnicode("ннн 'юянр-жемрп Cепбхя'                      "));
 }
 
 QTEST_MAIN(TestImporter)

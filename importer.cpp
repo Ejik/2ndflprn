@@ -20,6 +20,7 @@ QString Importer::WINtoUnicode(const QString string)
     return codec->toUnicode(string.toAscii());
 }
 
+
 void Importer::parse()
 {
     QFile file(inputFile);
@@ -62,6 +63,6 @@ void Importer::parseOrgname(const QString line)
 {
     QString utfLine = OEMtoUnicode(line);
     QString sOrgTitle = WINtoUnicode("Наименование организации ");
-    params.insert("Orgname", utfLine.right(utfLine.length() - (utfLine.indexOf(sOrgTitle) - sOrgTitle.length())));
+    params.insert("Orgname", utfLine.right(utfLine.length() - utfLine.indexOf(sOrgTitle) - sOrgTitle.length()));
 
 }
