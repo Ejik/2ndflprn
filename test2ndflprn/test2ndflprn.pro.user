@@ -81,6 +81,9 @@
     <value type="QString">APPDATA=C:\Users\Ejik\AppData\Roaming</value>
     <value type="QString">CADM=C:\IM\CADM</value>
     <value type="QString">CLASSPATH=.;C:\Program Files (x86)\QuickTime\QTSystem\QTJava.zip</value>
+    <value type="QString">COMMANDER_DRIVE=C:</value>
+    <value type="QString">COMMANDER_INI=C:\Program Files (x86)\Total Commander\wincmd.ini</value>
+    <value type="QString">COMMANDER_PATH=C:\Program Files (x86)\Total Commander</value>
     <value type="QString">COMMONPROGRAMFILES=C:\Program Files (x86)\Common Files</value>
     <value type="QString">COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files</value>
     <value type="QString">COMMONPROGRAMW6432=C:\Program Files\Common Files</value>
@@ -129,7 +132,6 @@
     <value type="QString">USERNAME=Ejik</value>
     <value type="QString">USERPROFILE=C:\Users\Ejik</value>
     <value type="QString">WINDIR=C:\Windows</value>
-    <value type="QString">__COMPAT_LAYER=ElevateCreateProcess</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
     <value type="QString">C:/Projects/2ndflprn/test2ndflprn/test2ndflprn.pro</value>
@@ -151,6 +153,9 @@
     <value type="QString">APPDATA=C:\Users\Ejik\AppData\Roaming</value>
     <value type="QString">CADM=C:\IM\CADM</value>
     <value type="QString">CLASSPATH=.;C:\Program Files (x86)\QuickTime\QTSystem\QTJava.zip</value>
+    <value type="QString">COMMANDER_DRIVE=C:</value>
+    <value type="QString">COMMANDER_INI=C:\Program Files (x86)\Total Commander\wincmd.ini</value>
+    <value type="QString">COMMANDER_PATH=C:\Program Files (x86)\Total Commander</value>
     <value type="QString">COMMONPROGRAMFILES=C:\Program Files (x86)\Common Files</value>
     <value type="QString">COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files</value>
     <value type="QString">COMMONPROGRAMW6432=C:\Program Files\Common Files</value>
@@ -199,7 +204,6 @@
     <value type="QString">USERNAME=Ejik</value>
     <value type="QString">USERPROFILE=C:\Users\Ejik</value>
     <value type="QString">WINDIR=C:\Windows</value>
-    <value type="QString">__COMPAT_LAYER=ElevateCreateProcess</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">

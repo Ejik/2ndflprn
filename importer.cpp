@@ -30,20 +30,35 @@ void Importer::parse()
     QTextStream in(&file);
 
     in.readLine(); // шапка
-    in.readLine();
+    in.readLine(); //
     in.readLine();
     QString line = in.readLine(); // Строка с датой и номером справки
     parseTitle(line);
     in.readLine(); //
-    in.readLine(); // п 1.1
-    parseINNCPP(in.readLine());  // п 1.2
-    parseOrgname(in.readLine()); // п 1.3
+    in.readLine(); // п. 1
+    parseINNCPP(in.readLine());  // п. 1.1
+    parseOrgname(in.readLine()); // п. 1.2
+    in.readLine();
+    parseOKATOTEL(in.readLine()); // п. 1.3 п. 1.4
+    in.readLine(); // п. 2
+    parseINN(in.readLine()); // п. 2.1
+    in.readLine();
+    parseFIOTBN(in.readLine()); // п. 2.2
+    parseStatusDrGr(in.readLine()); // п. 2.3 - п. 2.5
+    parseCodeDocSeriesNum(in.readLine()); // п. 2.6 - п. 2.7
+    in.readLine(); // п. 2.8
+    parseIndexRegCode(in.readLine());
+    parseCity(in.readLine());
+    parseStreet(in.readLine());
+    parseHomeFlat(in.readLine());
+    in.readLine();
+    in.readLine(); // п. 3
 
 }
 
 void Importer::parseTitle(QString line)
 {
-    QString utfLine = OEMtoUnicode(line);
+    QString utfLine = line;//OEMtoUnicode(line);
 
     params.insert("Year", utfLine.mid(38, 4));
     params.insert("Number", utfLine.mid(49, 2));
@@ -61,8 +76,80 @@ void Importer::parseINNCPP(const QString line)
 
 void Importer::parseOrgname(const QString line)
 {
-    QString utfLine = OEMtoUnicode(line);
+    QString utfLine = line; //OEMtoUnicode(line);
     QString sOrgTitle = WINtoUnicode("Наименование организации ");
     params.insert("Orgname", utfLine.right(utfLine.length() - utfLine.indexOf(sOrgTitle) - sOrgTitle.length()));
+}
+
+void Importer::parseOKATOTEL(const QString line)
+{
+    QString sOKATO = WINtoUnicode("Код ОКАТО");
+    params.insert("OKATO", line.mid(line.indexOf(sOKATO) + sOKATO.length() + 1, 12));
+
+    QString sTel = WINtoUnicode("Телефон");
+    params.insert("Tel", line.right(line.length() - line.indexOf(sTel) - sTel.length()));
+}
+
+void Importer::parseINN(const QString line)
+{
+     params.insert("INN", line.mid(9, 12));
+}
+
+void Importer::parseFIOTBN(const QString line)
+{
+    params.insert("FIO", line.left(50).trimmed());
+    params.insert("TBN", line.right(4).trimmed());
+}
+
+void Importer::parseStatusDrGr(const QString line)
+{
+    params.insert("Status", line.mid(12, 3).trimmed());
+
+    QString sBirthday = WINtoUnicode("Дата рождения");
+    params.insert("Birthday", line.mid(line.indexOf(sBirthday) + sBirthday.length() + 1, 15).trimmed());
+
+    params.insert("Grajdanstvo", line.right(3));
+}
+
+void Importer::parseCodeDocSeriesNum(const QString line)
+{
+    QString subStr = WINtoUnicode("Код док-та, удост. личность -");
+    params.insert("CodeDoc", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
+
+    params.insert("SeriesAndNumberDoc", line.right(16).trimmed());
+
+}
+void Importer::parseIndexRegCode(const QString line)
+{
+    QString subStr = WINtoUnicode("Почтовый индекс");
+    params.insert("Index", line.mid(line.indexOf(subStr) + subStr.length() + 1, 6).trimmed());
+
+    subStr = WINtoUnicode("Код региона");
+    params.insert("RegCode", line.mid(line.indexOf(subStr) + subStr.length() + 1, 2).trimmed());
+
+    subStr = WINtoUnicode("Район");
+    params.insert("Raion", line.mid(line.indexOf(subStr) + subStr.length() + 1, 28).trimmed());
+}
+
+void Importer::parseCity(const QString line)
+{
+    params.insert("City", line.right(line.length() - 10).trimmed());
+}
+
+void Importer::parseStreet(const QString line)
+{
+    params.insert("Street", line.right(line.length() - 10).trimmed());
+}
+
+void Importer::parseHomeFlat(const QString line)
+{
+    QString subStr = WINtoUnicode("Дом");
+    params.insert("Дом", line.mid(line.indexOf(subStr) + subStr.length() + 1, 6).trimmed());
+
+    subStr = WINtoUnicode("Корпус");
+    params.insert("Корпус", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
+
+    subStr = WINtoUnicode("Квартира");
+    params.insert("Квартира", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
 
 }
