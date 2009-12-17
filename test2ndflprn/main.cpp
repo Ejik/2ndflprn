@@ -27,8 +27,10 @@ void TestImporter::testParsing()
     QVERIFY(importer.params["Number"] == " 1");
     QVERIFY(importer.params["Date"] == "13.12.2009");
     QVERIFY(importer.params["IFNS"] == "5190");
-    qDebug(importer.params["INN/CPP"].toLocal8Bit());
     QVERIFY(importer.params["INN/CPP"] == "  5190309146/519001001");
+
+    qDebug(Importer::WINtoUnicode(importer.params["Orgname"]).toLatin1());
+    QVERIFY(importer.params["Orgname"] == Importer::WINtoUnicode("ŒŒŒ '¿—Œ“-÷≈Õ“– —≈–¬»—'"));
 }
 
 QTEST_MAIN(TestImporter)

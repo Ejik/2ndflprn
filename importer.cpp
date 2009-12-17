@@ -35,8 +35,8 @@ void Importer::parse()
     parseTitle(line);
     in.readLine(); //
     in.readLine(); // п 1.1
-    parseINNCPP(in.readLine()); // ИНН/КПП
-
+    parseINNCPP(in.readLine());  // п 1.2
+    parseOrgname(in.readLine()); // п 1.3
 
 }
 
@@ -50,11 +50,18 @@ void Importer::parseTitle(QString line)
 
     QString sIfns = WINtoUnicode("ИФНС N");
 
-    int idx = utfLine.indexOf(sIfns, 55);
     params.insert("IFNS", utfLine.mid(utfLine.indexOf(sIfns, 55) + sIfns.length() + 1, 4));
 }
 
 void Importer::parseINNCPP(const QString line)
 {
     params.insert("INN/CPP", line.mid(25, 22));
+}
+
+void Importer::parseOrgname(const QString line)
+{
+    QString utfLine = OEMtoUnicode(line);
+    QString sOrgTitle = WINtoUnicode("Наименование организации ");
+    params.insert("Orgname", utfLine.right(utfLine.length() - (utfLine.indexOf(sOrgTitle) - sOrgTitle.length())));
+
 }
