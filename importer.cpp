@@ -2,6 +2,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QTextCodec>
+#include <QStringList>
 
 Importer::Importer(QString filename)
 {
@@ -28,12 +29,13 @@ void Importer::parse()
     if (!file.open(QFile::ReadOnly))
         return;
     QTextStream in(&file);
+    in.setCodec("IBM 866");
 
     in.readLine(); // шапка
     in.readLine(); //
     in.readLine();
-    QString line = in.readLine(); // Строка с датой и номером справки
-    parseTitle(line);
+
+    parseTitle(in.readLine()); // Строка с датой и номером справки
     in.readLine(); //
     in.readLine(); // п. 1
     parseINNCPP(in.readLine());  // п. 1.1
@@ -53,6 +55,23 @@ void Importer::parse()
     parseHomeFlat(in.readLine());
     in.readLine();
     in.readLine(); // п. 3
+    in.readLine();
+    in.readLine();
+    in.readLine();
+    in.readLine();
+    in.readLine();
+
+    QString line = in.readLine();
+    QString sym("L");
+
+    while (QString(line[0]).toLocal8Bit() !=  sym)
+    {
+        parseIncomeTable(line);
+        line = in.readLine();
+    }
+
+
+    file.close();
 
 }
 
@@ -66,7 +85,9 @@ void Importer::parseTitle(QString line)
 
     QString sIfns = WINtoUnicode("ИФНС N");
 
-    params.insert("IFNS", utfLine.mid(utfLine.indexOf(sIfns, 55) + sIfns.length() + 1, 4));
+    //params.insert("IFNS", utfLine.mid(utfLine.indexOf(sIfns, 55) + sIfns.length() + 1, 4));
+    params.insert("IFNS", utfLine.mid(utfLine.indexOf(sIfns) + sIfns.length() + 1, 4).trimmed());
+
 }
 
 void Importer::parseINNCPP(const QString line)
@@ -76,18 +97,19 @@ void Importer::parseINNCPP(const QString line)
 
 void Importer::parseOrgname(const QString line)
 {
-    QString utfLine = line; //OEMtoUnicode(line);
-    QString sOrgTitle = WINtoUnicode("Наименование организации ");
+    QString utfLine = line;//OEMtoUnicode(line);
+    QString sOrgTitle = WINtoUnicode("Наименование организации");
     params.insert("Orgname", utfLine.right(utfLine.length() - utfLine.indexOf(sOrgTitle) - sOrgTitle.length()));
 }
 
 void Importer::parseOKATOTEL(const QString line)
 {
+    QString utfLine = line;
     QString sOKATO = WINtoUnicode("Код ОКАТО");
-    params.insert("OKATO", line.mid(line.indexOf(sOKATO) + sOKATO.length() + 1, 12));
+    params.insert("OKATO", utfLine.mid(utfLine.indexOf(sOKATO) + sOKATO.length() + 1, 12).trimmed());
 
     QString sTel = WINtoUnicode("Телефон");
-    params.insert("Tel", line.right(line.length() - line.indexOf(sTel) - sTel.length()));
+    params.insert("Tel", utfLine.right(utfLine.length() - utfLine.indexOf(sTel) - sTel.length()));
 }
 
 void Importer::parseINN(const QString line)
@@ -97,6 +119,7 @@ void Importer::parseINN(const QString line)
 
 void Importer::parseFIOTBN(const QString line)
 {
+
     params.insert("FIO", line.left(50).trimmed());
     params.insert("TBN", line.right(4).trimmed());
 }
@@ -151,5 +174,30 @@ void Importer::parseHomeFlat(const QString line)
 
     subStr = WINtoUnicode("Квартира");
     params.insert("Квартира", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
+
+}
+
+void Importer::parseIncomeTable(const QString line)
+{
+//    QFile file("1251.txt");
+//    if (!file.open(QFile::WriteOnly | QFile::Truncate))
+//        return;
+//    QTextStream out(&file);
+//    out.setCodec("UTF-8");
+//    out << "line0 " << line[0] << " " << QChar(0x2502);
+
+    QStringList list1 = line.split(QChar(0x2502));
+    //
+    params.insert("Месяц" + list1[1].trimmed() + list1[2].trimmed(),        list1[1].trimmed());
+    params.insert("КодДохода" + list1[1].trimmed() + list1[2].trimmed(),    list1[2].trimmed());
+    params.insert("СуммаДохода" + list1[1].trimmed() + list1[2].trimmed(),  list1[3].trimmed());
+    params.insert("КодВычета" + list1[1].trimmed() + list1[2].trimmed(),    list1[4].trimmed());
+    params.insert("СуммаВычета" + list1[1].trimmed() + list1[2].trimmed(),  list1[5].trimmed());
+
+    params.insert("Месяц" + list1[7].trimmed() + list1[8].trimmed(),        list1[7].trimmed());
+    params.insert("КодДохода" + list1[7].trimmed() + list1[8].trimmed(),    list1[8].trimmed());
+    params.insert("СуммаДохода" + list1[7].trimmed() + list1[8].trimmed(),  list1[9].trimmed());
+    params.insert("КодВычета" + list1[7].trimmed() + list1[8].trimmed(),    list1[10].trimmed());
+    params.insert("СуммаВычета" + list1[7].trimmed() + list1[8].trimmed(),  list1[11].trimmed());
 
 }

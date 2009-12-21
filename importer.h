@@ -21,6 +21,7 @@ private:
     void parseCity(const QString line);
     void parseStreet(const QString line);
     void parseHomeFlat(const QString line);
+    void parseIncomeTable(const QString line);
 
 
 public:

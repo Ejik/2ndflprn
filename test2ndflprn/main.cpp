@@ -1,5 +1,5 @@
 #include <QtCore/QCoreApplication>
-
+#include <QFile>
 #include <QtTest/QtTest>
 #include "../importer.h"
 
@@ -10,6 +10,7 @@ class TestImporter : public QObject
 private slots:
     void testCreate();
     void testParsing();
+    void testTableEndSymbol();
 };
 
 
@@ -34,7 +35,7 @@ void TestImporter::testParsing()
     QVERIFY(importer.params["INN"].trimmed() == "519041604350");
     QVERIFY(importer.params["FIO"].trimmed() == Importer::WINtoUnicode("Беляева Наталья Сергеевна"));
     QVERIFY(importer.params["TBN"].trimmed() == "0102");
-    QVERIFY(importer.params["Status"].trimmed() == "1");
+    QVERIFY(importer.params["Status"].trimmed() == "1");  
     QVERIFY(importer.params["Birthday"].trimmed() == Importer::WINtoUnicode("03.10.1980 г."));
     QVERIFY(importer.params["Grajdanstvo"].trimmed() == "643");    
     QVERIFY(importer.params["CodeDoc"].trimmed() == "21");
@@ -47,6 +48,37 @@ void TestImporter::testParsing()
     QVERIFY(importer.params["Дом"].trimmed() == "47");
     QVERIFY(importer.params["Корпус"].trimmed() == "");
     QVERIFY(importer.params["Квартира"].trimmed() == "27");
+
+    QVERIFY(importer.params["Месяц012000"] == "01");
+    QVERIFY(importer.params["СуммаДохода062000"] == "25102.94");
+    QVERIFY(importer.params["КодДохода062012"] == "2012");
+
+
+}
+
+void TestImporter::testTableEndSymbol()
+{
+    QFile file("2NDFL_02.LST");
+
+    if (!file.open(QFile::ReadOnly))
+        return;
+    QTextStream in(&file);
+    in.setCodec("IBM 866");
+
+    for (int i = 0; i < 34; i++)
+        in.readLine();
+
+    QChar sym(0x2514);
+    QString line = in.readLine();
+
+    QVERIFY(line[0] == sym);
+
+//        QFile file1("1251.txt");
+//        if (!file1.open(QFile::WriteOnly | QFile::Truncate))
+//            return;
+//        QTextStream out(&file1);
+//        out.setCodec("UTF-8");
+//        out << "line0 " << line[0] << " " << QChar(0x2514);
 
 }
 
