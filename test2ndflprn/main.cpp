@@ -53,6 +53,32 @@ void TestImporter::testParsing()
     QVERIFY(importer.params["СуммаДохода062000"] == "25102.94");
     QVERIFY(importer.params["КодДохода062012"] == "2012");
 
+    QVERIFY(importer.params["Код4.1"] == "108");
+    QVERIFY(importer.params["СуммаВычета4.1"] == "11000.00");
+
+    QVERIFY(importer.params["Код4.2"] == "103");
+    QVERIFY(importer.params["СуммаВычета4.2"] == "400.00");
+
+    QVERIFY(importer.params["Код4.3"] == "");
+    QVERIFY(importer.params["СуммаВычета4.3"] == "");
+
+    QVERIFY(importer.params["Код4.4"] == "");
+    QVERIFY(importer.params["СуммаВычета4.4"] == "");
+
+    QVERIFY(importer.params["СуммаНалВычетов"] == "11400.00");
+
+    QVERIFY(importer.params["СуммаДоходов"] == "258555.52");
+    QVERIFY(importer.params["ОблагаемаяСуммаДоходов"] == "247155.52");
+    QVERIFY(importer.params["СуммаП5.3"] == "32130");
+    QVERIFY(importer.params["СуммаП5.4"] == "32130");
+    QVERIFY(importer.params["СуммаП5.5"] == "");
+    QVERIFY(importer.params["СуммаП5.6"] == "");
+    QVERIFY(importer.params["СуммаП5.7"] == "");
+    QVERIFY(importer.params["СуммаП5.8"] == "");
+    QVERIFY(importer.params["СуммаП5.9"] == "");
+    QVERIFY(importer.params["СуммаП5.10"] == "");
+    QVERIFY(importer.params["Должность"] == Importer::WINtoUnicode("бухгалтер"));
+    QVERIFY(importer.params["ФИОАгента"] == Importer::WINtoUnicode("Беляева Н.С."));
 
 }
 

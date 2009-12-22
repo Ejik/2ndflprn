@@ -21,6 +21,10 @@ QString Importer::WINtoUnicode(const QString string)
     return codec->toUnicode(string.toAscii());
 }
 
+void Importer::addParametr(const QString key, const QString value)
+{
+    params.insert(currentDoc + "_" + key, value);
+}
 
 void Importer::parse()
 {
@@ -31,46 +35,85 @@ void Importer::parse()
     QTextStream in(&file);
     in.setCodec("IBM 866");
 
-    in.readLine(); // шапка
-    in.readLine(); //
-    in.readLine();
-
-    parseTitle(in.readLine()); // Строка с датой и номером справки
-    in.readLine(); //
-    in.readLine(); // п. 1
-    parseINNCPP(in.readLine());  // п. 1.1
-    parseOrgname(in.readLine()); // п. 1.2
-    in.readLine();
-    parseOKATOTEL(in.readLine()); // п. 1.3 п. 1.4
-    in.readLine(); // п. 2
-    parseINN(in.readLine()); // п. 2.1
-    in.readLine();
-    parseFIOTBN(in.readLine()); // п. 2.2
-    parseStatusDrGr(in.readLine()); // п. 2.3 - п. 2.5
-    parseCodeDocSeriesNum(in.readLine()); // п. 2.6 - п. 2.7
-    in.readLine(); // п. 2.8
-    parseIndexRegCode(in.readLine());
-    parseCity(in.readLine());
-    parseStreet(in.readLine());
-    parseHomeFlat(in.readLine());
-    in.readLine();
-    in.readLine(); // п. 3
-    in.readLine();
-    in.readLine();
-    in.readLine();
-    in.readLine();
-    in.readLine();
-
-    QString line = in.readLine();
-    QString sym("L");
-
-    while (QString(line[0]).toLocal8Bit() !=  sym)
+    int i = 1;
+    while (!in.atEnd())
     {
-        parseIncomeTable(line);
-        line = in.readLine();
+        in.readLine(); // шапка
+        in.readLine(); //
+        in.readLine();
+
+        parseTitle(in.readLine()); // Строка с датой и номером справки
+        in.readLine(); //
+        in.readLine(); // п. 1
+        parseINNCPP(in.readLine());  // п. 1.1
+        parseOrgname(in.readLine()); // п. 1.2
+        in.readLine();
+        parseOKATOTEL(in.readLine()); // п. 1.3 п. 1.4
+        in.readLine(); // п. 2
+        parseINN(in.readLine()); // п. 2.1
+        in.readLine();
+        parseFIOTBN(in.readLine()); // п. 2.2
+        parseStatusDrGr(in.readLine()); // п. 2.3 - п. 2.5
+        parseCodeDocSeriesNum(in.readLine()); // п. 2.6 - п. 2.7
+        in.readLine(); // п. 2.8
+        parseIndexRegCode(in.readLine());
+        parseCity(in.readLine());
+        parseStreet(in.readLine());
+        parseHomeFlat(in.readLine());
+
+        in.readLine();
+        in.readLine(); // п. 3
+        in.readLine();
+        in.readLine();
+        in.readLine();
+        in.readLine();
+        in.readLine();
+
+        QString line = in.readLine();
+        QChar sym(0x2514);
+
+        while (line[0] != sym)
+        {
+            parseIncomeTable(line);
+            line = in.readLine();
+        }
+
+        in.readLine();
+        in.readLine();
+        in.readLine();
+        in.readLine();
+        //in.readLine();
+        parseTaxDeductions(in.readLine());  // п. 4.1
+        parseTotalSum(in.readLine());       // п. 4.5
+
+        in.readLine(); // п. 5
+        in.readLine();
+        in.readLine();
+
+        parseAmountIncome(in.readLine());   // п. 5.1
+        in.readLine();
+        parseTaxableAmountIncome(in.readLine()); // п. 5.2
+        in.readLine();
+        parseAmountOfTaxCalculated(in.readLine()); // п. 5.3
+        in.readLine();
+        parseAmountOfTaxWithheld(in.readLine()); // п. 5.4
+        in.readLine();
+        parsePara55Sum(in.readLine());  // п. 5.5
+        in.readLine();
+        parsePara56Sum(in.readLine());  // п. 5.6
+        in.readLine();
+        parsePara57Sum(in.readLine());  // п. 5.7
+        in.readLine();
+        parsePara58Sum(in.readLine());  // п. 5.8
+        in.readLine();
+        parsePara59Sum(in.readLine());  // п. 5.8
+        in.readLine();
+        parsePara510Sum(in.readLine());  // п. 5.10
+        in.readLine();
+        in.readLine();
+        parseBottom(in.readLine());
+        in.readLine();
     }
-
-
     file.close();
 
 }
@@ -142,6 +185,7 @@ void Importer::parseCodeDocSeriesNum(const QString line)
     params.insert("SeriesAndNumberDoc", line.right(16).trimmed());
 
 }
+
 void Importer::parseIndexRegCode(const QString line)
 {
     QString subStr = WINtoUnicode("Почтовый индекс");
@@ -200,4 +244,81 @@ void Importer::parseIncomeTable(const QString line)
     params.insert("КодВычета" + list1[7].trimmed() + list1[8].trimmed(),    list1[10].trimmed());
     params.insert("СуммаВычета" + list1[7].trimmed() + list1[8].trimmed(),  list1[11].trimmed());
 
+}
+
+void Importer::parseTaxDeductions(const QString line)
+{
+    //QStringList list1 = line.split(" ");
+    params.insert("Код4.1", line.mid(2, 4).trimmed());
+    params.insert("СуммаВычета4.1", line.mid(8, 12).trimmed());
+
+    params.insert("Код4.2", line.mid(22, 3).trimmed());
+    params.insert("СуммаВычета4.2", line.mid(27, 12).trimmed());
+
+    params.insert("Код4.3", line.mid(41, 3).trimmed());
+    params.insert("СуммаВычета4.3", line.mid(46, 12).trimmed());
+
+    params.insert("Код4.4", line.mid(60, 3).trimmed());
+    params.insert("СуммаВычета4.4", line.mid(65, 12).trimmed());
+}
+
+void Importer::parseTotalSum(const QString line)
+{
+    params.insert("СуммаНалВычетов", line.right(14).trimmed());
+}
+
+void Importer::parseAmountIncome(const QString line)
+{
+    params.insert("СуммаДоходов", line.mid(66, 12).trimmed());
+}
+
+void Importer::parseTaxableAmountIncome(const QString line)
+{
+    params.insert("ОблагаемаяСуммаДоходов", line.mid(66, 12).trimmed());
+}
+
+void Importer::parseAmountOfTaxCalculated(const QString line)
+{
+    params.insert("СуммаП5.3", line.mid(66, 12).trimmed());
+}
+
+void Importer::parseAmountOfTaxWithheld(const QString line)
+{
+    params.insert("СуммаП5.4", line.mid(66, 12).trimmed());
+}
+
+void Importer::parsePara55Sum(const QString line)
+{
+    params.insert("СуммаП5.5", line.mid(66, 12).trimmed());
+}
+
+void Importer::parsePara56Sum(const QString line)
+{
+    params.insert("СуммаП5.6", line.mid(66, 12).trimmed());
+}
+
+void Importer::parsePara57Sum(const QString line)
+{
+    params.insert("СуммаП5.7", line.mid(66, 12).trimmed());
+}
+
+void Importer::parsePara58Sum(const QString line)
+{
+    params.insert("СуммаП5.8", line.mid(66, 12).trimmed());
+}
+
+void Importer::parsePara59Sum(const QString line)
+{
+    params.insert("СуммаП5.9", line.mid(66, 12).trimmed());
+}
+
+void Importer::parsePara510Sum(const QString line)
+{
+    params.insert("СуммаП5.10", line.mid(66, 12).trimmed());
+}
+
+void Importer::parseBottom(const QString line)
+{
+    params.insert("Должность", line.mid(17, 20).trimmed());
+    params.insert("ФИОАгента", line.mid(57, 20).trimmed());
 }
