@@ -37,6 +37,7 @@ private:
     void parsePara510Sum(const QString line);
     void parseBottom(const QString line);
 
+    void debug(const QString line, QChar symb);
 
 public:
     QMap<QString, QString> params;

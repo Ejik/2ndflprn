@@ -4,6 +4,17 @@
 #include <QTextCodec>
 #include <QStringList>
 
+void Importer::debug(const QString line, QChar symb)
+{
+    QFile file1("1251.txt");
+    if (!file1.open(QFile::WriteOnly | QFile::Truncate))
+        return;
+    QTextStream out(&file1);
+    out.setCodec("UTF-8");
+    out << "line0 " << line[0].unicode() << " " << symb.unicode();
+    file1.close();
+}
+
 Importer::Importer(QString filename)
 {
     inputFile = filename;
@@ -23,7 +34,7 @@ QString Importer::WINtoUnicode(const QString string)
 
 void Importer::addParametr(const QString key, const QString value)
 {
-    params.insert(currentDoc + "_" + key, value);
+    params.insert(QString::number(currentDoc, 10) + "_" + key, value);
 }
 
 void Importer::parse()
@@ -35,7 +46,7 @@ void Importer::parse()
     QTextStream in(&file);
     in.setCodec("IBM 866");
 
-    int i = 1;
+    currentDoc = 1;
     while (!in.atEnd())
     {
         in.readLine(); // шапка
@@ -113,6 +124,14 @@ void Importer::parse()
         in.readLine();
         parseBottom(in.readLine());
         in.readLine();
+
+        QChar pageBreak(0x0C);
+        line = in.readLine();
+        while (!in.atEnd() && line != pageBreak)
+        {
+            line = in.readLine();
+        }
+        currentDoc++;
     }
     file.close();
 
@@ -122,203 +141,196 @@ void Importer::parseTitle(QString line)
 {
     QString utfLine = line;//OEMtoUnicode(line);
 
-    params.insert("Year", utfLine.mid(38, 4));
-    params.insert("Number", utfLine.mid(49, 2));
-    params.insert("Date", utfLine.mid(55, 10));
+    addParametr("Year", utfLine.mid(38, 4));
+    addParametr("Number", utfLine.mid(49, 2));
+    addParametr("Date", utfLine.mid(55, 10));
 
     QString sIfns = WINtoUnicode("ИФНС N");
 
-    //params.insert("IFNS", utfLine.mid(utfLine.indexOf(sIfns, 55) + sIfns.length() + 1, 4));
-    params.insert("IFNS", utfLine.mid(utfLine.indexOf(sIfns) + sIfns.length() + 1, 4).trimmed());
+    //addParametr("IFNS", utfLine.mid(utfLine.indexOf(sIfns, 55) + sIfns.length() + 1, 4));
+    addParametr("IFNS", utfLine.mid(utfLine.indexOf(sIfns) + sIfns.length() + 1, 4).trimmed());
 
 }
 
 void Importer::parseINNCPP(const QString line)
 {
-    params.insert("INN/CPP", line.mid(25, 22));
+    addParametr("INN/CPP", line.mid(25, 22));
 }
 
 void Importer::parseOrgname(const QString line)
 {
     QString utfLine = line;//OEMtoUnicode(line);
     QString sOrgTitle = WINtoUnicode("Наименование организации");
-    params.insert("Orgname", utfLine.right(utfLine.length() - utfLine.indexOf(sOrgTitle) - sOrgTitle.length()));
+    addParametr("Orgname", utfLine.right(utfLine.length() - utfLine.indexOf(sOrgTitle) - sOrgTitle.length()));
 }
 
 void Importer::parseOKATOTEL(const QString line)
 {
     QString utfLine = line;
     QString sOKATO = WINtoUnicode("Код ОКАТО");
-    params.insert("OKATO", utfLine.mid(utfLine.indexOf(sOKATO) + sOKATO.length() + 1, 12).trimmed());
+    addParametr("OKATO", utfLine.mid(utfLine.indexOf(sOKATO) + sOKATO.length() + 1, 12).trimmed());
 
     QString sTel = WINtoUnicode("Телефон");
-    params.insert("Tel", utfLine.right(utfLine.length() - utfLine.indexOf(sTel) - sTel.length()));
+    addParametr("Tel", utfLine.right(utfLine.length() - utfLine.indexOf(sTel) - sTel.length()));
 }
 
 void Importer::parseINN(const QString line)
 {
-     params.insert("INN", line.mid(9, 12));
+     addParametr("INN", line.mid(9, 12));
 }
 
 void Importer::parseFIOTBN(const QString line)
 {
 
-    params.insert("FIO", line.left(50).trimmed());
-    params.insert("TBN", line.right(4).trimmed());
+    addParametr("FIO", line.left(50).trimmed());
+    addParametr("TBN", line.right(4).trimmed());
 }
 
 void Importer::parseStatusDrGr(const QString line)
 {
-    params.insert("Status", line.mid(12, 3).trimmed());
+    addParametr("Status", line.mid(12, 3).trimmed());
 
     QString sBirthday = WINtoUnicode("Дата рождения");
-    params.insert("Birthday", line.mid(line.indexOf(sBirthday) + sBirthday.length() + 1, 15).trimmed());
+    addParametr("Birthday", line.mid(line.indexOf(sBirthday) + sBirthday.length() + 1, 15).trimmed());
 
-    params.insert("Grajdanstvo", line.right(3));
+    addParametr("Grajdanstvo", line.right(3));
 }
 
 void Importer::parseCodeDocSeriesNum(const QString line)
 {
     QString subStr = WINtoUnicode("Код док-та, удост. личность -");
-    params.insert("CodeDoc", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
+    addParametr("CodeDoc", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
 
-    params.insert("SeriesAndNumberDoc", line.right(16).trimmed());
+    addParametr("SeriesAndNumberDoc", line.right(16).trimmed());
 
 }
 
 void Importer::parseIndexRegCode(const QString line)
 {
     QString subStr = WINtoUnicode("Почтовый индекс");
-    params.insert("Index", line.mid(line.indexOf(subStr) + subStr.length() + 1, 6).trimmed());
+    addParametr("Index", line.mid(line.indexOf(subStr) + subStr.length() + 1, 6).trimmed());
 
     subStr = WINtoUnicode("Код региона");
-    params.insert("RegCode", line.mid(line.indexOf(subStr) + subStr.length() + 1, 2).trimmed());
+    addParametr("RegCode", line.mid(line.indexOf(subStr) + subStr.length() + 1, 2).trimmed());
 
     subStr = WINtoUnicode("Район");
-    params.insert("Raion", line.mid(line.indexOf(subStr) + subStr.length() + 1, 28).trimmed());
+    addParametr("Raion", line.mid(line.indexOf(subStr) + subStr.length() + 1, 28).trimmed());
 }
 
 void Importer::parseCity(const QString line)
 {
-    params.insert("City", line.right(line.length() - 10).trimmed());
+    addParametr("City", line.right(line.length() - 10).trimmed());
 }
 
 void Importer::parseStreet(const QString line)
 {
-    params.insert("Street", line.right(line.length() - 10).trimmed());
+    addParametr("Street", line.right(line.length() - 10).trimmed());
 }
 
 void Importer::parseHomeFlat(const QString line)
 {
     QString subStr = WINtoUnicode("Дом");
-    params.insert("Дом", line.mid(line.indexOf(subStr) + subStr.length() + 1, 6).trimmed());
+    addParametr("Дом", line.mid(line.indexOf(subStr) + subStr.length() + 1, 6).trimmed());
 
     subStr = WINtoUnicode("Корпус");
-    params.insert("Корпус", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
+    addParametr("Корпус", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
 
     subStr = WINtoUnicode("Квартира");
-    params.insert("Квартира", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
+    addParametr("Квартира", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
 
 }
 
 void Importer::parseIncomeTable(const QString line)
 {
-//    QFile file("1251.txt");
-//    if (!file.open(QFile::WriteOnly | QFile::Truncate))
-//        return;
-//    QTextStream out(&file);
-//    out.setCodec("UTF-8");
-//    out << "line0 " << line[0] << " " << QChar(0x2502);
-
     QStringList list1 = line.split(QChar(0x2502));
     //
-    params.insert("Месяц" + list1[1].trimmed() + list1[2].trimmed(),        list1[1].trimmed());
-    params.insert("КодДохода" + list1[1].trimmed() + list1[2].trimmed(),    list1[2].trimmed());
-    params.insert("СуммаДохода" + list1[1].trimmed() + list1[2].trimmed(),  list1[3].trimmed());
-    params.insert("КодВычета" + list1[1].trimmed() + list1[2].trimmed(),    list1[4].trimmed());
-    params.insert("СуммаВычета" + list1[1].trimmed() + list1[2].trimmed(),  list1[5].trimmed());
+    addParametr("Месяц" + list1[1].trimmed() + list1[2].trimmed(),        list1[1].trimmed());
+    addParametr("КодДохода" + list1[1].trimmed() + list1[2].trimmed(),    list1[2].trimmed());
+    addParametr("СуммаДохода" + list1[1].trimmed() + list1[2].trimmed(),  list1[3].trimmed());
+    addParametr("КодВычета" + list1[1].trimmed() + list1[2].trimmed(),    list1[4].trimmed());
+    addParametr("СуммаВычета" + list1[1].trimmed() + list1[2].trimmed(),  list1[5].trimmed());
 
-    params.insert("Месяц" + list1[7].trimmed() + list1[8].trimmed(),        list1[7].trimmed());
-    params.insert("КодДохода" + list1[7].trimmed() + list1[8].trimmed(),    list1[8].trimmed());
-    params.insert("СуммаДохода" + list1[7].trimmed() + list1[8].trimmed(),  list1[9].trimmed());
-    params.insert("КодВычета" + list1[7].trimmed() + list1[8].trimmed(),    list1[10].trimmed());
-    params.insert("СуммаВычета" + list1[7].trimmed() + list1[8].trimmed(),  list1[11].trimmed());
+    addParametr("Месяц" + list1[7].trimmed() + list1[8].trimmed(),        list1[7].trimmed());
+    addParametr("КодДохода" + list1[7].trimmed() + list1[8].trimmed(),    list1[8].trimmed());
+    addParametr("СуммаДохода" + list1[7].trimmed() + list1[8].trimmed(),  list1[9].trimmed());
+    addParametr("КодВычета" + list1[7].trimmed() + list1[8].trimmed(),    list1[10].trimmed());
+    addParametr("СуммаВычета" + list1[7].trimmed() + list1[8].trimmed(),  list1[11].trimmed());
 
 }
 
 void Importer::parseTaxDeductions(const QString line)
 {
     //QStringList list1 = line.split(" ");
-    params.insert("Код4.1", line.mid(2, 4).trimmed());
-    params.insert("СуммаВычета4.1", line.mid(8, 12).trimmed());
+    addParametr("Код4.1", line.mid(2, 4).trimmed());
+    addParametr("СуммаВычета4.1", line.mid(8, 12).trimmed());
 
-    params.insert("Код4.2", line.mid(22, 3).trimmed());
-    params.insert("СуммаВычета4.2", line.mid(27, 12).trimmed());
+    addParametr("Код4.2", line.mid(22, 3).trimmed());
+    addParametr("СуммаВычета4.2", line.mid(27, 12).trimmed());
 
-    params.insert("Код4.3", line.mid(41, 3).trimmed());
-    params.insert("СуммаВычета4.3", line.mid(46, 12).trimmed());
+    addParametr("Код4.3", line.mid(41, 3).trimmed());
+    addParametr("СуммаВычета4.3", line.mid(46, 12).trimmed());
 
-    params.insert("Код4.4", line.mid(60, 3).trimmed());
-    params.insert("СуммаВычета4.4", line.mid(65, 12).trimmed());
+    addParametr("Код4.4", line.mid(60, 3).trimmed());
+    addParametr("СуммаВычета4.4", line.mid(65, 12).trimmed());
 }
 
 void Importer::parseTotalSum(const QString line)
 {
-    params.insert("СуммаНалВычетов", line.right(14).trimmed());
+    addParametr("СуммаНалВычетов", line.right(14).trimmed());
 }
 
 void Importer::parseAmountIncome(const QString line)
 {
-    params.insert("СуммаДоходов", line.mid(66, 12).trimmed());
+    addParametr("СуммаДоходов", line.mid(66, 12).trimmed());
 }
 
 void Importer::parseTaxableAmountIncome(const QString line)
 {
-    params.insert("ОблагаемаяСуммаДоходов", line.mid(66, 12).trimmed());
+    addParametr("ОблагаемаяСуммаДоходов", line.mid(66, 12).trimmed());
 }
 
 void Importer::parseAmountOfTaxCalculated(const QString line)
 {
-    params.insert("СуммаП5.3", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.3", line.mid(66, 12).trimmed());
 }
 
 void Importer::parseAmountOfTaxWithheld(const QString line)
 {
-    params.insert("СуммаП5.4", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.4", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara55Sum(const QString line)
 {
-    params.insert("СуммаП5.5", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.5", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara56Sum(const QString line)
 {
-    params.insert("СуммаП5.6", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.6", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara57Sum(const QString line)
 {
-    params.insert("СуммаП5.7", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.7", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara58Sum(const QString line)
 {
-    params.insert("СуммаП5.8", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.8", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara59Sum(const QString line)
 {
-    params.insert("СуммаП5.9", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.9", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara510Sum(const QString line)
 {
-    params.insert("СуммаП5.10", line.mid(66, 12).trimmed());
+    addParametr("СуммаП5.10", line.mid(66, 12).trimmed());
 }
 
 void Importer::parseBottom(const QString line)
 {
-    params.insert("Должность", line.mid(17, 20).trimmed());
-    params.insert("ФИОАгента", line.mid(57, 20).trimmed());
+    addParametr("Должность", line.mid(17, 20).trimmed());
+    addParametr("ФИОАгента", line.mid(57, 20).trimmed());
 }
