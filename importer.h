@@ -41,6 +41,7 @@ private:
 
 public:
     QMap<QString, QString> params;
+    int incomeTable;
 
     Importer(const QString filename);
 

@@ -2,24 +2,30 @@
 #include <QFile>
 #include <QtTest/QtTest>
 #include "../importer.h"
+#include "../exporter.h"
 
-class TestImporter : public QObject
+class Test2ndflprn : public QObject
 {
     Q_OBJECT
 
 private slots:
-    void testCreate();
+    // importer
+    void testImporterCreate();
     void testParsing();
     void testTableEndSymbol();
+
+    // excel exporter
+    void testExporterCreate();
+
 };
 
 
-void TestImporter::testCreate()
+void Test2ndflprn::testImporterCreate()
 {
     Importer importer(QString());
 }
 
-void TestImporter::testParsing()
+void Test2ndflprn::testParsing()
 {
     Importer importer("2NDFL_01.LST");
     importer.parse();
@@ -82,7 +88,7 @@ void TestImporter::testParsing()
 
 }
 
-void TestImporter::testTableEndSymbol()
+void Test2ndflprn::testTableEndSymbol()
 {
     QFile file("2NDFL_02.LST");
 
@@ -108,5 +114,10 @@ void TestImporter::testTableEndSymbol()
 
 }
 
-QTEST_MAIN(TestImporter)
+void Test2ndflprn::testExporterCreate()
+{
+    Exporter exporter();
+}
+
+QTEST_MAIN(Test2ndflprn)
 #include "main.moc"

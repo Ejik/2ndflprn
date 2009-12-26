@@ -83,10 +83,12 @@ void Importer::parse()
         QString line = in.readLine();
         QChar sym(0x2514);
 
+        incomeTable = 0;
         while (line[0] != sym)
-        {
+        {          
             parseIncomeTable(line);
             line = in.readLine();
+            incomeTable++;
         }
 
         in.readLine();
