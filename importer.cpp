@@ -34,7 +34,7 @@ QString Importer::WINtoUnicode(const QString string)
 
 void Importer::addParametr(const QString key, const QString value)
 {
-    params.insert(QString::number(currentDoc, 10) + "_" + key, value);
+    params.insert(QString::number(numberDoc, 10) + "_" + key, value);
 }
 
 void Importer::parse()
@@ -46,7 +46,7 @@ void Importer::parse()
     QTextStream in(&file);
     in.setCodec("IBM 866");
 
-    currentDoc = 1;
+    numberDoc = 1;
     while (!in.atEnd())
     {
         in.readLine(); // шапка
@@ -83,12 +83,11 @@ void Importer::parse()
         QString line = in.readLine();
         QChar sym(0x2514);
 
-        incomeTable = 0;
+        incomeTableRowsCount = 1;
         while (line[0] != sym)
         {          
-            parseIncomeTable(line);
-            line = in.readLine();
-            incomeTable++;
+            parseIncomeTable(QString::number(incomeTableRowsCount++, 10), line);
+            line = in.readLine();           
         }
 
         in.readLine();
@@ -133,7 +132,7 @@ void Importer::parse()
         {
             line = in.readLine();
         }
-        currentDoc++;
+        numberDoc++;
     }
     file.close();
 
@@ -242,21 +241,21 @@ void Importer::parseHomeFlat(const QString line)
 
 }
 
-void Importer::parseIncomeTable(const QString line)
+void Importer::parseIncomeTable(const QString n, const QString line)
 {
     QStringList list1 = line.split(QChar(0x2502));
     //
-    addParametr("Месяц" + list1[1].trimmed() + list1[2].trimmed(),        list1[1].trimmed());
-    addParametr("КодДохода" + list1[1].trimmed() + list1[2].trimmed(),    list1[2].trimmed());
-    addParametr("СуммаДохода" + list1[1].trimmed() + list1[2].trimmed(),  list1[3].trimmed());
-    addParametr("КодВычета" + list1[1].trimmed() + list1[2].trimmed(),    list1[4].trimmed());
-    addParametr("СуммаВычета" + list1[1].trimmed() + list1[2].trimmed(),  list1[5].trimmed());
+    addParametr("Строка_" + n + "_Столбец_1", list1[1].trimmed());
+    addParametr("Строка_" + n + "_Столбец_2", list1[2].trimmed());
+    addParametr("Строка_" + n + "_Столбец_3", list1[3].trimmed());
+    addParametr("Строка_" + n + "_Столбец_4", list1[4].trimmed());
+    addParametr("Строка_" + n + "_Столбецv5", list1[5].trimmed());
 
-    addParametr("Месяц" + list1[7].trimmed() + list1[8].trimmed(),        list1[7].trimmed());
-    addParametr("КодДохода" + list1[7].trimmed() + list1[8].trimmed(),    list1[8].trimmed());
-    addParametr("СуммаДохода" + list1[7].trimmed() + list1[8].trimmed(),  list1[9].trimmed());
-    addParametr("КодВычета" + list1[7].trimmed() + list1[8].trimmed(),    list1[10].trimmed());
-    addParametr("СуммаВычета" + list1[7].trimmed() + list1[8].trimmed(),  list1[11].trimmed());
+    addParametr("Строка_" + n + "_Столбец_6", list1[7].trimmed());
+    addParametr("Строка_" + n + "_Столбец_7", list1[8].trimmed());
+    addParametr("Строка_" + n + "_Столбец_8", list1[9].trimmed());
+    addParametr("Строка_" + n + "_Столбец_9", list1[10].trimmed());
+    addParametr("Строка_" + n + "_Столбец_10",list1[11].trimmed());
 
 }
 

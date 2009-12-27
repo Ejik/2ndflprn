@@ -7,8 +7,7 @@
 class Importer : public QObject
 {
 private:
-    QString inputFile;
-    int currentDoc;
+    QString inputFile;    
     void addParametr(const QString key, const QString value);
     void parseTitle(const QString line);
     void parseINNCPP(const QString line);
@@ -22,7 +21,7 @@ private:
     void parseCity(const QString line);
     void parseStreet(const QString line);
     void parseHomeFlat(const QString line);
-    void parseIncomeTable(const QString line);
+    void parseIncomeTable(const QString n, const QString line);
     void parseTaxDeductions(const QString line);
     void parseTotalSum(const QString line);
     void parseAmountIncome(const QString line);
@@ -41,7 +40,8 @@ private:
 
 public:
     QMap<QString, QString> params;
-    int incomeTable;
+    int incomeTableRowsCount;
+    int numberDoc;
 
     Importer(const QString filename);
 
