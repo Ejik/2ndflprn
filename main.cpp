@@ -14,12 +14,13 @@ int main(int argc, char *argv[])
 
     QString filename = QFileDialog::getOpenFileName(NULL,
                                                     QObject::tr("Выберите файл справки 2НДФЛ"), "", QObject::tr("LST (2ndfl*.lst)"));
+    if (filename != "")
+    {
+        Importer importer(filename);
+        importer.parse();
 
-    Importer importer(filename);
-    importer.parse();
-
-    Exporter exporter(&importer);
-    exporter.exportToExcel();
-
+        Exporter exporter(&importer);
+        exporter.exportToExcel();
+    }
     //return a.exec();
 }
