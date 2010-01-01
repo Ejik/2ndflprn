@@ -4,3 +4,5 @@
 *.usr
 *.exe
 *.user
+moc_*.*
+Makefile.*

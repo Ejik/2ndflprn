@@ -73,7 +73,7 @@ void Importer::parse()
         parseHomeFlat(in.readLine());
 
         in.readLine();
-        in.readLine(); // п. 3
+        parseTax(in.readLine()); // п. 3
         in.readLine();
         in.readLine();
         in.readLine();
@@ -238,6 +238,12 @@ void Importer::parseHomeFlat(const QString line)
 
     subStr = WINtoUnicode("Квартира");
     addParametr("Квартира", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
+
+}
+
+void Importer::parseTax(const QString line)
+{
+    addParametr("СтавкаНалога", line.mid(40, 4).trimmed());
 
 }
 

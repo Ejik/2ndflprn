@@ -55,6 +55,7 @@ void Test2ndflprn::testParsing()
     QVERIFY(importer.params["1_Корпус"].trimmed() == "");
     QVERIFY(importer.params["1_Квартира"].trimmed() == "27");
 
+    QVERIFY(importer.params["1_СтавкаНалога"] == "13");
     QVERIFY(importer.params["1_Строка_1_Столбец_1"] == "01");
     QVERIFY(importer.params["1_Строка_6_Столбец_3"] == "25102.94");
     QVERIFY(importer.params["1_Строка_1_Столбец_7"] == "2012");

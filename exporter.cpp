@@ -61,6 +61,11 @@ void Exporter::exportToExcel()
         range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("F14")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
+        // ТБН
+        text = data->params[QString::number(i) + "_TBN"];
+        range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AR13")));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+
         // 2.2. Фамилия, имя, отчество
         text = data->params[QString::number(i) + "_FIO"];
         range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AB14")));
@@ -143,6 +148,10 @@ void Exporter::exportToExcel()
         //    range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 3. Доходы, облагаемые по ставке 13%
+        text = data->params[QString::number(i) + "_СтавкаНалога"];
+        range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("Q22")));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+
         for (int j = 1; j < data->incomeTableRowsCount; j++)
         {
             text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_1"];
@@ -310,8 +319,8 @@ void Exporter::exportToExcel()
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         workbook->dynamicCall("Save()");
-        workbook->dynamicCall("Close()");
+
     }
-    mExcel->dynamicCall("Quit()");
+
 
 }
