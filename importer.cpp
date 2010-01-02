@@ -91,15 +91,51 @@ void Importer::parse()
         }
 
         in.readLine();
-        in.readLine();
-        in.readLine();
-        in.readLine();
-        //in.readLine();
-        parseTaxDeductions(in.readLine());  // п. 4.1
-        parseTotalSum(in.readLine());       // п. 4.5
 
-        in.readLine(); // п. 5
-        in.readLine();
+        line = in.readLine(); // п. 4
+
+        while (line.left(3) != " 5.")
+        {
+            QString para = line.left(3);
+            if (para == "")
+            {
+            }
+            else if (para == "4. ")
+            {
+            }
+            else if (para == "4.1")
+            {
+                in.readLine();
+                line = in.readLine();
+                parseTaxDeductions(line);
+            }
+            else if (para == "4.2")
+            {
+                parsePara42(line);
+            }
+            else if ((para == "4.3") || (para == "4.4"))
+            {
+                parsePara43_44(line);
+            }           
+            else if (para == "4.5")
+            {
+                parsePara45(line);
+            }
+            else if (para == "4.6")
+            {
+                parsePara46(line);
+            }
+            line = in.readLine();
+        }
+
+        //in.readLine();
+        //in.readLine();
+        //in.readLine();
+        //parseTaxDeductions(in.readLine());  // п. 4.1
+        //parseTotalSum(in.readLine());       // п. 4.5
+
+        //in.readLine(); // п. 5
+        //in.readLine();
         in.readLine();
 
         parseAmountIncome(in.readLine());   // п. 5.1
@@ -118,7 +154,7 @@ void Importer::parse()
         in.readLine();
         parsePara58Sum(in.readLine());  // п. 5.8
         in.readLine();
-        parsePara59Sum(in.readLine());  // п. 5.8
+        parsePara59Sum(in.readLine());  // п. 5.9
         in.readLine();
         parsePara510Sum(in.readLine());  // п. 5.10
         in.readLine();
@@ -281,10 +317,6 @@ void Importer::parseTaxDeductions(const QString line)
     addParametr("—умма¬ычета4.4", line.mid(65, 12).trimmed());
 }
 
-void Importer::parseTotalSum(const QString line)
-{
-    addParametr("—уммаЌал¬ычетов", line.right(14).trimmed());
-}
 
 void Importer::parseAmountIncome(const QString line)
 {
@@ -340,4 +372,35 @@ void Importer::parseBottom(const QString line)
 {
     addParametr("ƒолжность", line.mid(17, 20).trimmed());
     addParametr("‘»ќјгента", line.mid(57, 20).trimmed());
+}
+
+void Importer::fillPara4()
+{
+    QString line = "                                                                                                              ";
+    parseTaxDeductions(line);
+    parsePara42(line);
+    parsePara43_44(line);
+    parsePara45(line);
+    parsePara46(line);
+}
+
+void Importer::parsePara42(const QString line)
+{
+    addParametr("Ќомер”ведомлени€", line.right(8).trimmed());
+}
+
+void Importer::parsePara43_44(const QString line)
+{
+    addParametr("ƒата¬ыдачи”ведомлени€", line.mid(16, 14).trimmed());
+    addParametr(" од»‘Ќ—”ведомлени€", line.right(6).trimmed());
+}
+
+void Importer::parsePara45(const QString line)
+{
+    addParametr("—уммаЌал¬ычетов", line.right(14).trimmed());
+}
+
+void Importer::parsePara46(const QString line)
+{
+    addParametr("—умма»мущественныхЌал¬ычетов", line.right(14).trimmed());
 }

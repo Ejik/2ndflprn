@@ -24,7 +24,6 @@ private:
     void parseTax(const QString line);
     void parseIncomeTable(const QString n, const QString line);
     void parseTaxDeductions(const QString line);
-    void parseTotalSum(const QString line);
     void parseAmountIncome(const QString line);
     void parseTaxableAmountIncome(const QString line);
     void parseAmountOfTaxCalculated(const QString line);
@@ -36,6 +35,13 @@ private:
     void parsePara59Sum(const QString line);
     void parsePara510Sum(const QString line);
     void parseBottom(const QString line);
+
+    void fillPara4();
+    void parsePara42(const QString line);
+    void parsePara43_44(const QString line);
+    void parsePara45(const QString line);
+    void parsePara46(const QString line);
+
 
     void debug(const QString line, QChar symb);
 

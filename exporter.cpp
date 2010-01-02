@@ -244,19 +244,19 @@ void Exporter::exportToExcel()
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 4.2. № Уведомления, подтверждающего право на имущественный налоговый вычет
-        //    text = data->params[""];
-        //    range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AI48")));
-        //    range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
+        text = data->params[QString::number(i) + "_НомерУведомления"];
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AI48")));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
 
         // 4.3. Дата выдачи Уведомления
-        //    text = data->params[""];
-        //    range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N49")));
-        //    range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
+        text = data->params[QString::number(i) + "_ДатаВыдачиУведомления"];
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N49")));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
 
         // 4.4.Код налогового органа, выдавшего Уведомление
-        //    text = data->params[""];
-        //    range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP49")));
-        //    range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
+        text = data->params[QString::number(i) + "_КодИФНСУведомления"];
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP49")));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
 
 
         // 4.5. Общая сумма предоставленных стандартных налоговых вычетов
@@ -265,9 +265,9 @@ void Exporter::exportToExcel()
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 4.6. Общая сумма предоставленных имущественных налоговых вычетов
-        //    text = data->params[QString::number(i) + "_СуммаДоходов"];
-        //    range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD51")));
-        //    range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
+        text = data->params[QString::number(i) + "_СуммаИмущественныхНалВычетов "];
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD51")));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
 
         // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
         // 5.1. Общая сумма дохода
