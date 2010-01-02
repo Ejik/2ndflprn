@@ -10,20 +10,14 @@ class Test2ndflprn : public QObject
 
 private slots:
     // importer
-    void testImporterCreate();
     void testParsing();
     void testTableEndSymbol();
 
     // excel exporter
-    void testExporterCreate();
+    void testReplaceExtensions();
 
 };
 
-
-void Test2ndflprn::testImporterCreate()
-{
-    Importer importer(QString());
-}
 
 void Test2ndflprn::testParsing()
 {
@@ -115,9 +109,15 @@ void Test2ndflprn::testTableEndSymbol()
 
 }
 
-void Test2ndflprn::testExporterCreate()
+
+void Test2ndflprn::testReplaceExtensions()
 {
-    Exporter exporter();
+
+    QString filename = "2NDFL_01.LST";
+
+    Exporter exporter(NULL);
+    filename = exporter.replaceExt(filename);
+    QVERIFY(filename == "2NDFL_01.xls");
 }
 
 QTEST_MAIN(Test2ndflprn)

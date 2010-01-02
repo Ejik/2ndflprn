@@ -7,7 +7,7 @@
 class Importer : public QObject
 {
 private:
-    QString inputFile;    
+
     void addParametr(const QString key, const QString value);
     void parseTitle(const QString line);
     void parseINNCPP(const QString line);
@@ -43,6 +43,7 @@ public:
     QMap<QString, QString> params;
     int incomeTableRowsCount;
     int numberDoc;
+    QString inputFile;
 
     Importer(const QString filename);
 
