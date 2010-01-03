@@ -7,6 +7,7 @@ LIBS += -lqaxcontainer
 # CONFIG += console
 # CONFIG -= app_bundle
 CONFIG += static
+
 TEMPLATE = app
 SOURCES += main.cpp \
     importer.cpp \

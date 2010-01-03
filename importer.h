@@ -42,6 +42,11 @@ private:
     void parsePara45(const QString line);
     void parsePara46(const QString line);
 
+    void fillPara5();
+    void parseCoutryCode(const QString line);
+    void parseAddress(const QString line);
+    void fillPara29();
+    void fillAddress();
 
     void debug(const QString line, QChar symb);
 

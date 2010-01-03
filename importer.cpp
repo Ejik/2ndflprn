@@ -4,6 +4,8 @@
 #include <QTextCodec>
 #include <QStringList>
 
+const QString blankLine = "                                                                                ";
+
 void Importer::debug(const QString line, QChar symb)
 {
     QFile file1("1251.txt");
@@ -49,6 +51,7 @@ void Importer::parse()
     numberDoc = 1;
     while (!in.atEnd())
     {
+        QString line;
         in.readLine(); // шапка
         in.readLine(); //
         in.readLine();
@@ -68,19 +71,37 @@ void Importer::parse()
         parseCodeDocSeriesNum(in.readLine()); // п. 2.6 - п. 2.7
         in.readLine(); // п. 2.8
         parseIndexRegCode(in.readLine());
-        parseCity(in.readLine());
-        parseStreet(in.readLine());
-        parseHomeFlat(in.readLine());
+
+        fillAddress();
+        line = in.readLine();
+        while (!line.contains(WINtoUnicode("ƒом")))
+        {                        
+            if (line.contains(WINtoUnicode("√ород")))
+                parseCity(line);
+            else if (line.contains(WINtoUnicode("”лица")))
+                parseStreet(line);
+            line = in.readLine();
+        }
+        parseHomeFlat(line);
 
         in.readLine();
-        parseTax(in.readLine()); // п. 3
+        fillPara29();
+        line = in.readLine();
+        if (line.left(3) == "2.9")
+        {
+            parseCoutryCode(line);
+            parseAddress(in.readLine());
+            in.readLine();
+            line = in.readLine();
+        }
+        parseTax(line); // п. 3
         in.readLine();
         in.readLine();
         in.readLine();
         in.readLine();
         in.readLine();
 
-        QString line = in.readLine();
+        line = in.readLine();
         QChar sym(0x2514);
 
         incomeTableRowsCount = 1;
@@ -92,6 +113,7 @@ void Importer::parse()
 
         in.readLine();
 
+        fillPara4();
         line = in.readLine(); // п. 4
 
         while (line.left(3) != " 5.")
@@ -128,46 +150,43 @@ void Importer::parse()
             line = in.readLine();
         }
 
-        //in.readLine();
-        //in.readLine();
-        //in.readLine();
-        //parseTaxDeductions(in.readLine());  // п. 4.1
-        //parseTotalSum(in.readLine());       // п. 4.5
+        //in.readLine(); // п. 5       
+        fillPara5();
+        line = in.readLine();
+        while (line[0] != sym)
+        {
+            QString para = line.mid(1, 4);
 
-        //in.readLine(); // п. 5
-        //in.readLine();
-        in.readLine();
-
-        parseAmountIncome(in.readLine());   // п. 5.1
-        in.readLine();
-        parseTaxableAmountIncome(in.readLine()); // п. 5.2
-        in.readLine();
-        parseAmountOfTaxCalculated(in.readLine()); // п. 5.3
-        in.readLine();
-        parseAmountOfTaxWithheld(in.readLine()); // п. 5.4
-        in.readLine();
-        parsePara55Sum(in.readLine());  // п. 5.5
-        in.readLine();
-        parsePara56Sum(in.readLine());  // п. 5.6
-        in.readLine();
-        parsePara57Sum(in.readLine());  // п. 5.7
-        in.readLine();
-        parsePara58Sum(in.readLine());  // п. 5.8
-        in.readLine();
-        parsePara59Sum(in.readLine());  // п. 5.9
-        in.readLine();
-        parsePara510Sum(in.readLine());  // п. 5.10
-        in.readLine();
-        in.readLine();
+            if (para == "5.1.")
+                parseAmountIncome(line);   // п. 5.1
+            else if (para == "5.2.")
+                parseTaxableAmountIncome(line); // п. 5.2
+            else if (para == "5.3.")
+                parseAmountOfTaxCalculated(line); // п. 5.3
+            else if (para == "5.4.")
+                parseAmountOfTaxWithheld(line); // п. 5.4
+            else if (para == "5.5.")
+                parsePara55Sum(line);  // п. 5.5
+            else if (para == "5.6.")
+                parsePara56Sum(line);  // п. 5.6
+            else if (para == "5.7.")
+                parsePara57Sum(line);  // п. 5.7
+            else if (para == "5.8.")
+                parsePara58Sum(line);  // п. 5.8
+            else if (para == "5.9.")
+                parsePara59Sum(line);  // п. 5.9
+            else if (para == "5.10")
+                parsePara510Sum(line);  // п. 5.10
+            line = in.readLine();
+        }
+        in.readLine();        
         parseBottom(in.readLine());
-        in.readLine();
 
         QChar pageBreak(0x0C);
         line = in.readLine();
-        while (!in.atEnd() && line != pageBreak)
-        {
+        while (!in.atEnd() && line != pageBreak)        
             line = in.readLine();
-        }
+
         numberDoc++;
     }
     file.close();
@@ -317,7 +336,6 @@ void Importer::parseTaxDeductions(const QString line)
     addParametr("—умма¬ычета4.4", line.mid(65, 12).trimmed());
 }
 
-
 void Importer::parseAmountIncome(const QString line)
 {
     addParametr("—уммаƒоходов", line.mid(66, 12).trimmed());
@@ -375,13 +393,12 @@ void Importer::parseBottom(const QString line)
 }
 
 void Importer::fillPara4()
-{
-    QString line = "                                                                                                              ";
-    parseTaxDeductions(line);
-    parsePara42(line);
-    parsePara43_44(line);
-    parsePara45(line);
-    parsePara46(line);
+{   
+    parseTaxDeductions(blankLine);
+    parsePara42(blankLine);
+    parsePara43_44(blankLine);
+    parsePara45(blankLine);
+    parsePara46(blankLine);
 }
 
 void Importer::parsePara42(const QString line)
@@ -403,4 +420,40 @@ void Importer::parsePara45(const QString line)
 void Importer::parsePara46(const QString line)
 {
     addParametr("—умма»мущественныхЌал¬ычетов", line.right(14).trimmed());
+}
+
+void Importer::fillPara5()
+{
+    parseAmountIncome(blankLine);   // п. 5.1
+    parseTaxableAmountIncome(blankLine); // п. 5.2
+    parseAmountOfTaxCalculated(blankLine); // п. 5.3
+    parseAmountOfTaxWithheld(blankLine); // п. 5.4
+    parsePara55Sum(blankLine);  // п. 5.5
+    parsePara56Sum(blankLine);  // п. 5.6
+    parsePara57Sum(blankLine);  // п. 5.7
+    parsePara58Sum(blankLine);  // п. 5.8
+    parsePara59Sum(blankLine);  // п. 5.9
+    parsePara510Sum(blankLine);  // п. 5.10
+}
+
+void Importer::fillPara29()
+{
+    parseCoutryCode(blankLine);
+    parseAddress(blankLine);
+}
+
+void Importer::parseCoutryCode(const QString line)
+{
+    addParametr(" од—траныѕроживани€", line.mid(43, 3).trimmed());
+}
+
+void Importer::parseAddress(const QString line)
+{
+    addParametr("јдрес¬—транеѕроживани€", line.trimmed());
+}
+
+void Importer::fillAddress()
+{
+    parseCity(blankLine);
+    parseStreet(blankLine);
 }
