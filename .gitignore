@@ -4,3 +4,4 @@
 *.usr
 *.exe
 *.user
+moc_*.*
