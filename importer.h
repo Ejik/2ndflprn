@@ -19,6 +19,7 @@ private:
     void parseCodeDocSeriesNum(const QString line);
     void parseIndexRegCode(const QString line);
     void parseCity(const QString line);
+    void parseLocality(const QString line);
     void parseStreet(const QString line);
     void parseHomeFlat(const QString line);
     void parseTax(const QString line);

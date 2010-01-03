@@ -80,6 +80,8 @@ void Importer::parse()
                 parseCity(line);
             else if (line.contains(WINtoUnicode("Улица")))
                 parseStreet(line);
+            else if (line.contains(WINtoUnicode("Населенный пункт")))
+                parseLocality(line);
             line = in.readLine();
         }
         parseHomeFlat(line);
@@ -278,6 +280,11 @@ void Importer::parseCity(const QString line)
     addParametr("City", line.right(line.length() - 10).trimmed());
 }
 
+void Importer::parseLocality(const QString line)
+{
+    addParametr("НасПункт", line.right(line.length() - 21).trimmed());
+}
+
 void Importer::parseStreet(const QString line)
 {
     addParametr("Street", line.right(line.length() - 10).trimmed());
@@ -455,5 +462,6 @@ void Importer::parseAddress(const QString line)
 void Importer::fillAddress()
 {
     parseCity(blankLine);
+    parseLocality(blankLine);
     parseStreet(blankLine);
 }
