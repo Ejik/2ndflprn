@@ -10,20 +10,14 @@ class Test2ndflprn : public QObject
 
 private slots:
     // importer
-    void testImporterCreate();
     void testParsing();
     void testTableEndSymbol();
 
     // excel exporter
-    void testExporterCreate();
+    void testReplaceExtensions();
 
 };
 
-
-void Test2ndflprn::testImporterCreate()
-{
-    Importer importer(QString());
-}
 
 void Test2ndflprn::testParsing()
 {
@@ -55,6 +49,7 @@ void Test2ndflprn::testParsing()
     QVERIFY(importer.params["1_Корпус"].trimmed() == "");
     QVERIFY(importer.params["1_Квартира"].trimmed() == "27");
 
+    QVERIFY(importer.params["1_СтавкаНалога"] == "13");
     QVERIFY(importer.params["1_Строка_1_Столбец_1"] == "01");
     QVERIFY(importer.params["1_Строка_6_Столбец_3"] == "25102.94");
     QVERIFY(importer.params["1_Строка_1_Столбец_7"] == "2012");
@@ -114,9 +109,15 @@ void Test2ndflprn::testTableEndSymbol()
 
 }
 
-void Test2ndflprn::testExporterCreate()
+
+void Test2ndflprn::testReplaceExtensions()
 {
-    Exporter exporter();
+
+    QString filename = "2NDFL_01.LST";
+
+    Exporter exporter(NULL);
+    filename = exporter.replaceExt(filename);
+    QVERIFY(filename == "2NDFL_01.xls");
 }
 
 QTEST_MAIN(Test2ndflprn)

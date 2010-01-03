@@ -5,3 +5,4 @@
 *.exe
 *.user
 moc_*.*
+Makefile.*

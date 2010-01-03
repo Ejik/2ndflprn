@@ -13,7 +13,7 @@ public:
     ~Exporter();
 
     void exportToExcel();
-
+    QString replaceExt(const QString name);
 
 private:
     Importer* data;
