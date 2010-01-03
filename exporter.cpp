@@ -130,9 +130,9 @@ void Exporter::exportToExcel()
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         //   населенный пункт
-        //    text = data->params[""];
-        //    range = StatSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ18")));
-        //    range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
+        text = data->params[QString::number(i) + "_Ќасѕункт"];
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ18")));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
 
         // улица
         text = data->params[QString::number(i) + "_Street"];
