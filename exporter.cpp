@@ -20,6 +20,26 @@ QString Exporter::replaceExt(const QString name)
     return  filename + "xls";
 }
 
+QVariant Exporter::getSheetName(int docNum, QAxObject *sheets)
+{
+    int sheetsCount = sheets->property("Count").toInt();
+    QStringList list;
+    for (int i = 0; i < sheetsCount; i++)
+    {
+        list.append( mSheets->querySubObject("Item(const QVariant&)", i));
+    }
+
+    name = data->params[QString::number(i) + "_TBN"];
+    int i = 0;
+    QString newName
+    while (list.contains(name))
+    {
+        name += "(1"
+        if (list.contains(name))
+    }
+    return name;
+}
+
 void Exporter::exportToExcel()
 {
     QString filename = replaceExt(data->inputFile);
@@ -40,7 +60,7 @@ void Exporter::exportToExcel()
         tplSheet->dynamicCall("Copy(IDispatch *)", tplSheet->asVariant());
         
         QAxObject *currentSheet = mSheets->querySubObject( "Item(const QVariant&)", QVariant(i) );
-        currentSheet->setProperty("Name", data->params[QString::number(i) + "_TBN"]);
+        currentSheet->setProperty("Name", getSheetName(i, mSheets));
         mExcel->dynamicCall( "SetVisible(bool)", TRUE ); //הוכאול ודמ גטהטלûל
 
         // ÑÏÐÀÂÊÀ Î ÄÎÕÎÄÀÕ ÔÈÇÈ×ÅÑÊÎÃÎ ËÈÖÀ חא 2009 דמה ¹ 1 מע 17.12.2009 ג ÈÔÍÑ ¹7610

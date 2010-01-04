@@ -13,11 +13,14 @@ public:
     ~Exporter();
 
     void exportToExcel();
-    QString replaceExt(const QString name);
+
 
 private:
     Importer* data;
     QAxObject* mExcel;
+
+    QVariant getSheetName(int docNum, QAxObject* sheets);
+    QString replaceExt(const QString name);
 
 signals: 
 
