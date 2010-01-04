@@ -23,4 +23,6 @@ int main(int argc, char *argv[])
         exporter.exportToExcel();
     }
     //return a.exec();
+
+    return 0;
 }
