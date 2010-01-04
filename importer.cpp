@@ -282,7 +282,7 @@ void Importer::parseCity(const QString line)
 
 void Importer::parseLocality(const QString line)
 {
-    addParametr("НасПункт", line.right(line.length() - 23).trimmed());
+    addParametr("НасПункт", line.right(line.length() - 22).trimmed());
 }
 
 void Importer::parseStreet(const QString line)

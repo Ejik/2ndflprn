@@ -2,6 +2,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QFileDialog>
 #include <QTextCodec>
+#include <QMessageBox>
 #include "importer.h"
 #include "exporter.h"
 
@@ -21,6 +22,12 @@ int main(int argc, char *argv[])
 
         Exporter exporter(&importer);
         exporter.exportToExcel();
+
+        QMessageBox msgBox;
+        msgBox.setText(QObject::tr("Формирование справок закончено."));
+        msgBox.exec();
     }
     //return a.exec();
+
+    return 0;
 }

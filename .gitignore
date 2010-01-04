@@ -6,3 +6,4 @@
 *.user
 moc_*.*
 Makefile.*
+*.user

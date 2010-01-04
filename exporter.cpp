@@ -24,6 +24,7 @@ void Exporter::exportToExcel()
 {
     QString filename = replaceExt(data->inputFile);
 
+    QFile::remove(filename);
     QFile::copy(QDir::currentPath() + "\\tpl_2ndfl.xls", filename);
 
     mExcel = new QAxObject( "Excel.Application", this ); //получаем указатьтель на excel
@@ -32,6 +33,7 @@ void Exporter::exportToExcel()
     QAxObject *workbook = workbooks->querySubObject( "Open(const QString&)", filename);
     QAxObject *mSheets = workbook->querySubObject( "Sheets" );
     QAxObject *tplSheet = mSheets->querySubObject( "Item(const QVariant&)", QVariant("2ndfl") );
+    mExcel->setProperty("DisplayAlerts", "0");
 
     for (int i = 1; i < data->numberDoc; i++)
     {        
@@ -132,7 +134,7 @@ void Exporter::exportToExcel()
         //   населенный пункт
         text = data->params[QString::number(i) + "_Ќасѕункт"];
         range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ18")));
-        range->dynamicCall( "SetValue(const QVariant&)", QVariant(Importer::WINtoUnicode(text)));
+        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // улица
         text = data->params[QString::number(i) + "_Street"];
@@ -335,9 +337,10 @@ void Exporter::exportToExcel()
         range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AK67")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
-        workbook->dynamicCall("Save()");
+        //workbook->dynamicCall("Save()");
 
     }
 
-
+    tplSheet->dynamicCall("Delete()");
+    workbook->dynamicCall("Save()");
 }
