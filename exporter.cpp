@@ -26,18 +26,18 @@ QVariant Exporter::getSheetName(int docNum, QAxObject *sheets)
     QStringList list;
     for (int i = 0; i < sheetsCount; i++)
     {
-        list.append( mSheets->querySubObject("Item(const QVariant&)", i));
+        list.append( sheets->querySubObject("Item(const QVariant&)", i));
     }
 
     name = data->params[QString::number(i) + "_TBN"];
-    int i = 0;
-    QString newName
-    while (list.contains(name))
+    int i = 1;
+    QString newName = name;
+    while (list.contains(newName))
     {
-        name += "(1"
-        if (list.contains(name))
+        newName = name + "(" + 1 + ")";
     }
-    return name;
+
+    return newName;
 }
 
 void Exporter::exportToExcel()
