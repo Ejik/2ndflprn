@@ -22,20 +22,19 @@ QString Exporter::replaceExt(const QString name)
 
 QVariant Exporter::getSheetName(int docNum, QAxObject *sheets)
 {
-    int sheetsCount = sheets->property("Count").toInt();
-    QStringList list;
-    for (int i = 0; i < sheetsCount; i++)
-    {
-        list.append( sheets->querySubObject("Item(const QVariant&)", i));
-    }
+//    int sheetsCount = sheets->property("Count").toInt();
+//    QStringList list;
+//    for (int i = 1; i <= sheetsCount; i++)
+//    {
+      QAxObject* sheet = sheets->querySubObject("Item(const QVariant&)", QVariant(docNum));
+      sheetsNames.append( sheet->property("Name").toString());
+    //}
 
-    name = data->params[QString::number(i) + "_TBN"];
-    int i = 1;
+    QString name = data->params[QString::number(docNum) + "_TBN"];
     QString newName = name;
-    while (list.contains(newName))
-    {
-        newName = name + "(" + 1 + ")";
-    }
+    int i = 2;
+    while (sheetsNames.contains(newName))
+        newName = name + "(" + QString::number(i++) + ")";
 
     return newName;
 }
