@@ -144,15 +144,28 @@ void Exporter::exportToExcel()
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // город
-        text = data->params[QString::number(i) + "_City"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("V18")));
-        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+        if (data->params[QString::number(i) + "_Ќасѕункт"].isEmpty())
+        {
+            text = data->WINtoUnicode("город");
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
-        //   населенный пункт
-        text = data->params[QString::number(i) + "_Ќасѕункт"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ18")));
-        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+            text = data->params[QString::number(i) + "_City"];
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("Z18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
+        }
+        else
+        {
+            //   населенный пункт
+            text = data->WINtoUnicode("населенный пункт");
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+
+            text = data->params[QString::number(i) + "_Ќасѕункт"];
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("Z18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+        }
         // улица
         text = data->params[QString::number(i) + "_Street"];
         range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("D19")));
