@@ -15,20 +15,18 @@ Exporter::~Exporter()
 
 QString Exporter::replaceExt(const QString name)
 {
-    QString filename = name; //QDir::currentPath() + "\\" + data->inputFile;
+    QString filename = name;
     filename = filename.remove(filename.length() - 3, 3);
     return  filename + "xls";
 }
 
 QVariant Exporter::getSheetName(int docNum, QAxObject *sheets)
 {
-//    int sheetsCount = sheets->property("Count").toInt();
-//    QStringList list;
-//    for (int i = 1; i <= sheetsCount; i++)
-//    {
-      QAxObject* sheet = sheets->querySubObject("Item(const QVariant&)", QVariant(docNum));
+    if (docNum > 1)
+    {
+      QAxObject* sheet = sheets->querySubObject("Item(const QVariant&)", QVariant(docNum - 1));
       sheetsNames.append( sheet->property("Name").toString());
-    //}
+    }
 
     QString name = data->params[QString::number(docNum) + "_TBN"];
     QString newName = name;

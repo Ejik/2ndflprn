@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         exporter.exportToExcel();
 
         QMessageBox msgBox;
-        msgBox.setText(QObject::tr("Формирование справок закончено."));
+        msgBox.setText(QObject::tr("Формирование справок завершено."));
         msgBox.exec();
     }
     //return a.exec();
