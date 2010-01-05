@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
 
         QMessageBox msgBox;
         msgBox.setText(QObject::tr("Формирование справок завершено."));
+        msgBox.setIcon(QMessageBox::Information);
         msgBox.exec();
     }
     //return a.exec();
