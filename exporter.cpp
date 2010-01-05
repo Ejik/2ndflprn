@@ -15,9 +15,26 @@ Exporter::~Exporter()
 
 QString Exporter::replaceExt(const QString name)
 {
-    QString filename = name; //QDir::currentPath() + "\\" + data->inputFile;
+    QString filename = name;
     filename = filename.remove(filename.length() - 3, 3);
     return  filename + "xls";
+}
+
+QVariant Exporter::getSheetName(int docNum, QAxObject *sheets)
+{
+    if (docNum > 1)
+    {
+      QAxObject* sheet = sheets->querySubObject("Item(const QVariant&)", QVariant(docNum - 1));
+      sheetsNames.append( sheet->property("Name").toString());
+    }
+
+    QString name = data->params[QString::number(docNum) + "_TBN"];
+    QString newName = name;
+    int i = 2;
+    while (sheetsNames.contains(newName))
+        newName = name + "(" + QString::number(i++) + ")";
+
+    return newName;
 }
 
 void Exporter::exportToExcel()
@@ -40,7 +57,7 @@ void Exporter::exportToExcel()
         tplSheet->dynamicCall("Copy(IDispatch *)", tplSheet->asVariant());
         
         QAxObject *currentSheet = mSheets->querySubObject( "Item(const QVariant&)", QVariant(i) );
-        currentSheet->setProperty("Name", data->params[QString::number(i) + "_TBN"]);
+        currentSheet->setProperty("Name", getSheetName(i, mSheets));
         mExcel->dynamicCall( "SetVisible(bool)", TRUE ); //делаем его видимым
 
         // СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за 2009 год № 1 от 17.12.2009 в ИФНС №7610
@@ -127,15 +144,28 @@ void Exporter::exportToExcel()
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // город
-        text = data->params[QString::number(i) + "_City"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("V18")));
-        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+        if (data->params[QString::number(i) + "_НасПункт"].isEmpty())
+        {
+            text = data->WINtoUnicode("город");
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
-        //   населенный пункт
-        text = data->params[QString::number(i) + "_НасПункт"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ18")));
-        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+            text = data->params[QString::number(i) + "_City"];
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("Z18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
+        }
+        else
+        {
+            //   населенный пункт
+            text = data->WINtoUnicode("населенный пункт");
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+
+            text = data->params[QString::number(i) + "_НасПункт"];
+            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("Z18")));
+            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+        }
         // улица
         text = data->params[QString::number(i) + "_Street"];
         range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("D19")));
