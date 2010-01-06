@@ -317,7 +317,7 @@ void Importer::parseIncomeTable(const QString n, const QString line)
     addParametr("Строка_" + n + "_Столбец_2", list1[2].trimmed());
     addParametr("Строка_" + n + "_Столбец_3", list1[3].trimmed());
     addParametr("Строка_" + n + "_Столбец_4", list1[4].trimmed());
-    addParametr("Строка_" + n + "_Столбецv5", list1[5].trimmed());
+    addParametr("Строка_" + n + "_Столбец_5", list1[5].trimmed());
 
     addParametr("Строка_" + n + "_Столбец_6", list1[7].trimmed());
     addParametr("Строка_" + n + "_Столбец_7", list1[8].trimmed());
