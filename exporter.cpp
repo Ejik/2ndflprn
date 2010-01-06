@@ -196,7 +196,7 @@ void Exporter::exportToExcel()
         range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("Q24")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
-        for (int j = 1; j < data->incomeTableRowsCount; j++)
+        for (int j = 1; j < data->params[QString::number(i) + "_incomeTableRowsCount"].toInt(); j++)
         {
             text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_1"];
             range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("B" + QString::number(25 + j, 10))));

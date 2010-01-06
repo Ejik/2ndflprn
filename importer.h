@@ -53,7 +53,7 @@ private:
 
 public:
     QMap<QString, QString> params;
-    int incomeTableRowsCount;
+
     int numberDoc;
     QString inputFile;
 

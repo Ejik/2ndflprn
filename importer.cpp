@@ -36,7 +36,7 @@ QString Importer::WINtoUnicode(const QString string)
 
 void Importer::addParametr(const QString key, const QString value)
 {
-    params.insert(QString::number(numberDoc, 10) + "_" + key, value);
+    params.insert(QString::number(numberDoc) + "_" + key, value);
 }
 
 void Importer::parse()
@@ -106,12 +106,13 @@ void Importer::parse()
         line = in.readLine();
         QChar sym(0x2514);
 
-        incomeTableRowsCount = 1;
+        int incomeTableRowsCount = 1;
         while (line[0] != sym)
         {          
-            parseIncomeTable(QString::number(incomeTableRowsCount++, 10), line);
+            parseIncomeTable(QString::number(incomeTableRowsCount++), line);
             line = in.readLine();           
         }
+        addParametr("incomeTableRowsCount", QString::number(incomeTableRowsCount));
 
         in.readLine();
 
