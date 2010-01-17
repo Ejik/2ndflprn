@@ -1,5 +1,6 @@
 #include "exporter.h"
 #include <QDir>
+#include<QDebug>
 
 Exporter::Exporter(Importer* instance)
 {
@@ -38,14 +39,13 @@ QVariant Exporter::getSheetName(int docNum, QAxObject *sheets)
 }
 
 void Exporter::exportToExcel()
-{
-    QString filename = replaceExt(data->inputFile);
+{    
+    QString filename = QDir::toNativeSeparators(replaceExt(data->inputFile));
 
     QFile::remove(filename);
-    QFile::copy(QDir::currentPath() + "\\tpl_2ndfl.xls", filename);
+    QFile::copy(QDir::toNativeSeparators(QDir::currentPath() + "\\tpl_2ndfl.xls"), filename);
 
-    mExcel = new QAxObject( "Excel.Application", this ); //получаем указатьтель на excel
-
+    mExcel = new QAxObject( "Excel.Application", this ); //получаем указатьтель на excel      
     QAxObject *workbooks = mExcel->querySubObject( "Workbooks" );
     QAxObject *workbook = workbooks->querySubObject( "Open(const QString&)", filename);
     QAxObject *mSheets = workbook->querySubObject( "Sheets" );
@@ -368,4 +368,5 @@ void Exporter::exportToExcel()
 
     tplSheet->dynamicCall("Delete()");
     workbook->dynamicCall("Save()");
+
 }
