@@ -61,7 +61,7 @@ void Importer::parse()
         in.readLine(); // п. 1
         parseINNCPP(in.readLine());  // п. 1.1
         parseOrgname(in.readLine()); // п. 1.2
-        if (params["Orgname"].isEmpty())
+        if (params[QString::number(numberDoc) + "_Orgname"].isEmpty())
                 parseOrgname(in.readLine(), 1);
         in.readLine();
         parseOKATOTEL(in.readLine()); // п. 1.3 п. 1.4
@@ -223,7 +223,6 @@ void Importer::parseOrgname(const QString line, int start)
     QString utfLine = line;//OEMtoUnicode(line);
     QString sOrgTitle = WINtoUnicode("Наименование организации");
     if (start == 0)
-
         addParametr("Orgname", utfLine.right(utfLine.length() - utfLine.indexOf(sOrgTitle) - sOrgTitle.length()).trimmed());
     else
         addParametr("Orgname", utfLine.trimmed());
