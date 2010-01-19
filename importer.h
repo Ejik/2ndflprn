@@ -11,7 +11,7 @@ private:
     void addParametr(const QString key, const QString value);
     void parseTitle(const QString line);
     void parseINNCPP(const QString line);
-    void parseOrgname(const QString line);
+    void parseOrgname(const QString line, int start = 0);
     void parseOKATOTEL(const QString line);
     void parseINN(const QString line);
     void parseFIOTBN(const QString line);
