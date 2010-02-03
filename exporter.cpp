@@ -244,122 +244,122 @@ void Exporter::exportToExcel()
         // 4. Стандартные и имущественные налоговые вычеты
         // 4.1. Суммы налоговых вычетов, право на получение которых имеется у налогоплательщика
         text = data->params[QString::number(i) + "_Код4.1"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("B48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("B46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         text = data->params[QString::number(i) + "_СуммаВычета4.1"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("G48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("G46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         text = data->params[QString::number(i) + "_Код4.2"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         text = data->params[QString::number(i) + "_СуммаВычета4.2"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         text = data->params[QString::number(i) + "_Код4.3"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AA48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AA46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         text = data->params[QString::number(i) + "_СуммаВычета4.3"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AF48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AF46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         text = data->params[QString::number(i) + "_Код4.4"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AK48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AK46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         text = data->params[QString::number(i) + "_СуммаВычета4.4"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP48")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP46")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 4.2. № Уведомления, подтверждающего право на имущественный налоговый вычет
         text = data->params[QString::number(i) + "_НомерУведомления"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AI50")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AI48")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 4.3. Дата выдачи Уведомления
         text = data->params[QString::number(i) + "_ДатаВыдачиУведомления"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N51")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N49")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 4.4.Код налогового органа, выдавшего Уведомление
         text = data->params[QString::number(i) + "_КодИФНСУведомления"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP51")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP49")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
 
         // 4.5. Общая сумма предоставленных стандартных налоговых вычетов
         text = data->params[QString::number(i) + "_СуммаНалВычетов"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD52")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD50")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 4.6. Общая сумма предоставленных имущественных налоговых вычетов
         text = data->params[QString::number(i) + "_СуммаИмущественныхНалВычетов "];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD53")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD51")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
         // 5.1. Общая сумма дохода
         text = data->params[QString::number(i) + "_СуммаДоходов"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ56")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ54")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.2. Облагаемая сумма дохода
         text = data->params[QString::number(i) + "_ОблагаемаяСуммаДоходов"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ57")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ55")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.3. Сумма налога исчисленная
         text = data->params[QString::number(i) + "_СуммаП5.3"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ58")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ56")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.4. Сумма налога удержанная
         text = data->params[QString::number(i) + "_СуммаП5.4"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ59")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ57")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.5. Сумма возврата налога по перерасчету с доходов прошлых лет
         text = data->params[QString::number(i) + "_СуммаП5.5"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ60")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ58")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.6. Сумма, зачтенная при уплате налога по перерасчету с доходов прошлых лет
         text = data->params[QString::number(i) + "_СуммаП5.6"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ61")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ59")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.7. Сумма, удержанная при уплате налога по перерасчету с доходов прошлых лет
         text = data->params[QString::number(i) + "_СуммаП5.7"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ62")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ60")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.8. Задолженность по налогу за налогоплательщиком
         text = data->params[QString::number(i) + "_СуммаП5.8"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ63")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ61")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.9. Сумма налога, излишне удержанная налоговым агентом
         text = data->params[QString::number(i) + "_СуммаП5.9"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ64")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ62")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // 5.10. Сумма налога, переданная на взыскание в налоговый орган
         text = data->params[QString::number(i) + "_СуммаП5.10"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ65")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ63")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // Налоговый агент
         text = data->params[QString::number(i) + "_Должность"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("J68")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("J66")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         // ФИО
         text = data->params[QString::number(i) + "_ФИОАгента"];
-        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AK68")));
+        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AK66")));
         range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
 
         workbook->dynamicCall("Save()");
