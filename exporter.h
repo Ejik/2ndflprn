@@ -13,7 +13,7 @@ public:
     Exporter(Importer* instance);
     ~Exporter();
 
-    void exportToExcel();
+    void exportToHtml();
 
 
 private:
