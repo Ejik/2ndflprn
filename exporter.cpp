@@ -10,7 +10,6 @@ Exporter::Exporter(Importer* instance)
 
 Exporter::~Exporter()
 {
-    delete mExcel;
     data = NULL;
 }
 
@@ -25,8 +24,8 @@ QVariant Exporter::getSheetName(int docNum, QAxObject *sheets)
 {
     if (docNum > 1)
     {
-      QAxObject* sheet = sheets->querySubObject("Item(const QVariant&)", QVariant(docNum - 1));
-      sheetsNames.append( sheet->property("Name").toString());
+      //QAxObject* sheet = sheets->querySubObject("Item(const QVariant&)", QVariant(docNum - 1));
+      //sheetsNames.append( sheet->property("Name").toString());
     }
 
     QString name = data->params[QString::number(docNum) + "_TBN"];
@@ -48,12 +47,12 @@ void Exporter::exportToHtml()
 
      QTextStream out(&data);
 
-     QFile sec1(":/sections/sec1.txt");
+     QFile sec1(":/sections/res/sec1.txt");
      sec1.open(QIODevice::ReadOnly);
 
      QTextStream reader(&sec1);
 
-     QString br = reader.readAll();
+     QString br = reader.readLine();
      while (!reader.atEnd()) {
        out << reader.readLine();
      }
