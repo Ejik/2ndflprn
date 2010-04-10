@@ -1,0 +1,57 @@
+</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+ </tr>
+ <tr height=18 style='mso-height-source:userset;height:14.1pt'>
+  <td height=18 class=xl583419 style='height:14.1pt'></td>
+  <td colspan=43 class=xl603419>1. Данные о налоговом агенте</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=23 class=xl583419>1.1. ИНН/КПП для организации или ИНН для
+  физического лица</td>
+  <td colspan=13 class=xl613419>

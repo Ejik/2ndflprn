@@ -2,9 +2,11 @@
 #define EXPORTER_H
 
 #include <QObject>
-#include <QAxObject>
+#include <QFile>
+#include <QTextStream>
 #include <QStringList>
 #include "importer.h"
+
 
 class Exporter : public QObject
 {
@@ -18,11 +20,11 @@ public:
 
 private:
     Importer* data;
-    QAxObject* mExcel;
+    QFile outputFile;
     QStringList sheetsNames;
 
-    QVariant getSheetName(int docNum, QAxObject* sheets);
     QString replaceExt(const QString name);
+    void exportSection(const QString secNum, QTextStream* out);
 
 signals: 
 

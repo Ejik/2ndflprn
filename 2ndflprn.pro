@@ -14,5 +14,16 @@ SOURCES += main.cpp \
 HEADERS += importer.h \
     exporter.h
 OTHER_FILES += README.txt \
-    res/sec1.txt
+    res/sec1.txt \
+    res/sec2.txt \
+    res/sec3.txt \
+    res/sec4.txt \
+    res/sec5.txt \
+    res/sec6.txt \
+    res/sec7.txt \
+    res/sec8.txt \
+    res/sec9.txt \
+    res/sec10.txt \
+    res/sec11.txt \
+    res/sec12.txt
 RESOURCES += htmlres.qrc

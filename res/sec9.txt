@@ -1,0 +1,57 @@
+</span></td>
+ </tr>
+ <tr height=7 style='mso-height-source:userset;height:5.25pt'>
+  <td height=7 class=xl583419 style='height:5.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+ </tr>
+ <tr height=18 style='mso-height-source:userset;height:14.1pt'>
+  <td height=18 class=xl583419 style='height:14.1pt'></td>
+  <td colspan=37 class=xl743419>2. Данные о физическом лице - получателе
+  доходов</td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td colspan=2 class=xl673419>ТБН</td>
+  <td class=xl613419>

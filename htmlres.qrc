@@ -1,5 +1,16 @@
 <RCC>
     <qresource prefix="/sections">
         <file>res/sec1.txt</file>
+        <file>res/sec2.txt</file>
+        <file>res/sec3.txt</file>
+        <file>res/sec4.txt</file>
+        <file>res/sec5.txt</file>
+        <file>res/sec6.txt</file>
+        <file>res/sec7.txt</file>
+        <file>res/sec8.txt</file>
+        <file>res/sec9.txt</file>
+        <file>res/sec10.txt</file>
+        <file>res/sec11.txt</file>
+        <file>res/sec12.txt</file>
     </qresource>
 </RCC>

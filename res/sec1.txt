@@ -631,3 +631,7 @@ DIV будут заменены.-->
   <td class=xl583419></td>
   <td class=xl593419>Форма № 2-НДФЛ</td>
  </tr>
+ <tr height=16 style='height:12.0pt'>
+   <td height=16 class=xl583419 style='height:12.0pt'></td>
+   <td colspan=43 class=xl753419>СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за <span
+   style='mso-spacerun:yes'>
