@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
     //QCoreApplication a(argc, argv);
     QApplication a(argc, argv);
 
-    QString filename = QFileDialog::getOpenFileName(NULL,
-                                                    QObject::tr("Выберите файл справки 2НДФЛ"), "", QObject::tr("LST (2ndfl*.lst)"));
+    QString filename = "c:\\Projects\\2ndflprn\\debug\\2NDFL_01.LST"; //QFileDialog::getOpenFileName(NULL,
+                       //                             QObject::tr("Выберите файл справки 2НДФЛ"), "", QObject::tr("LST (2ndfl*.lst)"));
     if (filename != "")
     {
         Importer importer(filename);

@@ -102,187 +102,202 @@ void Exporter::exportToHtml()
 
             //        // 2.3. Статус (1-резидент, 2-нерезидент)
             //        text = data->params[QString::number(i) + "_Status"];
-            exportSection("11", &out);
+            exportSection("12", &out);
             out << data->params[QString::number(i) + "_Status"];
 
             //        // 2.4. Дата рождения
             //        text = data->params[QString::number(i) + "_Birthday"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AB15")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("13", &out);
+            out << data->params[QString::number(i) + "_Birthday"];
+
             //        // 2.5. Гражданство (код страны)
             //        text = data->params[QString::number(i) + "_Grajdanstvo"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AR15")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("14", &out);
+            out << data->params[QString::number(i) + "_Grajdanstvo"];
+
             //        // 2.6. Код документа, удостоверяющего личность
             //        text = data->params[QString::number(i) + "_CodeDoc"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("T16")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("15", &out);
+            out << data->params[QString::number(i) + "_CodeDoc"];
+
             //        // 2.7. Серия, номер документа
             //        text = data->params[QString::number(i) + "_SeriesAndNumberDoc"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ16")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("16", &out);
+            out << data->params[QString::number(i) + "_SeriesAndNumberDoc"];
+
             //        // 2.8. Адрес места жительства в Российской Федерации:
             //        // почтовый индекс
             //        text = data->params[QString::number(i) + "_Index"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AF17")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("17", &out);
+            out << data->params[QString::number(i) + "_Index"];
+
             //        // код региона
             //        text = data->params[QString::number(i) + "_RegCode"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AQ17")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+            exportSection("18", &out);
+            out << data->params[QString::number(i) + "_RegCode"];
             //
             //        // район
             //        text = data->params[QString::number(i) + "_Raion"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("D18")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+            exportSection("19", &out);
+            out << data->params[QString::number(i) + "_Raion"];
             //
-            //        // город
-            ////        text = data->WINtoUnicode("город");
-            ////        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S18")));
-            ////        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            //        // город            
             //        text = data->params[QString::number(i) + "_City"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("V18")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        //   населенный пункт
-            ////        text = data->WINtoUnicode("населенный пункт");
-            ////        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S18")));
-            ////        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("20", &out);
+            out << data->params[QString::number(i) + "_City"];
+
+            //        //   населенный пункт           
             //        text = data->params[QString::number(i) + "_НасПункт"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("I19")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("21", &out);
+            out << data->params[QString::number(i) + "_НасПункт"];
+
             //        // улица
             //        text = data->params[QString::number(i) + "_Street"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("D20")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("22", &out);
+            out << data->params[QString::number(i) + "_Street"];
+
             //        // дом
             //        text = data->params[QString::number(i) + "_Дом"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AB20")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+            exportSection("23", &out);
+            out << data->params[QString::number(i) + "_Дом"];
             //
             //        // корпус
             //        text = data->params[QString::number(i) + "_Корпус"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AI20")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("24", &out);
+            out << data->params[QString::number(i) + "_Корпус"];
+
             //        // квартира
             //        text = data->params[QString::number(i) + "_Квартира"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AR20")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("25", &out);
+            out << data->params[QString::number(i) + "_Квартира"];
+
             //        // 2.9. Адрес в стране проживания: Код страны:
             //        text = data->params[QString::number(i) + "_КодСтраныПроживания"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S21")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+            exportSection("26", &out);
+            out << data->params[QString::number(i) + "_КодСтраныПроживания"];
             //
             //        // Адрес
             //        text = data->params[QString::number(i) + "_АдресВСтранеПроживания"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("B22")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
+            exportSection("27", &out);
+            out << data->params[QString::number(i) + "_АдресВСтранеПроживания"];
             //
             //        // 3. Доходы, облагаемые по ставке 13%
             //        text = data->params[QString::number(i) + "_СтавкаНалога"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("Q24")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        for (int j = 1; j < data->params[QString::number(i) + "_incomeTableRowsCount"].toInt(); j++)
-            //        {
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_1"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("B" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_2"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("D" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_3"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("I" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_4"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("P" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_5"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("T" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_6"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AB" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_7"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_8"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AH" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_9"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AM" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //            text = data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_10"];
-            //            range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AQ" + QString::number(25 + j, 10))));
-            //            range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        }
-            //
-            //        // 4. Стандартные и имущественные налоговые вычеты
-            //        // 4.1. Суммы налоговых вычетов, право на получение которых имеется у налогоплательщика
-            //        text = data->params[QString::number(i) + "_Код4.1"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("B46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        text = data->params[QString::number(i) + "_СуммаВычета4.1"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("G46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        text = data->params[QString::number(i) + "_Код4.2"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        text = data->params[QString::number(i) + "_СуммаВычета4.2"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("S46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        text = data->params[QString::number(i) + "_Код4.3"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AA46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        text = data->params[QString::number(i) + "_СуммаВычета4.3"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AF46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        text = data->params[QString::number(i) + "_Код4.4"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AK46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        text = data->params[QString::number(i) + "_СуммаВычета4.4"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP46")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 4.2. № Уведомления, подтверждающего право на имущественный налоговый вычет
-            //        text = data->params[QString::number(i) + "_НомерУведомления"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AI48")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 4.3. Дата выдачи Уведомления
-            //        text = data->params[QString::number(i) + "_ДатаВыдачиУведомления"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("N49")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            exportSection("28", &out);
+            out << data->params[QString::number(i) + "_СтавкаНалога"];
+
+            exportSection("29", &out);
+
+            for (int j = 1; j < 17; j++)
+            //for (int j = 1; j < data->params[QString::number(i) + "_incomeTableRowsCount"].toInt(); j++)
+            {
+               out << "<tr height=16 style='mso-height-source:userset;height:12.0pt'>" <<
+                               "<td height=16 class=xl6324539 style='height:12.0pt'></td>" <<
+                               "<td colspan=2 class=xl7624539>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_1"];
+
+                out << "</td>" <<
+                        "<td colspan=5 class=xl7624539 style='border-left:none'>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_2"];
+
+                out << "</td>" <<
+                        "<td colspan=7 class=xl7724539 style='border-left:none'>";
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_3"];
+
+                out << "</td>" <<
+                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_4"];
+
+                out << "</td>" <<
+                        "<td colspan=6 class=xl7724539 style='border-left:none'>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_5"];
+
+                out << "</td>" <<
+                        "<td class=xl6324539></td>" <<
+                        "<td class=xl6324539></td>" <<
+                        "<td colspan=2 class=xl7624539>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_6"];
+
+                out << "</td>" <<
+                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_7"];
+
+                out << "</td>" <<
+                        "<td colspan=5 class=xl7724539 style='border-left:none'>";
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_8"];
+
+                out << "</td>" <<
+                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_9"];
+
+                out << "</td>" <<
+                        "<td colspan=2 class=xl7724539 style='border-left:none'>";
+
+                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_10"];
+
+                out << "</td>" <<
+                        "</tr>";
+            }
+
+            // 4. Стандартные и имущественные налоговые вычеты
+            // 4.1. Суммы налоговых вычетов, право на получение которых имеется у налогоплательщика
+
+            exportSection("30", &out);
+            out << data->params[QString::number(i) + "_Код4.1"];
+
+            out << "</td>" <<
+                    "<td colspan=6 class=xl7724539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаВычета4.1"];
+
+            out << "</td>" <<
+                    "<td class=xl6324539></td>" <<
+                    "<td colspan=5 class=xl7624539>";
+            out << data->params[QString::number(i) + "_Код4.2"];
+
+            out << "</td>" <<
+                    "<td colspan=7 class=xl7724539 style='border-left:none'>";
+
+            out << data->params[QString::number(i) + "_СуммаВычета4.2"];
+
+            out << "</td>" <<
+                    "<td class=xl6324539></td>" <<
+                    "<td colspan=5 class=xl7624539>";
+            out << data->params[QString::number(i) + "_Код4.3"];
+
+            out << "</td>" <<
+                    "<td colspan=4 class=xl7724539 style='border-left:none'>";
+
+            out << data->params[QString::number(i) + "_СуммаВычета4.3"];
+
+            out << "</td>" <<
+                    "<td class=xl6324539></td>" <<
+                    "<td colspan=5 class=xl7624539>";
+
+            out << data->params[QString::number(i) + "_Код4.4"];
+
+            out << "</td>" <<
+                    "<td colspan=3 class=xl7724539 style='border-left:none'>";
+
+            out << data->params[QString::number(i) + "_СуммаВычета4.4"];
+
+            exportSection("31", &out);
+
+
+            // 4.2. № Уведомления, подтверждающего право на имущественный налоговый вычет
+            out << data->params[QString::number(i) + "_НомерУведомления"];
+
+            exportSection("32", &out);
+
+            // 4.3. Дата выдачи Уведомления
+            out << data->params[QString::number(i) + "_ДатаВыдачиУведомления"];
+
             //        // 4.4.Код налогового органа, выдавшего Уведомление
             //        text = data->params[QString::number(i) + "_КодИФНСУведомления"];
             //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP49")));
