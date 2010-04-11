@@ -82,7 +82,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
         vertical-align:bottom;
         border-top:none;
         border-right:none;
-        border-bottom:.5pt hairline windowtext;
+        border-bottom:.5pt solid;
         border-left:none;
         mso-background-source:auto;
         mso-pattern:auto;

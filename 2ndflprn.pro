@@ -47,5 +47,7 @@ OTHER_FILES += README.txt \
     res/sec31.txt \
     res/sec32.txt \
     sec33.txt \
-    res/sec33.txt
+    res/sec33.txt \
+    res/sec34.txt \
+    res/sec35.txt
 RESOURCES += htmlres.qrc

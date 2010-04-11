@@ -287,33 +287,26 @@ void Exporter::exportToHtml()
 
             out << data->params[QString::number(i) + "_СуммаВычета4.4"];
 
-            exportSection("31", &out);
-
-
             // 4.2. № Уведомления, подтверждающего право на имущественный налоговый вычет
+            exportSection("31", &out);
             out << data->params[QString::number(i) + "_НомерУведомления"];
 
-            exportSection("32", &out);
-
             // 4.3. Дата выдачи Уведомления
+            exportSection("32", &out);
             out << data->params[QString::number(i) + "_ДатаВыдачиУведомления"];
 
-            //        // 4.4.Код налогового органа, выдавшего Уведомление
-            //        text = data->params[QString::number(i) + "_КодИФНСУведомления"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AP49")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //
-            //        // 4.5. Общая сумма предоставленных стандартных налоговых вычетов
-            //        text = data->params[QString::number(i) + "_СуммаНалВычетов"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD50")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 4.6. Общая сумма предоставленных имущественных налоговых вычетов
-            //        text = data->params[QString::number(i) + "_СуммаИмущественныхНалВычетов "];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AD51")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
+            // 4.4.Код налогового органа, выдавшего Уведомление
+            exportSection("33", &out);
+            out << data->params[QString::number(i) + "_КодИФНСУведомления"];
+
+            // 4.5. Общая сумма предоставленных стандартных налоговых вычетов
+            exportSection("34", &out);
+            out << data->params[QString::number(i) + "_СуммаНалВычетов"];
+
+            // 4.6. Общая сумма предоставленных имущественных налоговых вычетов
+            exportSection("35", &out);
+            out << data->params[QString::number(i) + "_СуммаИмущественныхНалВычетов "];
+
             //        // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
             //        // 5.1. Общая сумма дохода
             //        text = data->params[QString::number(i) + "_СуммаДоходов"];
