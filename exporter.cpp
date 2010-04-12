@@ -44,6 +44,9 @@ void Exporter::exportToHtml()
     if (outputFile.open(QFile::WriteOnly | QFile::Truncate)) {
 
         QTextStream out(&outputFile);
+
+        exportSection("0", &out);
+
         for (int i = 1; i < data->numberDoc; i++)
         {
             exportSection("1", &out);
@@ -100,88 +103,73 @@ void Exporter::exportToHtml()
             exportSection("11", &out);
             out << data->params[QString::number(i) + "_FIO"];
 
-            //        // 2.3. Статус (1-резидент, 2-нерезидент)
-            //        text = data->params[QString::number(i) + "_Status"];
+            // 2.3. Статус (1-резидент, 2-нерезидент)
             exportSection("12", &out);
             out << data->params[QString::number(i) + "_Status"];
 
-            //        // 2.4. Дата рождения
-            //        text = data->params[QString::number(i) + "_Birthday"];
+            // 2.4. Дата рождения
             exportSection("13", &out);
             out << data->params[QString::number(i) + "_Birthday"];
 
-            //        // 2.5. Гражданство (код страны)
-            //        text = data->params[QString::number(i) + "_Grajdanstvo"];
+            // 2.5. Гражданство (код страны)
             exportSection("14", &out);
             out << data->params[QString::number(i) + "_Grajdanstvo"];
 
-            //        // 2.6. Код документа, удостоверяющего личность
-            //        text = data->params[QString::number(i) + "_CodeDoc"];
+            // 2.6. Код документа, удостоверяющего личность
             exportSection("15", &out);
             out << data->params[QString::number(i) + "_CodeDoc"];
 
-            //        // 2.7. Серия, номер документа
-            //        text = data->params[QString::number(i) + "_SeriesAndNumberDoc"];
+            // 2.7. Серия, номер документа
             exportSection("16", &out);
             out << data->params[QString::number(i) + "_SeriesAndNumberDoc"];
 
-            //        // 2.8. Адрес места жительства в Российской Федерации:
-            //        // почтовый индекс
-            //        text = data->params[QString::number(i) + "_Index"];
+            // 2.8. Адрес места жительства в Российской Федерации:
+            // почтовый индекс
             exportSection("17", &out);
             out << data->params[QString::number(i) + "_Index"];
 
-            //        // код региона
-            //        text = data->params[QString::number(i) + "_RegCode"];
+            // код региона
             exportSection("18", &out);
             out << data->params[QString::number(i) + "_RegCode"];
-            //
-            //        // район
-            //        text = data->params[QString::number(i) + "_Raion"];
+
+            // район
             exportSection("19", &out);
             out << data->params[QString::number(i) + "_Raion"];
-            //
-            //        // город            
-            //        text = data->params[QString::number(i) + "_City"];
+
+            // город
             exportSection("20", &out);
             out << data->params[QString::number(i) + "_City"];
 
-            //        //   населенный пункт           
-            //        text = data->params[QString::number(i) + "_НасПункт"];
+            //   населенный пункт
             exportSection("21", &out);
             out << data->params[QString::number(i) + "_НасПункт"];
 
-            //        // улица
+            // улица
             //        text = data->params[QString::number(i) + "_Street"];
             exportSection("22", &out);
             out << data->params[QString::number(i) + "_Street"];
 
-            //        // дом
-            //        text = data->params[QString::number(i) + "_Дом"];
+            // дом
             exportSection("23", &out);
             out << data->params[QString::number(i) + "_Дом"];
-            //
-            //        // корпус
-            //        text = data->params[QString::number(i) + "_Корпус"];
+
+            // корпус
             exportSection("24", &out);
             out << data->params[QString::number(i) + "_Корпус"];
 
-            //        // квартира
-            //        text = data->params[QString::number(i) + "_Квартира"];
+            // квартира
             exportSection("25", &out);
             out << data->params[QString::number(i) + "_Квартира"];
 
-            //        // 2.9. Адрес в стране проживания: Код страны:
-            //        text = data->params[QString::number(i) + "_КодСтраныПроживания"];
+            // 2.9. Адрес в стране проживания: Код страны:
             exportSection("26", &out);
             out << data->params[QString::number(i) + "_КодСтраныПроживания"];
-            //
-            //        // Адрес
-            //        text = data->params[QString::number(i) + "_АдресВСтранеПроживания"];
+
+            // Адрес
             exportSection("27", &out);
             out << data->params[QString::number(i) + "_АдресВСтранеПроживания"];
-            //
-            //        // 3. Доходы, облагаемые по ставке 13%
+
+            // 3. Доходы, облагаемые по ставке 13%
             //        text = data->params[QString::number(i) + "_СтавкаНалога"];
             exportSection("28", &out);
             out << data->params[QString::number(i) + "_СтавкаНалога"];
@@ -307,72 +295,79 @@ void Exporter::exportToHtml()
             exportSection("35", &out);
             out << data->params[QString::number(i) + "_СуммаИмущественныхНалВычетов "];
 
-            //        // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
-            //        // 5.1. Общая сумма дохода
-            //        text = data->params[QString::number(i) + "_СуммаДоходов"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ54")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.2. Облагаемая сумма дохода
-            //        text = data->params[QString::number(i) + "_ОблагаемаяСуммаДоходов"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ55")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.3. Сумма налога исчисленная
-            //        text = data->params[QString::number(i) + "_СуммаП5.3"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ56")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.4. Сумма налога удержанная
-            //        text = data->params[QString::number(i) + "_СуммаП5.4"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ57")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.5. Сумма возврата налога по перерасчету с доходов прошлых лет
-            //        text = data->params[QString::number(i) + "_СуммаП5.5"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ58")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.6. Сумма, зачтенная при уплате налога по перерасчету с доходов прошлых лет
-            //        text = data->params[QString::number(i) + "_СуммаП5.6"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ59")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.7. Сумма, удержанная при уплате налога по перерасчету с доходов прошлых лет
-            //        text = data->params[QString::number(i) + "_СуммаП5.7"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ60")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.8. Задолженность по налогу за налогоплательщиком
-            //        text = data->params[QString::number(i) + "_СуммаП5.8"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ61")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.9. Сумма налога, излишне удержанная налоговым агентом
-            //        text = data->params[QString::number(i) + "_СуммаП5.9"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ62")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // 5.10. Сумма налога, переданная на взыскание в налоговый орган
-            //        text = data->params[QString::number(i) + "_СуммаП5.10"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AJ63")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // Налоговый агент
-            //        text = data->params[QString::number(i) + "_Должность"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("J66")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        // ФИО
-            //        text = data->params[QString::number(i) + "_ФИОАгента"];
-            //        range = currentSheet->querySubObject( "Range(const QVariant&)", QVariant( QString("AK66")));
-            //        range->dynamicCall( "SetValue(const QVariant&)", QVariant(text));
-            //
-            //        workbook->dynamicCall("Save()");
-            //
+            // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
+            // 5.1. Общая сумма дохода
+            exportSection("36", &out);
+            out << data->params[QString::number(i) + "_СуммаДоходов"];
+
+
+            // 5.2. Облагаемая сумма дохода
+            exportSection("37", &out);
+            out << tr("5.2. Облагаемая сумма дохода</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_ОблагаемаяСуммаДоходов"];
+
+            // 5.3. Сумма налога исчисленная
+            exportSection("37", &out);
+            out << tr("5.3. Сумма налога исчисленная</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.3"];
+
+            // 5.4. Сумма налога удержанная
+            exportSection("37", &out);
+            out << tr("5.4. Сумма налога удержанная</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.4"];
+
+            // 5.5. Сумма возврата налога по перерасчету с доходов прошлых лет
+            exportSection("37", &out);
+            out << tr("5.5. Сумма возврата налога по перерасчету с доходов прошлых лет</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.5"];
+
+            // 5.6. Сумма, зачтенная при уплате налога по перерасчету с доходов прошлых лет
+            exportSection("37", &out);
+            out << tr("5.6. Сумма, зачтенная при уплате налога по перерасчету с доходов прошлых лет</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.6"];
+
+            // 5.7. Сумма, удержанная при уплате налога по перерасчету с доходов прошлых лет
+            exportSection("37", &out);
+            out << tr("5.7. Сумма, удержанная при уплате налога по перерасчету с доходов прошлых лет</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.7"];
+
+            // 5.8. Задолженность по налогу за налогоплательщиком
+            exportSection("37", &out);
+            out << tr("5.8. Задолженность по налогу за налогоплательщиком</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.8"];
+
+            // 5.9. Сумма налога, излишне удержанная налоговым агентом
+            exportSection("37", &out);
+            out << tr("5.9. Сумма налога, излишне удержанная налоговым агентом</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.9"];
+
+            // 5.10. Сумма налога, переданная на взыскание в налоговый орган
+            exportSection("37", &out);
+            out << tr("5.10. Сумма налога, переданная на взыскание в налоговый орган</td>") <<
+                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_СуммаП5.10"];
+            out << "</td></tr>";
+
+            // Налоговый агент
+            exportSection("38", &out);
+            out << data->params[QString::number(i) + "_Должность"];
+
+            // ФИО
+            exportSection("39", &out);
+            out << data->params[QString::number(i) + "_ФИОАгента"];
+
+            exportSection("40", &out);
+
         }
 
-        //tplSheet->dynamicCall("Delete()");
-        //workbook->dynamicCall("Save()");
+        out << "</body></html>";
     }
 }

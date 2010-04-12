@@ -33,5 +33,13 @@
         <file>res/sec31.txt</file>
         <file>res/sec32.txt</file>
         <file>res/sec33.txt</file>
+        <file>res/sec0.txt</file>
+        <file>res/sec34.txt</file>
+        <file>res/sec35.txt</file>
+        <file>res/sec36.txt</file>
+        <file>res/sec37.txt</file>
+        <file>res/sec38.txt</file>
+        <file>res/sec39.txt</file>
+        <file>res/sec40.txt</file>
     </qresource>
 </RCC>

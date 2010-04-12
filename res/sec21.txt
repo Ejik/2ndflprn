@@ -1,0 +1,6 @@
+&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=7 class=xl673419>населенный пункт</td>
+  <td colspan=36 class=xl653419>

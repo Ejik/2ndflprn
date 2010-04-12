@@ -1,0 +1,58 @@
+ </span></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=43 class=xl653419><span style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=6 style='mso-height-source:userset;height:4.5pt'>
+  <td height=6 class=xl583419 style='height:4.5pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=14 class=xl603419>3. Доходы, облагаемые по ставке<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl603419></td>
+  <td class=xl613419>

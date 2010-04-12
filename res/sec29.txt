@@ -1,0 +1,51 @@
+&nbsp;</td>
+  <td class=xl603419>%</td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+ </tr>
+ <tr height=29 style='mso-height-source:userset;height:21.75pt'>
+   <td height=29 class=xl583419 style='height:21.75pt'></td>
+   <td colspan=2 class=xl723419 width=42 style='width:32pt'>Месяц</td>
+   <td colspan=5 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   дохода</td>
+   <td colspan=7 class=xl723419 width=98 style='border-left:none;width:74pt'>Сумма
+   дохода</td>
+   <td colspan=4 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   вычета</td>
+   <td colspan=6 class=xl723419 width=86 style='border-left:none;width:65pt'>Сумма
+   вычета</td>
+   <td class=xl623419 width=7 style='width:5pt'></td>
+   <td class=xl623419 width=7 style='width:5pt'></td>
+   <td colspan=2 class=xl723419 width=42 style='width:32pt'>Месяц</td>
+   <td colspan=4 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   дохода</td>
+   <td colspan=5 class=xl723419 width=97 style='border-left:none;width:73pt'>Сумма
+   дохода</td>
+   <td colspan=4 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   вычета</td>
+   <td colspan=2 class=xl733419 style='border-left:none'>Сумма вычета</td>
+  </tr>
