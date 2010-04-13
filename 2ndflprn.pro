@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     importer.cpp \
     exporter.cpp
 HEADERS += importer.h \
-    exporter.h
+    exporter.h \
+    app.rc
 OTHER_FILES += README.txt \
     res/sec1.txt \
     res/sec2.txt \
@@ -57,3 +58,4 @@ OTHER_FILES += README.txt \
     res/sec40.txt \
     res/sec0.txt
 RESOURCES += htmlres.qrc
+RC_FILE = app.rc

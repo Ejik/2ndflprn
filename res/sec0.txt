@@ -490,6 +490,26 @@ xmlns="http://www.w3.org/TR/REC-html40">
         mso-background-source:auto;
         mso-pattern:auto;
         white-space:nowrap;}
+.xl7824539
+        {padding-top:1px;
+        padding-right:1px;
+        padding-left:1px;
+        mso-ignore:padding;
+        color:windowtext;
+        font-size:8.0pt;
+        font-weight:400;
+        font-style:normal;
+        text-decoration:none;
+        font-family:Arial, sans-serif;
+        mso-font-charset:204;
+        mso-number-format:"\@";
+        text-align:general;
+        vertical-align:top;
+        border:.5pt solid windowtext;
+        mso-background-source:auto;
+        mso-pattern:auto;
+        white-space:normal;}
+
 .pb {
         border-width:0;
         height:1px !important;

@@ -1,4 +1,5 @@
 //#include <QtCore/QCoreApplication>
+#include <QDebug>
 #include <QtGui/QApplication>
 #include <QtGui/QFileDialog>
 #include <QTextCodec>
@@ -13,8 +14,7 @@ int main(int argc, char *argv[])
     //QCoreApplication a(argc, argv);
     QApplication a(argc, argv);
 
-    QString filename = "c:\\Projects\\2ndflprn\\debug\\2NDFL_01.LST"; //QFileDialog::getOpenFileName(NULL,
-                       //                             QObject::tr("Выберите файл справки 2НДФЛ"), "", QObject::tr("LST (2ndfl*.lst)"));
+    QString filename = QFileDialog::getOpenFileName(NULL, QObject::tr("Выберите файл справки 2НДФЛ"), "", QObject::tr("LST (2ndfl*.lst)"));
     if (filename != "")
     {
         Importer importer(filename);
@@ -27,6 +27,8 @@ int main(int argc, char *argv[])
         msgBox.setText(QObject::tr("Формирование справок завершено."));
         msgBox.setIcon(QMessageBox::Information);
         msgBox.exec();
+
+
     }
     //return a.exec();
 

@@ -1,6 +1,7 @@
+#include <QDebug>
 #include "exporter.h"
 #include <QDir>
-#include <QDebug>
+#include <qt_windows.h>
 
 Exporter::Exporter(Importer* instance)
 {
@@ -369,5 +370,9 @@ void Exporter::exportToHtml()
         }
 
         out << "</body></html>";
+
+        quintptr returnValue = (quintptr)ShellExecute(0, 0, (wchar_t*)filename.utf16(), 0, 0, SW_SHOWNORMAL);
+        qDebug() << returnValue;
+        qDebug() << filename;
     }
 }
