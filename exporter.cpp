@@ -367,6 +367,10 @@ void Exporter::exportToHtml()
 
             exportSection("40", &out);
 
+            if (i != data->numberDoc - 1) {
+                out << "<hr class=""pb""><br>";
+            }
+
         }
 
         out << "</body></html>";
