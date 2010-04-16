@@ -6,8 +6,8 @@
 # endif
 #endif
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2,0,0,15
- PRODUCTVERSION 2,0,0,15
+ FILEVERSION 2,0,0,16
+ PRODUCTVERSION 2,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -25,12 +25,12 @@ BEGIN
             VALUE "Comments", "\0"
             VALUE "CompanyName", "\0"
             VALUE "FileDescription", "2ndflprn\0"
-            VALUE "FileVersion", "2, 0, 0, 15\0"
+            VALUE "FileVersion", "2, 0, 0, 16\0"
             VALUE "InternalName", "2ndflprn\0"
-            VALUE "LegalCopyright", "Copyright (C) 2010\0"
+            VALUE "LegalCopyright", "Copyright (C) Чумак С.Н. 2010\0"
             VALUE "OriginalFilename", "2ndflprn.exe\0"
             VALUE "ProductName", "2ndflprn.exe\0"
-            VALUE "ProductVersion", "2, 0, 0, 15\0"
+            VALUE "ProductVersion", "2, 0, 0, 16\0"
         END
     END
     BLOCK "VarFileInfo"
