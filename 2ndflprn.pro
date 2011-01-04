@@ -57,6 +57,8 @@ OTHER_FILES += README.txt \
     res/sec39.txt \
     res/sec40.txt \
     res/sec0.txt \
-    README
+    README \
+    res/sec1.1.txt \
+    res/sec1.2.txt
 RESOURCES += htmlres.qrc
 RC_FILE = app.rc

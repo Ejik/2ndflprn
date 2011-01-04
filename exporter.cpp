@@ -52,6 +52,15 @@ void Exporter::exportToHtml()
         {
             exportSection("1", &out);
 
+            // признак
+            out << 123 <<"</td>";
+
+            // в ИФНС(код)
+            exportSection("1.1", &out);
+
+            out << data->params[QString::number(i) + "_IFNS"];
+            exportSection("1.2", &out);
+
             // СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за 2009 год № 1 от 17.12.2009 в ИФНС №7610
             //QString text = "СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за " + data->params[QString::number(i) + "_Year"] + " год № " + data->params[QString::number(i) + "_Number"] + " от " + data->params[QString::number(i) + "_Date"] + " в ИФНС №" + data->params[QString::number(i) + "_IFNS"];
             out << data->params[QString::number(i) + "_Year"];
@@ -64,8 +73,7 @@ void Exporter::exportToHtml()
 
             out << data->params[QString::number(i) + "_Date"];
 
-            exportSection("4", &out);
-            out << data->params[QString::number(i) + "_IFNS"];            
+            exportSection("4", &out);                       
 
             //        // 1.1. ИНН/КПП для организации или ИНН для физического лица
             //        text = data->params[QString::number(i) + "_INN/CPP"];
@@ -177,7 +185,7 @@ void Exporter::exportToHtml()
 
             exportSection("29", &out);
 
-            for (int j = 1; j < 17; j++)
+            for (int j = 1; j < 19; j++)
             //for (int j = 1; j < data->params[QString::number(i) + "_incomeTableRowsCount"].toInt(); j++)
             {
                out << "<tr height=16 style='mso-height-source:userset;height:12.0pt'>" <<
@@ -286,21 +294,12 @@ void Exporter::exportToHtml()
 
             // 4.4.Код налогового органа, выдавшего Уведомление
             exportSection("33", &out);
-            out << data->params[QString::number(i) + "_КодИФНСУведомления"];
-
-            // 4.5. Общая сумма предоставленных стандартных налоговых вычетов
-            exportSection("34", &out);
-            out << data->params[QString::number(i) + "_СуммаНалВычетов"];
-
-            // 4.6. Общая сумма предоставленных имущественных налоговых вычетов
-            exportSection("35", &out);
-            out << data->params[QString::number(i) + "_СуммаИмущественныхНалВычетов "];
+            out << data->params[QString::number(i) + "_КодИФНСУведомления"];           
 
             // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
             // 5.1. Общая сумма дохода
             exportSection("36", &out);
             out << data->params[QString::number(i) + "_СуммаДоходов"];
-
 
             // 5.2. Облагаемая сумма дохода
             exportSection("37", &out);
@@ -320,41 +319,23 @@ void Exporter::exportToHtml()
                     "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.4"];
 
-            // 5.5. Сумма возврата налога по перерасчету с доходов прошлых лет
+            // 5.5. Сумма налога перечисленная*
             exportSection("37", &out);
-            out << tr("5.5. Сумма возврата налога по перерасчету с доходов прошлых лет</td>") <<
+            out << tr("5.5. Сумма налога перечисленная*</td>") <<
                     "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.5"];
 
-            // 5.6. Сумма, зачтенная при уплате налога по перерасчету с доходов прошлых лет
+            // 5.6. Сумма налога, излишне удержанная налоговым агентом
             exportSection("37", &out);
-            out << tr("5.6. Сумма, зачтенная при уплате налога по перерасчету с доходов прошлых лет</td>") <<
+            out << tr("5.6. Сумма налога, излишне удержанная налоговым агентом</td>") <<
                     "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.6"];
 
-            // 5.7. Сумма, удержанная при уплате налога по перерасчету с доходов прошлых лет
+            // 5.7. Сумма налога, не удержанная налоговым агентом
             exportSection("37", &out);
-            out << tr("5.7. Сумма, удержанная при уплате налога по перерасчету с доходов прошлых лет</td>") <<
+            out << tr("5.7. Сумма налога, не удержанная налоговым агентом</td>") <<
                     "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.7"];
-
-            // 5.8. Задолженность по налогу за налогоплательщиком
-            exportSection("37", &out);
-            out << tr("5.8. Задолженность по налогу за налогоплательщиком</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.8"];
-
-            // 5.9. Сумма налога, излишне удержанная налоговым агентом
-            exportSection("37", &out);
-            out << tr("5.9. Сумма налога, излишне удержанная налоговым агентом</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.9"];
-
-            // 5.10. Сумма налога, переданная на взыскание в налоговый орган
-            exportSection("37", &out);
-            out << tr("5.10. Сумма налога, переданная на взыскание в налоговый орган</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.10"];
             out << "</td></tr>";
 
             // Налоговый агент
