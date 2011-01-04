@@ -1,9 +1,7 @@
 <RCC>
     <qresource prefix="/sections">
-        <file>res/sec1.txt</file>
         <file>res/sec2.txt</file>
         <file>res/sec3.txt</file>
-        <file>res/sec4.txt</file>
         <file>res/sec5.txt</file>
         <file>res/sec6.txt</file>
         <file>res/sec7.txt</file>
@@ -41,5 +39,9 @@
         <file>res/sec38.txt</file>
         <file>res/sec39.txt</file>
         <file>res/sec40.txt</file>
+        <file>res/sec4.txt</file>
+        <file>res/sec1.2.txt</file>
+        <file>res/sec1.1.txt</file>
+        <file>res/sec1.txt</file>
     </qresource>
 </RCC>

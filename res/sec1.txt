@@ -249,9 +249,88 @@
   <td class=xl583419></td>
   <td class=xl583419></td>
   <td class=xl583419></td>
-  <td class=xl593419 colspan="3" style="text-align:right;">Форма № 2-НДФЛ</td>
+  <td class=xl593419 colspan="3" style="text-align:right;"><b>Форма № 2-НДФЛ</b></td>
  </tr>
- <tr height=16 style='height:12.0pt'>
-   <td height=16 class=xl583419 style='height:12.0pt'></td>
-   <td colspan=43 class=xl753419>СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за <span
-   style='mso-spacerun:yes'>
+ <tr>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan="10" style="text-align:right;">Код формы по КНД 1151078</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+    <td height=15 class=xl583419 style='height:11.25pt'></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>   
+    <td class=xl593419 colspan="3" style="text-align:right;">признак</td>
+    <td class=xl583419></td>
+    <td class=xl613419 colspan="7">

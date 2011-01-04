@@ -2,8 +2,8 @@
 # Project created by QtCreator 2009-12-14T09:08:22
 # -------------------------------------------------
 TARGET = 2ndflprn
-#LIBS += -lqaxcontainer
 
+# LIBS += -lqaxcontainer
 # CONFIG += console
 # CONFIG -= app_bundle
 CONFIG += static
@@ -56,6 +56,9 @@ OTHER_FILES += README.txt \
     res/sec38.txt \
     res/sec39.txt \
     res/sec40.txt \
-    res/sec0.txt
+    res/sec0.txt \
+    README \
+    res/sec1.1.txt \
+    res/sec1.2.txt
 RESOURCES += htmlres.qrc
 RC_FILE = app.rc

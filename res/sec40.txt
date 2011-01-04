@@ -60,6 +60,10 @@
   <td class=xl6324539></td>
   <td class=xl6324539></td>
  </tr>
+  <tr>
+   <td class=xl6324539></td>
+   <td colspan=42 class=xl6824539>* Ќасто€щий пункт заполн€етс€ в отношении сумм налога, исчисленных с доходов, полученных, начина€ с 2011 года</td>
+   </tr>
  <![if supportMisalignedColumns]>
  <tr height=0 style='display:none'>
   <td width=27 style='width:20pt'></td>
