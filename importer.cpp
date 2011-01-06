@@ -276,7 +276,8 @@ void Importer::parseCodeDocSeriesNum(const QString line)
     QString subStr = WINtoUnicode("Код док-та, удост. личность -");
     addParametr("CodeDoc", line.mid(line.indexOf(subStr) + subStr.length() + 1, 3).trimmed());
 
-    addParametr("SeriesAndNumberDoc", line.right(16).trimmed());
+    subStr = WINtoUnicode("документа");
+    addParametr("SeriesAndNumberDoc", line.right(line.length() - line.indexOf(subStr) - subStr.length()).trimmed());
 
 }
 

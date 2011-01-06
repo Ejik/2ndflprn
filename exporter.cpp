@@ -185,7 +185,7 @@ void Exporter::exportToHtml()
 
             exportSection("29", &out);
 
-            for (int j = 1; j < 19; j++)
+            for (int j = 1; j < 21; j++)
             //for (int j = 1; j < data->params[QString::number(i) + "_incomeTableRowsCount"].toInt(); j++)
             {
                out << "<tr height=16 style='mso-height-source:userset;height:12.0pt'>" <<
