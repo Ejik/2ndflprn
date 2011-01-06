@@ -166,7 +166,7 @@
   <td class=xl583419></td>
   <td class=xl583419></td>
   <td class=xl583419></td>
-  <td class=xl593419 colspan=4 style="text-align:right;">Приказом ФНС России</td>
+  <td class=xl593419 colspan=4 style="text-align:right;">Приказом ФНС РФ</td>
  </tr>
  <tr height=15 style='height:11.25pt'>
   <td height=15 class=xl583419 style='height:11.25pt'></td>
@@ -205,7 +205,7 @@
   <td class=xl583419></td>
   <td class=xl583419></td>
   <td class=xl583419></td>
-  <td class=xl593419 colspan="9" style="text-align:right;">от 13.10.2006 №САЭ-3-04/706@</td>
+  <td class=xl593419 colspan="9" style="text-align:right;">от 17.11.2010 N ММВ-7-3/611@</td>
  </tr>
  <tr height=15 style='height:11.25pt'>
   <td height=15 class=xl583419 style='height:11.25pt'></td>

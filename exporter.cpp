@@ -53,7 +53,7 @@ void Exporter::exportToHtml()
             exportSection("1", &out);
 
             // признак
-            out << 123 <<"</td>";
+            out << data->params[QString::number(i) + "_Priznak"];
 
             // в ИФНС(код)
             exportSection("1.1", &out);

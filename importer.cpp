@@ -55,6 +55,9 @@ void Importer::parse()
         in.readLine(); // шапка
         in.readLine(); //
         in.readLine();
+        in.readLine(); // Код формы по КНД 1151078
+
+        parsePriznak(in.readLine()); // Признак
 
         parseTitle(in.readLine()); // Строка с датой и номером справки
         in.readLine(); //
@@ -198,6 +201,13 @@ void Importer::parse()
 
 }
 
+void Importer::parsePriznak(const QString line)
+{
+    QString utfLine = line;//OEMtoUnicode(line);
+    QString sPriznak = WINtoUnicode("признак");
+    addParametr("Priznak", utfLine.right(utfLine.length() - utfLine.indexOf(sPriznak, Qt::CaseInsensitive) - sPriznak.length()).trimmed());
+}
+
 void Importer::parseTitle(QString line)
 {
     QString utfLine = line;//OEMtoUnicode(line);
@@ -206,7 +216,7 @@ void Importer::parseTitle(QString line)
     addParametr("Number", utfLine.mid(49, 2));
     addParametr("Date", utfLine.mid(55, 10));
 
-    QString sIfns = WINtoUnicode("ИФНС N");
+    QString sIfns = WINtoUnicode("ИФНС");
 
     //addParametr("IFNS", utfLine.mid(utfLine.indexOf(sIfns, 55) + sIfns.length() + 1, 4));
     addParametr("IFNS", utfLine.mid(utfLine.indexOf(sIfns) + sIfns.length() + 1, 4).trimmed());

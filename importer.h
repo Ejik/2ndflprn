@@ -9,6 +9,7 @@ class Importer : public QObject
 private:
 
     void addParametr(const QString key, const QString value);
+    void parsePriznak(const QString line);
     void parseTitle(const QString line);
     void parseINNCPP(const QString line);
     void parseOrgname(const QString line, int start = 0);
