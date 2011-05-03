@@ -7,6 +7,6 @@
 moc_*.*
 Makefile
 Makefile.*
-*.user
+*.user*
 debug/
 release/

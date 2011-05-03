@@ -299,42 +299,45 @@ void Exporter::exportToHtml()
             // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
             // 5.1. Общая сумма дохода
             exportSection("36", &out);
+            out << data->params[QString::number(i) + "_ТекстП5.1"];
+            out << "</td><td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаДоходов"];
 
             // 5.2. Облагаемая сумма дохода
             exportSection("37", &out);
-            out << tr("5.2. Облагаемая сумма дохода</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_ТекстП5.2"];
+            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_ОблагаемаяСуммаДоходов"];
 
             // 5.3. Сумма налога исчисленная
             exportSection("37", &out);
-            out << tr("5.3. Сумма налога исчисленная</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_ТекстП5.3"];
+            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.3"];
 
             // 5.4. Сумма налога удержанная
             exportSection("37", &out);
-            out << tr("5.4. Сумма налога удержанная</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_ТекстП5.4"];
+            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.4"];
 
             // 5.5. Сумма налога перечисленная*
             exportSection("37", &out);
-            out << tr("5.5. Сумма налога перечисленная*</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            qDebug()<< data->params[QString::number(i) + "_ТекстП5.5"];
+            out << data->params[QString::number(i) + "_ТекстП5.5"];
+            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.5"];
 
             // 5.6. Сумма налога, излишне удержанная налоговым агентом
             exportSection("37", &out);
-            out << tr("5.6. Сумма налога, излишне удержанная налоговым агентом</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_ТекстП5.6"];
+            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.6"];
 
             // 5.7. Сумма налога, не удержанная налоговым агентом
             exportSection("37", &out);
-            out << tr("5.7. Сумма налога, не удержанная налоговым агентом</td>") <<
-                    "<td colspan=9 class=xl7624539 style='border-left:none'>";
+            out << data->params[QString::number(i) + "_ТекстП5.7"];
+            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.7"];
             out << "</td></tr>";
 
