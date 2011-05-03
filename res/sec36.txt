@@ -53,5 +53,4 @@
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
   <td height=16 class=xl6324539 style='height:12.0pt'></td>
-  <td colspan=34 class=xl7924539>5.1. Общая сумма дохода</td>
-  <td colspan=9 class=xl7624539 style='border-left:none'>
+  <td colspan=34 class=xl7924539>

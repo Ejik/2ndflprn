@@ -366,51 +366,61 @@ void Importer::parseTaxDeductions(const QString line)
 
 void Importer::parseAmountIncome(const QString line)
 {
+    addParametr("ТекстП5.1", line.mid(1, 64).trimmed());
     addParametr("СуммаДоходов", line.mid(66, 12).trimmed());
 }
 
 void Importer::parseTaxableAmountIncome(const QString line)
 {
+    addParametr("ТекстП5.2", line.mid(1, 64).trimmed());
     addParametr("ОблагаемаяСуммаДоходов", line.mid(66, 12).trimmed());
 }
 
 void Importer::parseAmountOfTaxCalculated(const QString line)
 {
+    addParametr("ТекстП5.3", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.3", line.mid(66, 12).trimmed());
 }
 
 void Importer::parseAmountOfTaxWithheld(const QString line)
 {
+    addParametr("ТекстП5.4", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.4", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara55Sum(const QString line)
 {
+    addParametr("ТекстП5.5", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.5", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara56Sum(const QString line)
 {
+    addParametr("ТекстП5.6", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.6", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara57Sum(const QString line)
 {
+    addParametr("ТекстП5.7", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.7", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara58Sum(const QString line)
 {
+    addParametr("ТекстП5.8", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.8", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara59Sum(const QString line)
 {
+    addParametr("ТекстП5.9", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.9", line.mid(66, 12).trimmed());
 }
 
 void Importer::parsePara510Sum(const QString line)
 {
+    addParametr("ТекстП5.10", line.mid(1, 64).trimmed());
     addParametr("СуммаП5.10", line.mid(66, 12).trimmed());
 }
 
