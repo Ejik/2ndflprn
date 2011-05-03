@@ -338,11 +338,11 @@ void Exporter::exportToHtml()
             out << data->params[QString::number(i) + "_СуммаП5.7"];
             out << "</td></tr>";
 
-            // Налоговый агент
+            // Налоговый агент            
             exportSection("38", &out);
             out << data->params[QString::number(i) + "_Должность"];
 
-            // ФИО
+            // ФИО            
             exportSection("39", &out);
             out << data->params[QString::number(i) + "_ФИОАгента"];
 
