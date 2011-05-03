@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "importer.h"
 #include <QFile>
 #include <QTextStream>
@@ -187,7 +188,9 @@ void Importer::parse()
                 parsePara510Sum(line);  // п. 5.10
             line = in.readLine();
         }
-        in.readLine();        
+
+        in.readLine();
+        in.readLine();
         parseBottom(in.readLine());
 
         QChar pageBreak(0x0C);
@@ -412,7 +415,7 @@ void Importer::parsePara510Sum(const QString line)
 }
 
 void Importer::parseBottom(const QString line)
-{
+{   
     addParametr("Должность", line.mid(17, 20).trimmed());
     addParametr("ФИОАгента", line.mid(57, 20).trimmed());
 }
