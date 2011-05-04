@@ -112,7 +112,7 @@ void Exporter::exportToHtml()
             exportSection("11", &out);
             out << data->params[QString::number(i) + "_FIO"];
 
-            // 2.3. Статус (1-резидент, 2-нерезидент)
+            // 2.3. Статус налогоплательщика
             exportSection("12", &out);
             out << data->params[QString::number(i) + "_Status"];
 
@@ -243,7 +243,7 @@ void Exporter::exportToHtml()
                         "</tr>";
             }
 
-            // 4. Стандартные и имущественные налоговые вычеты
+            // 4. Стандартные, социальные и имущественные налоговые вычеты
             // 4.1. Суммы налоговых вычетов, право на получение которых имеется у налогоплательщика
 
             exportSection("30", &out);
@@ -323,7 +323,6 @@ void Exporter::exportToHtml()
 
             // 5.5. Сумма налога перечисленная*
             exportSection("37", &out);
-            qDebug()<< data->params[QString::number(i) + "_ТекстП5.5"];
             out << data->params[QString::number(i) + "_ТекстП5.5"];
             out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
             out << data->params[QString::number(i) + "_СуммаП5.5"];
