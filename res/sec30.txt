@@ -46,7 +46,7 @@
  </tr>
  <tr height=18 style='mso-height-source:userset;height:14.1pt'>
   <td height=18 class=xl6324539 style='height:14.1pt'></td>
-  <td colspan=43 class=xl6524539>4. Стандартные и имущественные налоговые
+  <td colspan=43 class=xl6524539>4. Стандартные, социальные и имущественные налоговые
   вычеты</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
