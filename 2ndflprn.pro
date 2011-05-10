@@ -13,7 +13,7 @@ SOURCES += main.cpp \
     exporter.cpp
 HEADERS += importer.h \
     exporter.h \
-    app.rc
+        app.rc
 OTHER_FILES += README.txt \
     res/sec1.txt \
     res/sec2.txt \

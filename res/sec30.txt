@@ -51,8 +51,7 @@
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
   <td height=16 class=xl6324539 style='height:12.0pt'></td>
-  <td colspan=43 class=xl6324539>4.1. Суммы налоговых вычетов, право на
-  получение которых имеется у налогоплательщика</td>
+  <td colspan=43 class=xl6324539>4.1. Суммы предоставленных налогоплательщику налоговых вычетов</td>
  </tr>
  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
   <td height=16 class=xl6324539 style='height:12.0pt'></td>
