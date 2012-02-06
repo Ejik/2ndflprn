@@ -1,6 +1,0 @@
-&nbsp;</td>
-  <td class=xl583419></td>
-  <td class=xl583419></td>
-  <td colspan=5 class=xl583419>код региона<span
-  style='mso-spacerun:yes'> </span></td>
-  <td colspan=2 class=xl613419><span style='mso-spacerun:yes'>

@@ -1,9 +1,0 @@
-&nbsp;</td>
-  <td class=xl583419></td>
-  <td class=xl583419></td>
-  <td class=xl583419></td>
-  <td class=xl583419></td>
-  <td class=xl583419></td>
-  <td class=xl583419></td>
-  <td colspan=5 class=xl583419>1.4. Телефон</td>
-  <td colspan=12 class=xl613419><span style='mso-spacerun:yes'>

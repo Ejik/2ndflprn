@@ -2,16 +2,17 @@
 #include "exporter.h"
 #include <QDir>
 #include <qt_windows.h>
+#include "common.h"
 
-Exporter::Exporter(Importer* instance)
+Exporter::Exporter(Processor* instance)
 {
-    data = instance;
+    processor_ = instance;
 
 }
 
 Exporter::~Exporter()
 {
-    data = NULL;
+    processor_ = NULL;
 }
 
 QString Exporter::replaceExt(const QString name)
@@ -20,7 +21,6 @@ QString Exporter::replaceExt(const QString name)
     filename = filename.remove(filename.length() - 3, 3);
     return  filename + "html";
 }
-
 
 void Exporter::exportSection(const QString secNum, QTextStream* out)
 {
@@ -36,330 +36,592 @@ void Exporter::exportSection(const QString secNum, QTextStream* out)
 
 }
 
-void Exporter::exportToHtml()
+void Exporter::export_to_html()
 {    
-    QString filename = QDir::toNativeSeparators(replaceExt(data->inputFile));
+    QString filename = QDir::toNativeSeparators(replaceExt(processor_->input_file()));
 
     //QFile::remove(filename);
     outputFile.setFileName(filename);
     if (outputFile.open(QFile::WriteOnly | QFile::Truncate)) {
 
         QTextStream out(&outputFile);
+        out.setCodec("windows-1251");
 
-        exportSection("0", &out);
+        PrintHeader(&out);
 
-        for (int i = 1; i < data->numberDoc; i++)
-        {
-            exportSection("1", &out);
+        for (int i = 0; i < processor_->spraw_count(); i++) {
 
-            // признак
-            out << data->params[QString::number(i) + "_Priznak"];
+            SprawModel current_spraw = processor_->spraw(i);
+            QStringList sprawlines = PrintSpraw(current_spraw);
 
-            // в ИФНС(код)
-            exportSection("1.1", &out);
+            // СѓРґР°Р»РёРј РїРѕСЃР»РµРґРЅСЋСЋ СЃС‚СЂРѕРєСѓ, РёРЅР°С‡Рµ РЅР° РїРµС‡Р°С‚СЊ РїРѕРїР°РґР°РµС‚ Р»РёС€РЅРёР№ С‡РёСЃС‚С‹Р№ Р»РёСЃС‚
+            sprawlines.removeLast();
+            QStringListIterator it(sprawlines);
+            while (it.hasNext()) {
 
-            out << data->params[QString::number(i) + "_IFNS"];
-            exportSection("1.2", &out);
+                out << it.next();
 
-            // СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за 2009 год № 1 от 17.12.2009 в ИФНС №7610
-            //QString text = "СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за " + data->params[QString::number(i) + "_Year"] + " год № " + data->params[QString::number(i) + "_Number"] + " от " + data->params[QString::number(i) + "_Date"] + " в ИФНС №" + data->params[QString::number(i) + "_IFNS"];
-            out << data->params[QString::number(i) + "_Year"];
-
-            exportSection("2", &out);
-
-            out << data->params[QString::number(i) + "_Number"];
-
-            exportSection("3", &out);
-
-            out << data->params[QString::number(i) + "_Date"];
-
-            exportSection("4", &out);                       
-
-            //        // 1.1. ИНН/КПП для организации или ИНН для физического лица
-            //        text = data->params[QString::number(i) + "_INN/CPP"];
-            exportSection("5", &out);
-            out << data->params[QString::number(i) + "_INN/CPP"];
-
-            //        // 1.2. Наименование организации / Фамилия, имя, отчество физического лица
-            //        text = data->params[QString::number(i) + "_Orgname"];
-            exportSection("6", &out);
-            out << data->params[QString::number(i) + "_Orgname"];
-
-            //        // 1.3. Код ОКАТО
-            //        text = data->params[QString::number(i) + "_OKATO"];
-            exportSection("7", &out);
-            out << data->params[QString::number(i) + "_OKATO"];
-
-            //        // 1.4. Телефон
-            //        text = data->params[QString::number(i) + "_Tel"];
-            exportSection("8", &out);
-            out << data->params[QString::number(i) + "_Tel"];
-
-            //        // ТБН
-            //        text = data->params[QString::number(i) + "_TBN"];
-            exportSection("9", &out);
-            out << data->params[QString::number(i) + "_TBN"];
-
-                      //        // 2. Данные о физическом лице - получателе доходов
-            //        // 2.1. ИНН
-            //        text = data->params[QString::number(i) + "_INN"];
-            exportSection("10", &out);
-            out << data->params[QString::number(i) + "_INN"];
-
-            //
-            //        // 2.2. Фамилия, имя, отчество
-            //        text = data->params[QString::number(i) + "_FIO"];
-            exportSection("11", &out);
-            out << data->params[QString::number(i) + "_FIO"];
-
-            // 2.3. Статус налогоплательщика
-            exportSection("12", &out);
-            out << data->params[QString::number(i) + "_Status"];
-
-            // 2.4. Дата рождения
-            exportSection("13", &out);
-            out << data->params[QString::number(i) + "_Birthday"];
-
-            // 2.5. Гражданство (код страны)
-            exportSection("14", &out);
-            out << data->params[QString::number(i) + "_Grajdanstvo"];
-
-            // 2.6. Код документа, удостоверяющего личность
-            exportSection("15", &out);
-            out << data->params[QString::number(i) + "_CodeDoc"];
-
-            // 2.7. Серия, номер документа
-            exportSection("16", &out);
-            out << data->params[QString::number(i) + "_SeriesAndNumberDoc"];
-
-            // 2.8. Адрес места жительства в Российской Федерации:
-            // почтовый индекс
-            exportSection("17", &out);
-            out << data->params[QString::number(i) + "_Index"];
-
-            // код региона
-            exportSection("18", &out);
-            out << data->params[QString::number(i) + "_RegCode"];
-
-            // район
-            exportSection("19", &out);
-            out << data->params[QString::number(i) + "_Raion"];
-
-            // город
-            exportSection("20", &out);
-            out << data->params[QString::number(i) + "_City"];
-
-            //   населенный пункт
-            exportSection("21", &out);
-            out << data->params[QString::number(i) + "_НасПункт"];
-
-            // улица
-            //        text = data->params[QString::number(i) + "_Street"];
-            exportSection("22", &out);
-            out << data->params[QString::number(i) + "_Street"];
-
-            // дом
-            exportSection("23", &out);
-            out << data->params[QString::number(i) + "_Дом"];
-
-            // корпус
-            exportSection("24", &out);
-            out << data->params[QString::number(i) + "_Корпус"];
-
-            // квартира
-            exportSection("25", &out);
-            out << data->params[QString::number(i) + "_Квартира"];
-
-            // 2.9. Адрес в стране проживания: Код страны:
-            exportSection("26", &out);
-            out << data->params[QString::number(i) + "_КодСтраныПроживания"];
-
-            // Адрес
-            exportSection("27", &out);
-            out << data->params[QString::number(i) + "_АдресВСтранеПроживания"];
-
-            // 3. Доходы, облагаемые по ставке 13%
-            //        text = data->params[QString::number(i) + "_СтавкаНалога"];
-            exportSection("28", &out);
-            out << data->params[QString::number(i) + "_СтавкаНалога"];
-
-            exportSection("29", &out);
-
-            //for (int j = 1; j < 21; j++)
-            for (int j = 1; j < data->params[QString::number(i) + "_incomeTableRowsCount"].toInt(); j++)
-            {
-               out << "<tr height=16 style='mso-height-source:userset;height:12.0pt'>" <<
-                               "<td height=16 class=xl6324539 style='height:12.0pt'></td>" <<
-                               "<td colspan=2 class=xl7624539>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_1"];
-
-                out << "</td>" <<
-                        "<td colspan=5 class=xl7624539 style='border-left:none'>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_2"];
-
-                out << "</td>" <<
-                        "<td colspan=7 class=xl7724539 style='border-left:none'>";
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_3"];
-
-                out << "</td>" <<
-                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_4"];
-
-                out << "</td>" <<
-                        "<td colspan=6 class=xl7724539 style='border-left:none'>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_5"];
-
-                out << "</td>" <<
-                        "<td class=xl6324539></td>" <<
-                        "<td class=xl6324539></td>" <<
-                        "<td colspan=2 class=xl7624539>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_6"];
-
-                out << "</td>" <<
-                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_7"];
-
-                out << "</td>" <<
-                        "<td colspan=5 class=xl7724539 style='border-left:none'>";
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_8"];
-
-                out << "</td>" <<
-                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_9"];
-
-                out << "</td>" <<
-                        "<td colspan=2 class=xl7724539 style='border-left:none'>";
-
-                out << data->params[QString::number(i) + "_Строка_" + QString::number(j) + "_Столбец_10"];
-
-                out << "</td>" <<
-                        "</tr>";
-            }
-
-            // 4. Стандартные, социальные и имущественные налоговые вычеты
-            // 4.1. Суммы налоговых вычетов, право на получение которых имеется у налогоплательщика
-
-            exportSection("30", &out);
-            out << data->params[QString::number(i) + "_Код4.1"];
-
-            out << "</td>" <<
-                    "<td colspan=6 class=xl7724539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаВычета4.1"];
-
-            out << "</td>" <<
-                    "<td class=xl6324539></td>" <<
-                    "<td colspan=5 class=xl7624539>";
-            out << data->params[QString::number(i) + "_Код4.2"];
-
-            out << "</td>" <<
-                    "<td colspan=7 class=xl7724539 style='border-left:none'>";
-
-            out << data->params[QString::number(i) + "_СуммаВычета4.2"];
-
-            out << "</td>" <<
-                    "<td class=xl6324539></td>" <<
-                    "<td colspan=5 class=xl7624539>";
-            out << data->params[QString::number(i) + "_Код4.3"];
-
-            out << "</td>" <<
-                    "<td colspan=4 class=xl7724539 style='border-left:none'>";
-
-            out << data->params[QString::number(i) + "_СуммаВычета4.3"];
-
-            out << "</td>" <<
-                    "<td class=xl6324539></td>" <<
-                    "<td colspan=5 class=xl7624539>";
-
-            out << data->params[QString::number(i) + "_Код4.4"];
-
-            out << "</td>" <<
-                    "<td colspan=3 class=xl7724539 style='border-left:none'>";
-
-            out << data->params[QString::number(i) + "_СуммаВычета4.4"];
-
-            // 4.2. № Уведомления, подтверждающего право на имущественный налоговый вычет
-            exportSection("31", &out);
-            out << data->params[QString::number(i) + "_НомерУведомления"];
-
-            // 4.3. Дата выдачи Уведомления
-            exportSection("32", &out);
-            out << data->params[QString::number(i) + "_ДатаВыдачиУведомления"];
-
-            // 4.4.Код налогового органа, выдавшего Уведомление
-            exportSection("33", &out);
-            out << data->params[QString::number(i) + "_КодИФНСУведомления"];           
-
-            // 5. Общая сумма дохода и налога на доходы по итогам налогового периода
-            // 5.1. Общая сумма дохода
-            exportSection("36", &out);
-            out << data->params[QString::number(i) + "_ТекстП5.1"];
-            out << "</td><td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаДоходов"];
-
-            // 5.2. Облагаемая сумма дохода
-            exportSection("37", &out);
-            out << data->params[QString::number(i) + "_ТекстП5.2"];
-            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_ОблагаемаяСуммаДоходов"];
-
-            // 5.3. Сумма налога исчисленная
-            exportSection("37", &out);
-            out << data->params[QString::number(i) + "_ТекстП5.3"];
-            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.3"];
-
-            // 5.4. Сумма налога удержанная
-            exportSection("37", &out);
-            out << data->params[QString::number(i) + "_ТекстП5.4"];
-            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.4"];
-
-            // 5.5. Сумма налога перечисленная*
-            exportSection("37", &out);
-            out << data->params[QString::number(i) + "_ТекстП5.5"];
-            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.5"];
-
-            // 5.6. Сумма налога, излишне удержанная налоговым агентом
-            exportSection("37", &out);
-            out << data->params[QString::number(i) + "_ТекстП5.6"];
-            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.6"];
-
-            // 5.7. Сумма налога, не удержанная налоговым агентом
-            exportSection("37", &out);
-            out << data->params[QString::number(i) + "_ТекстП5.7"];
-            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
-            out << data->params[QString::number(i) + "_СуммаП5.7"];
-            out << "</td></tr>";
-
-            // Налоговый агент            
-            exportSection("38", &out);
-            out << data->params[QString::number(i) + "_Должность"];
-
-            // ФИО            
-            exportSection("39", &out);
-            out << data->params[QString::number(i) + "_ФИОАгента"];
-
-            exportSection("40", &out);
-
-            if (i != data->numberDoc - 1) {
-                out << "<hr class=""pb""><br>";
             }
 
         }
 
+
         out << "</body></html>";
 
+//        exportSection("0", &out);
+
+//        for (int i = 1; i < data->numberDoc; i++)
+//        {
+//            exportSection("1", &out);
+
+//            // РїСЂРёР·РЅР°Рє
+//            out << data->params[QString::number(i) + "_Priznak"];
+
+//            // РІ РР¤РќРЎ(РєРѕРґ)
+//            exportSection("1.1", &out);
+
+//            out << data->params[QString::number(i) + "_IFNS"];
+//            exportSection("1.2", &out);
+
+//            // РЎРџР РђР’РљРђ Рћ Р”РћРҐРћР”РђРҐ Р¤РР—РР§Р•РЎРљРћР“Рћ Р›РР¦Рђ Р·Р° 2009 РіРѕРґ в„– 1 РѕС‚ 17.12.2009 РІ РР¤РќРЎ в„–7610
+//            //QString text = "РЎРџР РђР’РљРђ Рћ Р”РћРҐРћР”РђРҐ Р¤РР—РР§Р•РЎРљРћР“Рћ Р›РР¦Рђ Р·Р° " + data->params[QString::number(i) + "_Year"] + " РіРѕРґ в„– " + data->params[QString::number(i) + "_Number"] + " РѕС‚ " + data->params[QString::number(i) + "_Date"] + " РІ РР¤РќРЎ в„–" + data->params[QString::number(i) + "_IFNS"];
+//            out << data->params[QString::number(i) + "_Year"];
+
+//            exportSection("2", &out);
+
+//            out << data->params[QString::number(i) + "_Number"];
+
+//            exportSection("3", &out);
+
+//            out << data->params[QString::number(i) + "_Date"];
+
+//            exportSection("4", &out);
+
+//            //        // 1.1. РРќРќ/РљРџРџ РґР»СЏ РѕСЂРіР°РЅРёР·Р°С†РёРё РёР»Рё РРќРќ РґР»СЏ С„РёР·РёС‡РµСЃРєРѕРіРѕ Р»РёС†Р°
+//            //        text = data->params[QString::number(i) + "_INN/CPP"];
+//            exportSection("5", &out);
+//            out << data->params[QString::number(i) + "_INN/CPP"];
+
+//            //        // 1.2. РќР°РёРјРµРЅРѕРІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё / Р¤Р°РјРёР»РёСЏ, РёРјСЏ, РѕС‚С‡РµСЃС‚РІРѕ С„РёР·РёС‡РµСЃРєРѕРіРѕ Р»РёС†Р°
+//            //        text = data->params[QString::number(i) + "_Orgname"];
+//            exportSection("6", &out);
+//            out << data->params[QString::number(i) + "_Orgname"];
+
+//            //        // 1.3. РљРѕРґ РћРљРђРўРћ
+//            //        text = data->params[QString::number(i) + "_OKATO"];
+//            exportSection("7", &out);
+//            out << data->params[QString::number(i) + "_OKATO"];
+
+//            //        // 1.4. РўРµР»РµС„РѕРЅ
+//            //        text = data->params[QString::number(i) + "_Tel"];
+//            exportSection("8", &out);
+//            out << data->params[QString::number(i) + "_Tel"];
+
+//            //        // РўР‘Рќ
+//            //        text = data->params[QString::number(i) + "_TBN"];
+//            exportSection("9", &out);
+//            out << data->params[QString::number(i) + "_TBN"];
+
+//                      //        // 2. Р”Р°РЅРЅС‹Рµ Рѕ С„РёР·РёС‡РµСЃРєРѕРј Р»РёС†Рµ - РїРѕР»СѓС‡Р°С‚РµР»Рµ РґРѕС…РѕРґРѕРІ
+//            //        // 2.1. РРќРќ
+//            //        text = data->params[QString::number(i) + "_INN"];
+//            exportSection("10", &out);
+//            out << data->params[QString::number(i) + "_INN"];
+
+//            //
+//            //        // 2.2. Р¤Р°РјРёР»РёСЏ, РёРјСЏ, РѕС‚С‡РµСЃС‚РІРѕ
+//            //        text = data->params[QString::number(i) + "_FIO"];
+//            exportSection("11", &out);
+//            out << data->params[QString::number(i) + "_FIO"];
+
+//            // 2.3. РЎС‚Р°С‚СѓСЃ РЅР°Р»РѕРіРѕРїР»Р°С‚РµР»СЊС‰РёРєР°
+//            exportSection("12", &out);
+//            out << data->params[QString::number(i) + "_Status"];
+
+//            // 2.4. Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ
+//            exportSection("13", &out);
+//            out << data->params[QString::number(i) + "_Birthday"];
+
+//            // 2.5. Р“СЂР°Р¶РґР°РЅСЃС‚РІРѕ (РєРѕРґ СЃС‚СЂР°РЅС‹)
+//            exportSection("14", &out);
+//            out << data->params[QString::number(i) + "_Grajdanstvo"];
+
+//            // 2.6. РљРѕРґ РґРѕРєСѓРјРµРЅС‚Р°, СѓРґРѕСЃС‚РѕРІРµСЂСЏСЋС‰РµРіРѕ Р»РёС‡РЅРѕСЃС‚СЊ
+//            exportSection("15", &out);
+//            out << data->params[QString::number(i) + "_CodeDoc"];
+
+//            // 2.7. РЎРµСЂРёСЏ, РЅРѕРјРµСЂ РґРѕРєСѓРјРµРЅС‚Р°
+//            exportSection("16", &out);
+//            out << data->params[QString::number(i) + "_SeriesAndNumberDoc"];
+
+//            // 2.8. РђРґСЂРµСЃ РјРµСЃС‚Р° Р¶РёС‚РµР»СЊСЃС‚РІР° РІ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё:
+//            // РїРѕС‡С‚РѕРІС‹Р№ РёРЅРґРµРєСЃ
+//            exportSection("17", &out);
+//            out << data->params[QString::number(i) + "_Index"];
+
+//            // РєРѕРґ СЂРµРіРёРѕРЅР°
+//            exportSection("18", &out);
+//            out << data->params[QString::number(i) + "_RegCode"];
+
+//            // СЂР°Р№РѕРЅ
+//            exportSection("19", &out);
+//            out << data->params[QString::number(i) + "_Raion"];
+
+//            // РіРѕСЂРѕРґ
+//            exportSection("20", &out);
+//            out << data->params[QString::number(i) + "_City"];
+
+//            //   РЅР°СЃРµР»РµРЅРЅС‹Р№ РїСѓРЅРєС‚
+//            exportSection("21", &out);
+//            out << data->params[QString::number(i) + "_РќР°СЃРџСѓРЅРєС‚"];
+
+//            // СѓР»РёС†Р°
+//            //        text = data->params[QString::number(i) + "_Street"];
+//            exportSection("22", &out);
+//            out << data->params[QString::number(i) + "_Street"];
+
+//            // РґРѕРј
+//            exportSection("23", &out);
+//            out << data->params[QString::number(i) + "_Р”РѕРј"];
+
+//            // РєРѕСЂРїСѓСЃ
+//            exportSection("24", &out);
+//            out << data->params[QString::number(i) + "_РљРѕСЂРїСѓСЃ"];
+
+//            // РєРІР°СЂС‚РёСЂР°
+//            exportSection("25", &out);
+//            out << data->params[QString::number(i) + "_РљРІР°СЂС‚РёСЂР°"];
+
+//            // 2.9. РђРґСЂРµСЃ РІ СЃС‚СЂР°РЅРµ РїСЂРѕР¶РёРІР°РЅРёСЏ: РљРѕРґ СЃС‚СЂР°РЅС‹:
+//            exportSection("26", &out);
+//            out << data->params[QString::number(i) + "_РљРѕРґРЎС‚СЂР°РЅС‹РџСЂРѕР¶РёРІР°РЅРёСЏ"];
+
+//            // РђРґСЂРµСЃ
+//            exportSection("27", &out);
+//            out << data->params[QString::number(i) + "_РђРґСЂРµСЃР’РЎС‚СЂР°РЅРµРџСЂРѕР¶РёРІР°РЅРёСЏ"];
+
+//            // 3. Р”РѕС…РѕРґС‹, РѕР±Р»Р°РіР°РµРјС‹Рµ РїРѕ СЃС‚Р°РІРєРµ 13%
+//            //        text = data->params[QString::number(i) + "_РЎС‚Р°РІРєР°РќР°Р»РѕРіР°"];
+//            exportSection("28", &out);
+//            out << data->params[QString::number(i) + "_РЎС‚Р°РІРєР°РќР°Р»РѕРіР°"];
+
+//            exportSection("29", &out);
+
+//            //for (int j = 1; j < 21; j++)
+//            for (int j = 1; j < data->params[QString::number(i) + "_incomeTableRowsCount"].toInt(); j++)
+//            {
+//               out << "<tr height=16 style='mso-height-source:userset;height:12.0pt'>" <<
+//                               "<td height=16 class=xl6324539 style='height:12.0pt'></td>" <<
+//                               "<td colspan=2 class=xl7624539>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_1"];
+
+//                out << "</td>" <<
+//                        "<td colspan=5 class=xl7624539 style='border-left:none'>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_2"];
+
+//                out << "</td>" <<
+//                        "<td colspan=7 class=xl7724539 style='border-left:none'>";
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_3"];
+
+//                out << "</td>" <<
+//                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_4"];
+
+//                out << "</td>" <<
+//                        "<td colspan=6 class=xl7724539 style='border-left:none'>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_5"];
+
+//                out << "</td>" <<
+//                        "<td class=xl6324539></td>" <<
+//                        "<td class=xl6324539></td>" <<
+//                        "<td colspan=2 class=xl7624539>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_6"];
+
+//                out << "</td>" <<
+//                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_7"];
+
+//                out << "</td>" <<
+//                        "<td colspan=5 class=xl7724539 style='border-left:none'>";
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_8"];
+
+//                out << "</td>" <<
+//                        "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_9"];
+
+//                out << "</td>" <<
+//                        "<td colspan=2 class=xl7724539 style='border-left:none'>";
+
+//                out << data->params[QString::number(i) + "_РЎС‚СЂРѕРєР°_" + QString::number(j) + "_РЎС‚РѕР»Р±РµС†_10"];
+
+//                out << "</td>" <<
+//                        "</tr>";
+//            }
+
+//            // 4. РЎС‚Р°РЅРґР°СЂС‚РЅС‹Рµ, СЃРѕС†РёР°Р»СЊРЅС‹Рµ Рё РёРјСѓС‰РµСЃС‚РІРµРЅРЅС‹Рµ РЅР°Р»РѕРіРѕРІС‹Рµ РІС‹С‡РµС‚С‹
+//            // 4.1. РЎСѓРјРјС‹ РЅР°Р»РѕРіРѕРІС‹С… РІС‹С‡РµС‚РѕРІ, РїСЂР°РІРѕ РЅР° РїРѕР»СѓС‡РµРЅРёРµ РєРѕС‚РѕСЂС‹С… РёРјРµРµС‚СЃСЏ Сѓ РЅР°Р»РѕРіРѕРїР»Р°С‚РµР»СЊС‰РёРєР°
+
+//            exportSection("30", &out);
+//            out << data->params[QString::number(i) + "_РљРѕРґ4.1"];
+
+//            out << "</td>" <<
+//                    "<td colspan=6 class=xl7724539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Р’С‹С‡РµС‚Р°4.1"];
+
+//            out << "</td>" <<
+//                    "<td class=xl6324539></td>" <<
+//                    "<td colspan=5 class=xl7624539>";
+//            out << data->params[QString::number(i) + "_РљРѕРґ4.2"];
+
+//            out << "</td>" <<
+//                    "<td colspan=7 class=xl7724539 style='border-left:none'>";
+
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Р’С‹С‡РµС‚Р°4.2"];
+
+//            out << "</td>" <<
+//                    "<td class=xl6324539></td>" <<
+//                    "<td colspan=5 class=xl7624539>";
+//            out << data->params[QString::number(i) + "_РљРѕРґ4.3"];
+
+//            out << "</td>" <<
+//                    "<td colspan=4 class=xl7724539 style='border-left:none'>";
+
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Р’С‹С‡РµС‚Р°4.3"];
+
+//            out << "</td>" <<
+//                    "<td class=xl6324539></td>" <<
+//                    "<td colspan=5 class=xl7624539>";
+
+//            out << data->params[QString::number(i) + "_РљРѕРґ4.4"];
+
+//            out << "</td>" <<
+//                    "<td colspan=3 class=xl7724539 style='border-left:none'>";
+
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Р’С‹С‡РµС‚Р°4.4"];
+
+//            // 4.2. в„– РЈРІРµРґРѕРјР»РµРЅРёСЏ, РїРѕРґС‚РІРµСЂР¶РґР°СЋС‰РµРіРѕ РїСЂР°РІРѕ РЅР° РёРјСѓС‰РµСЃС‚РІРµРЅРЅС‹Р№ РЅР°Р»РѕРіРѕРІС‹Р№ РІС‹С‡РµС‚
+//            exportSection("31", &out);
+//            out << data->params[QString::number(i) + "_РќРѕРјРµСЂРЈРІРµРґРѕРјР»РµРЅРёСЏ"];
+
+//            // 4.3. Р”Р°С‚Р° РІС‹РґР°С‡Рё РЈРІРµРґРѕРјР»РµРЅРёСЏ
+//            exportSection("32", &out);
+//            out << data->params[QString::number(i) + "_Р”Р°С‚Р°Р’С‹РґР°С‡РёРЈРІРµРґРѕРјР»РµРЅРёСЏ"];
+
+//            // 4.4.РљРѕРґ РЅР°Р»РѕРіРѕРІРѕРіРѕ РѕСЂРіР°РЅР°, РІС‹РґР°РІС€РµРіРѕ РЈРІРµРґРѕРјР»РµРЅРёРµ
+//            exportSection("33", &out);
+//            out << data->params[QString::number(i) + "_РљРѕРґРР¤РќРЎРЈРІРµРґРѕРјР»РµРЅРёСЏ"];
+
+//            // 5. РћР±С‰Р°СЏ СЃСѓРјРјР° РґРѕС…РѕРґР° Рё РЅР°Р»РѕРіР° РЅР° РґРѕС…РѕРґС‹ РїРѕ РёС‚РѕРіР°Рј РЅР°Р»РѕРіРѕРІРѕРіРѕ РїРµСЂРёРѕРґР°
+//            // 5.1. РћР±С‰Р°СЏ СЃСѓРјРјР° РґРѕС…РѕРґР°
+//            exportSection("36", &out);
+//            out << data->params[QString::number(i) + "_РўРµРєСЃС‚Рџ5.1"];
+//            out << "</td><td colspan=9 class=xl7624539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Р”РѕС…РѕРґРѕРІ"];
+
+//            // 5.2. РћР±Р»Р°РіР°РµРјР°СЏ СЃСѓРјРјР° РґРѕС…РѕРґР°
+//            exportSection("37", &out);
+//            out << data->params[QString::number(i) + "_РўРµРєСЃС‚Рџ5.2"];
+//            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РћР±Р»Р°РіР°РµРјР°СЏРЎСѓРјРјР°Р”РѕС…РѕРґРѕРІ"];
+
+//            // 5.3. РЎСѓРјРјР° РЅР°Р»РѕРіР° РёСЃС‡РёСЃР»РµРЅРЅР°СЏ
+//            exportSection("37", &out);
+//            out << data->params[QString::number(i) + "_РўРµРєСЃС‚Рџ5.3"];
+//            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Рџ5.3"];
+
+//            // 5.4. РЎСѓРјРјР° РЅР°Р»РѕРіР° СѓРґРµСЂР¶Р°РЅРЅР°СЏ
+//            exportSection("37", &out);
+//            out << data->params[QString::number(i) + "_РўРµРєСЃС‚Рџ5.4"];
+//            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Рџ5.4"];
+
+//            // 5.5. РЎСѓРјРјР° РЅР°Р»РѕРіР° РїРµСЂРµС‡РёСЃР»РµРЅРЅР°СЏ*
+//            exportSection("37", &out);
+//            out << data->params[QString::number(i) + "_РўРµРєСЃС‚Рџ5.5"];
+//            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Рџ5.5"];
+
+//            // 5.6. РЎСѓРјРјР° РЅР°Р»РѕРіР°, РёР·Р»РёС€РЅРµ СѓРґРµСЂР¶Р°РЅРЅР°СЏ РЅР°Р»РѕРіРѕРІС‹Рј Р°РіРµРЅС‚РѕРј
+//            exportSection("37", &out);
+//            out << data->params[QString::number(i) + "_РўРµРєСЃС‚Рџ5.6"];
+//            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Рџ5.6"];
+
+//            // 5.7. РЎСѓРјРјР° РЅР°Р»РѕРіР°, РЅРµ СѓРґРµСЂР¶Р°РЅРЅР°СЏ РЅР°Р»РѕРіРѕРІС‹Рј Р°РіРµРЅС‚РѕРј
+//            exportSection("37", &out);
+//            out << data->params[QString::number(i) + "_РўРµРєСЃС‚Рџ5.7"];
+//            out << "<td colspan=9 class=xl7624539 style='border-left:none'>";
+//            out << data->params[QString::number(i) + "_РЎСѓРјРјР°Рџ5.7"];
+//            out << "</td></tr>";
+
+//            // РќР°Р»РѕРіРѕРІС‹Р№ Р°РіРµРЅС‚
+//            exportSection("38", &out);
+//            out << data->params[QString::number(i) + "_Р”РѕР»Р¶РЅРѕСЃС‚СЊ"];
+
+//            // Р¤РРћ
+//            exportSection("39", &out);
+//            out << data->params[QString::number(i) + "_Р¤РРћРђРіРµРЅС‚Р°"];
+
+//            exportSection("40", &out);
+
+//            if (i != data->numberDoc - 1) {
+//                out << "<hr class=""pb""><br>";
+//            }
+
+//        }
+
+//        out << "</body></html>";
+
         quintptr returnValue = (quintptr)ShellExecute(0, 0, (wchar_t*)filename.utf16(), 0, 0, SW_SHOWNORMAL);
-        qDebug() << returnValue;
+
         qDebug() << filename;
     }
+}
+
+QStringList Exporter::PrintSpraw(SprawModel spraw ) {
+
+    const QString k_tablename1 = UTFtoUnicode("{{РўРђР‘Р›РР¦Рђ1}}");
+    const QString k_tablename2 = UTFtoUnicode("{{РўРђР‘Р›РР¦Рђ2}}");
+    const QString k_para4_name = UTFtoUnicode("{{РџРЈРќРљРў4.1}}");
+    const QString k_para5_name1 = UTFtoUnicode("{{РџРЈРќРљРўР«5РЎРўР РђРќРР¦Рђ1}}");
+    const QString k_para5_name2 = UTFtoUnicode("{{РџРЈРќРљРўР«5РЎРўР РђРќРР¦Рђ2}}");
+    const QString k_stavka1 = UTFtoUnicode("{{РЎРўРђР’РљРђ1}}");
+    const QString k_stavka2 = UTFtoUnicode("{{РЎРўРђР’РљРђ2}}");
+    const QString k_para5_text1 = UTFtoUnicode("{{РџРЈРќРљРў5РЎРўР РђРќРР¦Рђ1}}");
+    const QString k_para5_text2 = UTFtoUnicode("{{РџРЈРќРљРў5РЎРўР РђРќРР¦Рђ2}}");
+
+
+
+    QStringList page1_result;
+    QStringList page2_result;
+
+    QFile sec(k_body);
+    sec.open(QIODevice::ReadOnly);
+
+    QTextStream reader(&sec);
+
+    QString current_line;
+    while (!reader.atEnd()) {
+
+        current_line = reader.readLine();
+        page1_result << current_line;
+
+        if (spraw.PageCount() == 2) {
+
+            if (current_line.contains(k_tablename1))
+                current_line = current_line.replace(k_tablename1, k_tablename2);
+            else if (current_line.contains(k_para5_name1))
+                current_line = current_line.replace(k_para5_name1, k_para5_name2);
+            else if (current_line.contains(k_stavka1))
+                current_line = current_line.replace(k_stavka1, k_stavka2);
+            else if (current_line.contains(k_para5_text1))
+                current_line = current_line.replace(k_para5_text1, k_para5_text2);
+
+            page2_result << current_line;
+        }
+    }
+
+    page1_result << "<hr class=""pb""><br>";
+
+    if (spraw.PageCount() == 2) {
+
+        page2_result << "<hr class=""pb""><br>";
+        page1_result << page2_result;
+
+    }
+
+    spraw.SetParam(k_tablename1, GetHTMLTable1(spraw.tbl(1)));
+    spraw.SetParam(k_tablename2, GetHTMLTable1(spraw.tbl(2)));
+    spraw.SetParam(k_para4_name, GetHTMLPara4(spraw.para4()));
+    spraw.SetParam(k_para5_name1, GetHTMLPara5(spraw.para5(1)));
+    spraw.SetParam(k_para5_name2, GetHTMLPara5(spraw.para5(2)));
+
+    QList<QString> keys = spraw.GetParamKeys();
+    QListIterator<QString> it(keys);
+
+    QString key;
+    QString param_value;
+
+    while(it.hasNext()) {
+
+        key = it.next();
+        param_value = spraw.GetParam(key);
+
+        qDebug() << "key " << key << " value " << param_value;
+
+        QMutableStringListIterator iter(page1_result);
+        QString current_line;
+
+        while (iter.hasNext()) {
+
+            current_line = iter.next();
+            if (current_line.contains(key)) {
+
+                iter.setValue(current_line.replace(key, param_value));
+
+            }
+        }
+    }
+
+
+    return page1_result;
+}
+
+int Exporter::PrintHeader(QTextStream *out) {
+
+    QFile sec(k_head);
+    sec.open(QIODevice::ReadOnly);
+
+    QTextStream reader(&sec);
+
+    while (!reader.atEnd()) {
+
+        out->operator << (reader.readLine());
+
+    }
+   sec.close();
+
+   return 0;
+}
+
+QString Exporter::GetHTMLTable1(QList<QStringList> tbl1) {
+
+    QString html_table1;
+
+    QListIterator<QStringList> tbl_iterator1(tbl1);
+    while (tbl_iterator1.hasNext()) {
+
+        QStringList values = tbl_iterator1.next();
+
+        html_table1 += "<tr height=16 style='mso-height-source:userset;height:12.0pt'>";
+        html_table1 += "<td height=16 class=xl6324539 style='height:12.0pt'></td>";
+        html_table1 += "<td colspan=2 class=xl7624539>";
+
+        html_table1 += values[1].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=5 class=xl7624539 style='border-left:none'>";
+
+        html_table1 += values[2].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=7 class=xl7724539 style='border-left:none'>";
+
+        html_table1 += values[3].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+        html_table1 += values[4].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=6 class=xl7724539 style='border-left:none'>";
+
+        html_table1 += values[5].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td class=xl6324539></td>";
+        html_table1 += "<td class=xl6324539></td>";
+        html_table1 += "<td colspan=2 class=xl7624539>";
+
+        html_table1 += values[7].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+        html_table1 += values[8].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=5 class=xl7724539 style='border-left:none'>";
+
+        html_table1 += values[9].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=4 class=xl7624539 style='border-left:none'>";
+
+        html_table1 += values[10].trimmed();
+
+        html_table1 += "</td>";
+        html_table1 += "<td colspan=2 class=xl7724539 style='border-left:none'>";
+
+        html_table1 += values[11].trimmed();
+
+        html_table1 += "</td></tr>";
+
+    }
+
+    return html_table1;
+}
+
+QString Exporter::GetHTMLPara4(QStringList data) {
+
+    QString result;
+
+    result = data[1].trimmed() + "</td>";
+
+    result += "<td colspan=6 class=xl7724539 style='border-left:none'>";
+    result += data[2].trimmed() + "</td>";
+
+    result += "<td class=xl6324539></td>";
+    result += "<td colspan=5 class=xl7624539>";
+
+    result += data[3].trimmed() + "</td>";
+
+    result += "<td colspan=7 class=xl7724539 style='border-left:none'>";
+
+    result += data[4].trimmed() + "</td>";
+
+    result += "<td class=xl6324539></td>";
+    result += "<td colspan=5 class=xl7624539>";
+
+    result += data[5].trimmed() + "</td>";
+
+    result += "<td colspan=4 class=xl7724539 style='border-left:none'>";
+
+    result += data[6].trimmed() + "</td>";
+
+    result += "<td class=xl6324539></td>";
+    result += "<td colspan=5 class=xl7624539>";
+
+    result += data[7].trimmed() + "</td>";
+
+    result += "<td colspan=3 class=xl7724539 style='border-left:none'>";
+
+    result += data[8].trimmed() + "</td>";
+
+    return result;
+}
+
+QString Exporter::GetHTMLPara5(QList<QStringList> data) {
+
+    QString html_table;
+
+    QListIterator<QStringList> i(data);
+    while (i.hasNext()) {
+
+        QStringList list = i.next();
+
+        html_table += list[1].trimmed();
+        html_table += "</td><td colspan=9 class=xl7624539 style='border-left:none'>";
+        html_table += list[2].trimmed();
+
+        if (i.hasNext()) {
+            html_table += "</td></tr>";
+            html_table += "<tr height=16 style='mso-height-source:userset;height:12.0pt'>";
+            html_table += "<td height=16 class=xl6324539 style='height:12.0pt'></td>";
+            html_table += "<td colspan=34 class=xl7924539>";
+        }
+    }
+
+    //html_table = html_table.isEmpty() ? "" : "</td></tr>";
+
+    return html_table;
 }

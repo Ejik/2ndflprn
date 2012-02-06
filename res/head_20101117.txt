@@ -1,9 +1,9 @@
-<html xmlns:o="urn:schemas-microsoft-com:office:office"
+﻿<html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=windows-1251">
+<meta http-equiv=Content-Type content="text/html; charset="windows-1251">
 <meta name=ProgId content=Excel.Sheet>
 <meta name=Generator content="Microsoft Excel 12">
 <style id="tpl_2ndfl_3419_Styles">
@@ -521,4 +521,3 @@ xmlns="http://www.w3.org/TR/REC-html40">
 </head>
 
 <body>
-<!--[if !excel]>&nbsp;&nbsp;<![endif]-->
