@@ -6,20 +6,29 @@
 #include <QTextStream>
 #include <QStringList>
 #include "importer.h"
+#include "processor.h"
+#include "processorxml.h"
 
 
 class Exporter : public QObject
 {
 Q_OBJECT
 public:
-    Exporter(Importer* instance);
+    Exporter(Processor* instance);
     ~Exporter();
 
-    void exportToHtml();
-
+    void export_to_html();
 
 private:
-    Importer* data;
+
+    QStringList PrintSpraw(SprawModel spraw);
+    int PrintHeader(QTextStream* out);
+
+    QString GetHTMLTable1(QList<QStringList> tbl1);
+    QString GetHTMLPara4(QStringList data);
+    QString GetHTMLPara5(QList<QStringList> data);
+
+    Processor* processor_;
     QFile outputFile;
     QStringList sheetsNames;
 

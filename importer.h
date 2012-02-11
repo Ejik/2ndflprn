@@ -6,6 +6,20 @@
 
 class Importer : public QObject
 {
+
+public:
+    QMap<QString, QString> params;
+
+    int numberDoc;
+    QString inputFile;
+
+    Importer(const QString filename);
+
+    static QString OEMtoUnicode(const QString string);
+    static QString WINtoUnicode(const QString string);
+
+    void parse();
+
 private:
 
     void addParametr(const QString key, const QString value);
@@ -51,19 +65,6 @@ private:
     void fillAddress();
 
     void debug(const QString line, QChar symb);
-
-public:
-    QMap<QString, QString> params;
-
-    int numberDoc;
-    QString inputFile;
-
-    Importer(const QString filename);
-
-    static QString OEMtoUnicode(const QString string);
-    static QString WINtoUnicode(const QString string);
-
-    void parse();
 
 };
 

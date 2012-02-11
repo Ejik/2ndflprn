@@ -1,5 +1,0 @@
-</td>
-  <td class=xl6324539></td>
-  <td colspan=18 class=xl6324539>4.4.Код налогового органа, выдавшего
-  Уведомление</td>
-  <td colspan=3 class=xl6624539>

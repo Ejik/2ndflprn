@@ -1,4 +1,4 @@
-//#include <QtCore/QCoreApplication>
+п»ї//#include <QtCore/QCoreApplication>
 #include <QDebug>
 #include <QtGui/QApplication>
 #include <QtGui/QFileDialog>
@@ -6,29 +6,46 @@
 #include <QMessageBox>
 #include "importer.h"
 #include "exporter.h"
+#include "processorlst.h"
+
 
 int main(int argc, char *argv[])
 {
-    QTextCodec::setCodecForTr(QTextCodec::codecForName("WINDOWS-1251"));
+    QTextCodec::setCodecForTr(QTextCodec::codecForName("utf-8"));
 
     //QCoreApplication a(argc, argv);
     QApplication a(argc, argv);
 
-    QString filename = QFileDialog::getOpenFileName(NULL, QObject::tr("Выберите файл справки 2НДФЛ"), "", QObject::tr("LST (2ndfl*.lst)"));
-    if (filename != "")
-    {
-        Importer importer(filename);
-        importer.parse();
+    QString filename = QFileDialog::getOpenFileName(NULL, QObject::tr("Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р» СЃРїСЂР°РІРєРё 2РќР”Р¤Р›"), "", QObject::tr("LST (2ndfl*.lst);;Р¤Р°Р№Р»С‹ СЃРїСЂР°РІРѕРє 2-РќР”Р¤Р› (*.xml)"));
+    // QString filename = "c:\\projects\\other\\2ndflprn-build-desktop\\2NDFL_02.LST";
+    //QString filename = "c:\\qt\\projects\\2NDFL_02.LST";
 
-        Exporter exporter(&importer);
-        exporter.exportToHtml();
+    if (!filename.isEmpty())
+    {
+        Processor *processor;
+        if (filename.contains(".lst", Qt::CaseInsensitive)) {
+
+            processor = new ProcessorLST(filename);
+
+        } else {
+            return 1;
+        }
+
+        processor->Import();
+        processor->ParseData();
+
+//        Importer importer(filename);
+//        importer.parse();
+
+        Exporter exporter(processor);
+        exporter.export_to_html();
 
         QMessageBox msgBox;
-        msgBox.setText(QObject::tr("Формирование справок завершено."));
+        msgBox.setText(QObject::tr("Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃРїСЂР°РІРѕРє Р·Р°РІРµСЂС€РµРЅРѕ."));
         msgBox.setIcon(QMessageBox::Information);
         msgBox.exec();
 
-
+        delete processor;
     }
     //return a.exec();
 

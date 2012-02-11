@@ -1,9 +1,0 @@
-&nbsp;</td>
- </tr>
- <tr height=16 style='mso-height-source:userset;height:12.0pt'>
-  <td height=16 class=xl583419 style='height:12.0pt'></td>
-  <td colspan=21 class=xl583419>2.8. Адрес места жительства в Российской
-  Федерации:</td>
-  <td class=xl583419></td>
-  <td colspan=8 class=xl583419>почтовый индекс</td>
-  <td colspan=4 class=xl613419>

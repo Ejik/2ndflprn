@@ -1,0 +1,1125 @@
+﻿	<!--[if !excel]>&nbsp;&nbsp;<![endif]-->
+
+
+<div id="tpl_2ndfl_3419" align=center x:publishsource="Excel">
+
+<table border=0 cellpadding=0 cellspacing=0 width=744 class=xl583419
+ style='border-collapse:collapse;table-layout:fixed;width:563pt'>
+ <col class=xl583419 width=27 style='mso-width-source:userset;mso-width-alt:
+ 1152;width:20pt'>
+ <col class=xl583419 width=28 style='mso-width-source:userset;mso-width-alt:
+ 1194;width:21pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=21 style='mso-width-source:userset;mso-width-alt:
+ 896;width:16pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=28 style='mso-width-source:userset;mso-width-alt:
+ 1194;width:21pt'>
+ <col class=xl583419 width=21 style='mso-width-source:userset;mso-width-alt:
+ 896;width:16pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=7 span=2 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=28 style='mso-width-source:userset;mso-width-alt:
+ 1194;width:21pt'>
+ <col class=xl583419 width=14 span=2 style='mso-width-source:userset;
+ mso-width-alt:597;width:11pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=21 style='mso-width-source:userset;mso-width-alt:
+ 896;width:16pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=23 style='mso-width-source:userset;mso-width-alt:
+ 981;width:17pt'>
+ <col class=xl583419 width=14 span=2 style='mso-width-source:userset;
+ mso-width-alt:597;width:11pt'>
+ <col class=xl583419 width=7 span=2 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=28 style='mso-width-source:userset;mso-width-alt:
+ 1194;width:21pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=28 style='mso-width-source:userset;mso-width-alt:
+ 1194;width:21pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=62 style='mso-width-source:userset;mso-width-alt:
+ 2645;width:47pt'>
+ <col class=xl583419 width=7 span=2 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=14 style='mso-width-source:userset;mso-width-alt:
+ 597;width:11pt'>
+ <col class=xl583419 width=7 style='mso-width-source:userset;mso-width-alt:
+ 298;width:5pt'>
+ <col class=xl583419 width=28 style='mso-width-source:userset;mso-width-alt:
+ 1194;width:21pt'>
+ <col class=xl583419 width=14 span=2 style='mso-width-source:userset;
+ mso-width-alt:597;width:11pt'>
+ <col class=xl583419 width=10 style='mso-width-source:userset;mso-width-alt:
+ 426;width:8pt'>
+ <col class=xl583419 width=76 style='mso-width-source:userset;mso-width-alt:
+ 3242;width:57pt'>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 width=27 style='height:11.25pt;width:20pt'></td>
+  <td class=xl583419 width=28 style='width:21pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=21 style='width:16pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=28 style='width:21pt'></td>
+  <td class=xl583419 width=21 style='width:16pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=28 style='width:21pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=21 style='width:16pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=23 style='width:17pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=28 style='width:21pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=28 style='width:21pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=62 style='width:47pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=7 style='width:5pt'></td>
+  <td class=xl583419 width=28 style='width:21pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=14 style='width:11pt'></td>
+  <td class=xl583419 width=10 style='width:8pt'></td>
+  <td class=xl593419 width=76 style='width:57pt; text-align:right;'>Утверждена</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan=4 style="text-align:right;">Приказом ФНС РФ</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan="9" style="text-align:right;">от 17.11.2010 N ММВ-7-3/611@</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan="3" style="text-align:right;"><b>Форма № 2-НДФЛ</b></td>
+ </tr>
+ <tr>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan="10" style="text-align:right;">Код формы по КНД 1151078</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+    <td height=15 class=xl583419 style='height:11.25pt'></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>   
+    <td class=xl593419 colspan="3" style="text-align:right;">признак</td>
+    <td class=xl583419></td>
+    <td class=xl613419 colspan="7">{{ПРИЗНАК}}
+</td>
+</tr>
+<tr height=15 style='height:11.25pt'>
+    <td height=15 class=xl583419 style='height:11.25pt'></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl583419></td>
+    <td class=xl593419 colspan="3" style="text-align:right;">в ИФНС(код)</td>
+    <td class=xl583419></td>
+    <td class=xl613419 colspan="7">{{ИФНС}}
+</td>
+</tr>
+<tr height=16 style='height:12.0pt'>
+   <td height=16 class=xl583419 style='height:12.0pt'></td>
+   <td colspan=43 class=xl753419>{{ЗАГОЛОВОК}}
+
+</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+ </tr>
+ <tr height=18 style='mso-height-source:userset;height:14.1pt'>
+  <td height=18 class=xl583419 style='height:14.1pt'></td>
+  <td colspan=43 class=xl603419>1. Данные о налоговом агенте</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=23 class=xl583419>1.1. ИНН/КПП для организации или ИНН для
+  физического лица</td>
+  <td colspan=13 class=xl613419>{{ИННКПП}}&nbsp;</td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=34 class=xl583419>1.2. Наименование организации / Фамилия, имя,
+  отчество физического лица</td><td colspan=9 class=xl583419></td>
+  <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+    <td height=16 class=xl583419 style='height:12.0pt'></td>
+    <td colspan=43 class=xl613419>{{НАИМЕНОВАНИЕ}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=6 class=xl583419>1.3. Код ОКАТО</td>
+  <td colspan=14 class=xl613419>{{ОКАТО}}&nbsp;</td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td colspan=5 class=xl583419>1.4. Телефон</td>
+  <td colspan=12 class=xl613419><span style='mso-spacerun:yes'>{{ТЕЛЕФОН}}</span></td>
+ </tr>
+ <tr height=7 style='mso-height-source:userset;height:5.25pt'>
+  <td height=7 class=xl583419 style='height:5.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+ </tr>
+ <tr height=18 style='mso-height-source:userset;height:14.1pt'>
+  <td height=18 class=xl583419 style='height:14.1pt'></td>
+  <td colspan=37 class=xl743419>2. Данные о физическом лице - получателе
+  доходов</td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td colspan=2 class=xl673419>ТБН</td>
+  <td class=xl613419>{{ТБН}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=4 class=xl583419>2.1. ИНН</td>
+  <td colspan=10 class=xl613419>{{ИНН}}&nbsp;</td>
+  <td class=xl603419></td>
+  <td colspan=11 class=xl583419>2.2. Фамилия, имя, отчество</td>
+  <td colspan=17 class=xl613419>{{ФИО}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=15 class=xl583419>2.3. Статус налогоплательщика</td>
+  <td class=xl613419>{{СТАТУСНАЛОГОПЛАТЕЛЬЩИКА}}&nbsp;</td>
+  <td class=xl583419></td>
+  <td colspan=8 class=xl583419>2.4. Дата рождения</td>
+  <td class=xl613419 colspan=7>{{ДАТАРОЖДЕНИЯ}}&nbsp;</td>
+  <td class=xl583419></td>
+  <td colspan=9 class=xl583419>2.5. Гражданство (код страны)</td>
+  <td class=xl613419>{{КОДСТРАНЫ}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=18 class=xl583419>2.6. Код документа, удостоверяющего
+  личность<span style='mso-spacerun:yes'> </span></td>
+  <td colspan=6 class=xl613419>{{КОДДОКУМЕНТА}}&nbsp;</td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td colspan=8 class=xl583419>2.7. Серия, номер документа</td>
+  <td colspan=9 class=xl613419>{{СЕРИЯНОМЕР}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=21 class=xl583419>2.8. Адрес места жительства в Российской
+  Федерации:</td>
+  <td class=xl583419></td>
+  <td colspan=8 class=xl583419>почтовый индекс</td>
+  <td colspan=4 class=xl613419>{{ПОЧТОВЫЙИНДЕКС}}&nbsp;</td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td colspan=5 class=xl583419>код региона<span
+  style='mso-spacerun:yes'> </span></td>
+  <td colspan=2 class=xl613419><span style='mso-spacerun:yes'>{{КОДРЕГИОНА}}</span></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=2 class=xl673419>район</td>
+  <td colspan=14 class=xl653419><span style='mso-spacerun:yes'>{{РАЙОН}}</span></td>
+  <td class=xl583419></td>
+  <td colspan=3 class=xl643419>город</td>
+  <td colspan=23 class=xl653419>{{ГОРОД}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=7 class=xl673419>населенный пункт</td>
+  <td colspan=36 class=xl653419>{{НАСЕЛЕННЫЙПУНКТ}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=2 class=xl583419>улица</td>
+  <td colspan=20 class=xl613419>{{УЛИЦА}}&nbsp;</td>
+  <td class=xl583419></td>
+  <td colspan=3 class=xl583419>дом</td>
+  <td colspan=4 class=xl613419>{{ДОМ}}&nbsp;</td>
+  <td colspan=3 class=xl583419>корпус</td>
+  <td colspan=4 class=xl613419><span style='mso-spacerun:yes'> </span></td>
+  <td class=xl583419>{{КОРПУС}}</td>
+  <td colspan=4 class=xl583419>квартира</td>
+  <td class=xl613419>{{КВАРТИРА}}&nbsp;</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=17 class=xl583419>2.9. Адрес в стране проживания: Код страны:</td>
+  <td colspan=5 class=xl613419><span style='mso-spacerun:yes'>{{КОДСТРАНЫПРОЖИВАНИЯ}} </span></td>
+  <td class=xl603419></td>
+  <td colspan=4 class=xl583419>Адрес</td>
+  <td colspan=16 class=xl613419><span style='mso-spacerun:yes'>{{АДРЕСВСТРАНЕПРОЖИВАНИЯ}}
+ </span></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=43 class=xl653419><span style='mso-spacerun:yes'> </span></td>
+ </tr>
+ <tr height=6 style='mso-height-source:userset;height:4.5pt'>
+  <td height=6 class=xl583419 style='height:4.5pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl583419 style='height:12.0pt'></td>
+  <td colspan=14 class=xl603419>3. Доходы, облагаемые по ставке<span
+  style='mso-spacerun:yes'> </span></td>
+  <td class=xl603419></td>
+  <td class=xl613419>{{СТАВКА1}}&nbsp;</td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+  <td class=xl603419></td>
+ </tr>
+ <tr height=29 style='mso-height-source:userset;height:21.75pt'>
+   <td height=29 class=xl583419 style='height:21.75pt'></td>
+   <td colspan=2 class=xl723419 width=42 style='width:32pt'>Месяц</td>
+   <td colspan=5 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   дохода</td>
+   <td colspan=7 class=xl723419 width=98 style='border-left:none;width:74pt'>Сумма
+   дохода</td>
+   <td colspan=4 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   вычета</td>
+   <td colspan=6 class=xl723419 width=86 style='border-left:none;width:65pt'>Сумма
+   вычета</td>
+   <td class=xl623419 width=7 style='width:5pt'></td>
+   <td class=xl623419 width=7 style='width:5pt'></td>
+   <td colspan=2 class=xl723419 width=42 style='width:32pt'>Месяц</td>
+   <td colspan=4 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   дохода</td>
+   <td colspan=5 class=xl723419 width=97 style='border-left:none;width:73pt'>Сумма
+   дохода</td>
+   <td colspan=4 class=xl723419 width=63 style='border-left:none;width:48pt'>Код
+   вычета</td>
+   <td colspan=2 class=xl733419 style='border-left:none'>Сумма вычета</td>
+  </tr>{{ТАБЛИЦА1}}
+<tr height=8 style='mso-height-source:userset;height:6.0pt'>
+  <td height=8 class=xl6324539 style='height:6.0pt'></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+ </tr>
+ <tr height=18 style='mso-height-source:userset;height:14.1pt'>
+  <td height=18 class=xl6324539 style='height:14.1pt'></td>
+  <td colspan=43 class=xl6524539>4. Стандартные, социальные и имущественные налоговые
+  вычеты</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl6324539 style='height:12.0pt'></td>
+  <td colspan=43 class=xl6324539>4.1. Суммы предоставленных налогоплательщику налоговых вычетов</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl6324539 style='height:12.0pt'></td>
+  <td colspan=5 class=xl7824539 width=70 style='width:53pt'>Код вычета</td>
+  <td colspan=6 class=xl7824539 width=105 style='border-left:none;width:80pt'>Сумма
+  вычета</td>
+  <td class=xl6324539></td>
+  <td colspan=5 class=xl7824539 width=70 style='width:53pt'>Код вычета</td>
+  <td colspan=7 class=xl7824539 width=100 style='border-left:none;width:76pt'>Сумма
+  вычета</td>
+  <td class=xl6324539></td>
+  <td colspan=5 class=xl7824539 width=70 style='width:53pt'>Код вычета</td>
+  <td colspan=4 class=xl7824539 width=111 style='border-left:none;width:84pt'>Сумма
+  вычета</td>
+  <td class=xl6324539></td>
+  <td colspan=5 class=xl7824539 width=70 style='width:53pt'>Код вычета</td>
+  <td colspan=3 class=xl7824539 width=100 style='border-left:none;width:76pt'>Сумма
+  вычета</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+   <td height=16 class=xl6324539 style='height:12.0pt'></td>
+   <td colspan=5 class=xl7624539>
+{{ПУНКТ4.1}}</td>
+ </tr>
+ <tr height=7 style='mso-height-source:userset;height:5.25pt'>
+  <td height=7 class=xl6324539 style='height:5.25pt'></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl6324539 style='height:12.0pt'></td>
+  <td colspan=33 class=xl6324539>4.2. № Уведомления, подтверждающего право на
+  имущественный налоговый вычет</td>
+  <td colspan=10 class=xl6624539>{{НОМЕРУВЕДОМЛЕНИЯ}}</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl6324539 style='height:12.0pt'></td>
+  <td colspan=12 class=xl6324539>4.3. Дата выдачи Уведомления</td>
+  <td colspan=9 class=xl6624539>{{ДАТАУВЕДОМЛЕНИЯ}}</td>
+  <td class=xl6324539></td>
+  <td colspan=18 class=xl6324539>4.4.Код налогового органа, выдавшего
+  Уведомление</td>
+  <td colspan=3 class=xl6624539>{{КОДИФНС}}</td>
+ </tr>
+ <tr height=8 style='mso-height-source:userset;height:6.0pt'>
+  <td height=8 class=xl6324539 style='height:6.0pt'></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl6324539 style='height:12.0pt'></td>
+  <td colspan=43 class=xl6524539>5. Общая сумма дохода и налога на доходы по
+  итогам налогового периода: &nbsp;{{ПУНКТ5}}</td>
+ </tr>
+ <tr height=16 style='mso-height-source:userset;height:12.0pt'>
+  <td height=16 class=xl6324539 style='height:12.0pt'></td>
+  <td colspan=34 class=xl7924539>{{ПУНКТЫ5СТРАНИЦА1}}
+<tr height=10 style='mso-height-source:userset;height:7.5pt'>
+  <td height=10 class=xl6324539 style='height:7.5pt'></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl6324539 style='height:11.25pt'></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl6324539 style='height:11.25pt'></td>
+  <td colspan=7 class=xl6324539>Налоговый агент</td>
+  <td class=xl6324539></td>
+  <td colspan=18 class=xl6624539>{{НАЛОГОВЫЙАГЕНТДОЛЖНОСТЬ}}</td>
+  <td class=xl6324539></td>
+  <td colspan=7 class=xl8024539>&nbsp;</td>
+  <td class=xl6324539></td>
+  <td colspan=8 class=xl6624539>/{{НАЛОГОВЫЙАГЕНТФИО}}/</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl6324539 style='height:11.25pt'></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td colspan=18 class=xl6824539>(должность)</td>
+  <td class=xl6824539></td>
+  <td colspan=7 class=xl6824539>(Подпись)</td>
+  <td class=xl6324539></td>
+  <td colspan=8 class=xl6824539>(ФИО)</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl6324539 style='height:11.25pt'></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td colspan=3 class=xl6324539>М.П.</td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+  <td class=xl6324539></td>
+ </tr>
+  <tr>
+   <td class=xl6324539></td>
+   <td colspan=42 class=xl6824539>* Настоящий пункт заполняется в отношении сумм налога, исчисленных с доходов, полученных, начиная с 2011 года</td>
+   </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=27 style='width:20pt'></td>
+  <td width=28 style='width:21pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=21 style='width:16pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=28 style='width:21pt'></td>
+  <td width=21 style='width:16pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=28 style='width:21pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=21 style='width:16pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=23 style='width:17pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=28 style='width:21pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=28 style='width:21pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=62 style='width:47pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=7 style='width:5pt'></td>
+  <td width=28 style='width:21pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=14 style='width:11pt'></td>
+  <td width=10 style='width:8pt'></td>
+  <td width=76 style='width:57pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</div>
+
