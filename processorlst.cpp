@@ -25,7 +25,7 @@ int ProcessorLST::Import() {
 
         QString utf_line = in.readLine();
 
-        if (utf_line.contains(UTFtoUnicode("Утверждена Приказом ФНС"))) {
+        if (utf_line.contains(UTFtoUnicode("Приложение N 1"))) {
 
             SprawModel spraw;
             spraw_list_ << spraw;
@@ -63,7 +63,7 @@ int ProcessorLST::ParseData() {
         QStringList page2 = current_model->page2();
 
         QString priznak = GetValue(page1, "признак", 3);
-        QString ifns = GetValue(page1, "в ИФНС", 4);
+        QString ifns = GetValue(page1, "в ИФНС", 4);        
         QString title = GetTitle(page1);
         QString innkpp = GetValue(page1, "ИНН/КПП организации", 22);
         QString name = GetValue(page1, "Наименование организации", 60);
@@ -161,7 +161,6 @@ QString ProcessorLST::GetTitle(QStringList pagedata) {
 
     QString result = "";
     const QString value = UTFtoUnicode("СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА");
-    const QString ifns = UTFtoUnicode("в ИФНС");
 
     QStringListIterator i(pagedata);
     QString line;
@@ -172,12 +171,21 @@ QString ProcessorLST::GetTitle(QStringList pagedata) {
         int position =  line.indexOf(value, 0, Qt::CaseInsensitive);
         if (position != -1) {
 
-            int ifnsindex = line.indexOf(ifns, 0, Qt::CaseInsensitive);
+            line = i.next();
 
-            result = line.mid(position, ifnsindex);
+            QStringList title_buffer;
+            title_buffer <<  line;
 
+            QString year = GetValue(title_buffer, " за", 5);
+            QString number = GetValue(title_buffer, " N", 5);
+            QString date = GetValue(title_buffer, " от", 10);
+
+            result = UTFtoUnicode("СПРАВКА О ДОХОДАХ ФИЗИЧЕСКОГО ЛИЦА за " + year + " год № " + number +
+                            " от " + date);
             qDebug() << "title " << result;
-            break;
+
+            return result;
+
         }
     }
 
@@ -224,7 +232,7 @@ QMap<int, QString> ProcessorLST::GetTBNFIO(QStringList pagedata) {
 
             line = i.next();
 
-            result[1] = line.mid(5, 60);
+            result[1] = line.mid(1, 70);
 
             qDebug() << "fio " << result[1];
         }
@@ -239,7 +247,7 @@ QMap<int, QString> ProcessorLST::GetTBNFIO(QStringList pagedata) {
 
             line = i.next();
 
-            result[2] = line.mid(position, 4);
+            result[2] = line.mid(position - 1, 4);
 
             qDebug() << "tbn " << result[2];
         }

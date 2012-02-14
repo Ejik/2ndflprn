@@ -81,32 +81,61 @@
  426;width:8pt'>
  <col class=xl583419 width=76 style='mso-width-source:userset;mso-width-alt:
  3242;width:57pt'>
- <tr height=15 style='height:11.25pt'>
-  <td height=15 class=xl583419 width=27 style='height:11.25pt;width:20pt'></td>
-  <td class=xl583419 width=28 style='width:21pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=21 style='width:16pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl583419 width=28 style='width:21pt'></td>
-  <td class=xl583419 width=21 style='width:16pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=28 style='width:21pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=21 style='width:16pt'></td>
-  <td class=xl583419 width=7 style='width:5pt'></td>
-  <td class=xl583419 width=23 style='width:17pt'></td>
-  <td class=xl583419 width=14 style='width:11pt'></td>
-  <td class=xl593419 width=300 style='width:300pt; text-align:right;' colspan="20">Утверждена Приказом ФНС России от 17.11.2010 № ММВ-7-3/611@</td>
+<tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan="20" style="text-align:right;">Приложение № 1</td>
+</tr>
+<tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan="20" style="text-align:right;">к приказу ФНС России</td>
  </tr>
  <tr height=15 style='height:11.25pt'>
   <td height=15 class=xl583419 style='height:11.25pt'></td>
@@ -134,7 +163,35 @@
   <td class=xl583419></td>
   <td class=xl583419></td>
   <td class=xl583419></td>
-  <td class=xl593419 colspan="20" style="text-align:right;">(в ред. Приказа ФНС России от 06.12.2011 № ММВ-7-3/909@)</td>
+  <td class=xl593419 colspan="20" style="text-align:right;">от 17.11.2010 г.  № ММВ-7-3/611@</td>
+ </tr>
+ <tr height=15 style='height:11.25pt'>
+  <td height=15 class=xl583419 style='height:11.25pt'></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl583419></td>
+  <td class=xl593419 colspan="20" style="text-align:right;">в редакции Приказа 06.12.2011 № ММВ-7-3/909@</td>
  </tr>
  <tr height=15 style='height:11.25pt'>
   <td height=15 class=xl583419 style='height:11.25pt'></td>
