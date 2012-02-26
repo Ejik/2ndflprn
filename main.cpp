@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     QString filename = QFileDialog::getOpenFileName(NULL, QObject::tr("Выберите файл справки 2НДФЛ"), "", QObject::tr("LST (2ndfl*.lst);;Файлы справок 2-НДФЛ (*.xml)"));
-    // QString filename = "c:\\projects\\other\\2ndflprn-build-desktop\\2NDFL_02.LST";
-    //QString filename = "c:\\qt\\projects\\2NDFL_02.LST";
+    //QString filename = "c:\\Projects\\other\\2ndflprn-build-desktop-4_7_4________\\2NDFL_01.lst";
+
 
     if (!filename.isEmpty())
     {
@@ -33,9 +33,6 @@ int main(int argc, char *argv[])
 
         processor->Import();
         processor->ParseData();
-
-//        Importer importer(filename);
-//        importer.parse();
 
         Exporter exporter(processor);
         exporter.export_to_html();
