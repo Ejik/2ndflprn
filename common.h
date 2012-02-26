@@ -5,11 +5,11 @@
 #include <QTextCodec>
 
 static const QString k_head = ":/sections/res/head_20101117.txt";
-//static const QString k_body = ":/sections/res/body_20101117.txt";
 static const QString k_body = ":/sections/res/body_20111206.txt";
+static const QString k_body_page2 = ":/sections/res/body_page2_20111206.txt";
 
 //static const QString k_body = "c:\\qt\\projects\\2ndflprn\\res\\body_20111206.txt";
-
+//static const QString k_body_page2 = "c:\\Projects\\other\\2ndflprn\\res\\body_page2_20111206.txt";
 
 static QString OEMtoUnicode(const QString string)
 {
