@@ -54,8 +54,11 @@ void Exporter::export_to_html()
             SprawModel current_spraw = processor_->spraw(i);
             QStringList sprawlines = PrintSpraw(current_spraw);
 
-            // удалим последнюю строку, иначе на печать попадает лишний чистый лист
-            sprawlines.removeLast();
+            if (i == processor_->spraw_count() - 1) {
+                // удалим последнюю строку, иначе на печать попадает лишний чистый лист
+                sprawlines.removeLast();
+            }
+
             QStringListIterator it(sprawlines);
             while (it.hasNext()) {
 
@@ -74,23 +77,17 @@ void Exporter::export_to_html()
 
 QStringList Exporter::PrintSpraw(SprawModel spraw ) {
 
-    const QString k_tablename1 = UTFtoUnicode("{{ТАБЛИЦА1}}");
-    const QString k_tablename2 = UTFtoUnicode("{{ТАБЛИЦА2}}");
     const QString k_para4_name = UTFtoUnicode("{{ПУНКТ4.1}}");
+    const QString k_tablename1 = UTFtoUnicode("{{ТАБЛИЦА1}}");
     const QString k_para5_name1 = UTFtoUnicode("{{ПУНКТЫ5СТРАНИЦА1}}");
-    const QString k_para5_name2 = UTFtoUnicode("{{ПУНКТЫ5СТРАНИЦА2}}");
     const QString k_stavka1 = UTFtoUnicode("{{СТАВКА1}}");
-    const QString k_stavka2 = UTFtoUnicode("{{СТАВКА2}}");
     const QString k_para5_text1 = UTFtoUnicode("{{ПУНКТ5СТРАНИЦА1}}");
-    const QString k_para5_text2 = UTFtoUnicode("{{ПУНКТ5СТРАНИЦА2}}");
-
-
+    const QString kPageNum = UTFtoUnicode("{{НОМЕРСТРАНИЦЫ1}}");
 
     QStringList page1_result;
-    QStringList page2_result;
 
-    QFile sec(k_body);
-    QFile sec_page2(k_body_page2);
+    QFile sec(kBody);
+    QFile sec_page2(kBodyPage2);
 
     sec.open(QIODevice::ReadOnly);
     sec_page2.open(QIODevice::ReadOnly);
@@ -106,38 +103,74 @@ QStringList Exporter::PrintSpraw(SprawModel spraw ) {
     }
 
     page1_result << "<hr class=""pb""><br>";
+    reader.setDevice(&sec_page2);
 
-    if (spraw.PageCount() == 2) {
+    for (int i = 0; i < spraw.PagesCount() - 1; i++) {
 
-        reader.setDevice(&sec_page2);
+        int page_index = i + 2;
+        reader.seek(0);
 
         while (!reader.atEnd()) {
 
             current_line = reader.readLine();
 
-            if (current_line.contains(k_tablename1))
-                current_line = current_line.replace(k_tablename1, k_tablename2);
-            else if (current_line.contains(k_para5_name1))
-                current_line = current_line.replace(k_para5_name1, k_para5_name2);
-            else if (current_line.contains(k_stavka1))
-                current_line = current_line.replace(k_stavka1, k_stavka2);
-            else if (current_line.contains(k_para5_text1))
-                current_line = current_line.replace(k_para5_text1, k_para5_text2);
+            if (current_line.contains(kPageNum)) {
 
-            page2_result << current_line;
+                QString value = kPageNum;
+                value = value.replace(QString("1"), QString::number(page_index));
+                current_line = current_line.replace(kPageNum, value);
+
+            }
+            else if (current_line.contains(k_tablename1)) {
+
+                QString value = k_tablename1;
+                value = value.replace(QString("1"), QString::number(page_index));
+                current_line = current_line.replace(k_tablename1, value);
+            }
+            else if (current_line.contains(k_para5_name1)) {
+
+                QString value = k_para5_name1;
+                value = value.replace(QString("1"), QString::number(page_index));
+                current_line = current_line.replace(k_para5_name1, value);
+            }
+            else if (current_line.contains(k_stavka1)) {
+
+                QString value = k_stavka1;
+                value = value.replace(QString("1"), QString::number(page_index));
+                current_line = current_line.replace(k_stavka1, value);
+            }
+            else if (current_line.contains(k_para5_text1)) {
+
+                QString value = k_para5_text1;
+                value = value.replace(QString("1"), QString::number(page_index));
+                current_line = current_line.replace(k_para5_text1, value);
+            }
+
+            page1_result << current_line;
+
         }
 
 
-        page2_result << "<hr class=""pb""><br>";
-        page1_result << page2_result;
+        page1_result << "<hr class=""pb""><br>";
 
     }
 
     spraw.SetParam(k_tablename1, GetHTMLTable1(spraw.tbl(1)));
-    spraw.SetParam(k_tablename2, GetHTMLTable1(spraw.tbl(2)));
     spraw.SetParam(k_para4_name, GetHTMLPara4(spraw.para4()));
     spraw.SetParam(k_para5_name1, GetHTMLPara5(spraw.para5(1)));
-    spraw.SetParam(k_para5_name2, GetHTMLPara5(spraw.para5(2)));
+
+    for (int i = 0; i < spraw.PagesCount() - 1; i++ ) {
+
+        int page_index = i + 2;
+        QString value = k_tablename1;
+        value = value.replace(QString("1"), QString::number(page_index));
+        spraw.SetParam(value, GetHTMLTable1(spraw.tbl(page_index)));
+
+        value = k_para5_name1;
+        value = value.replace(QString("1"), QString::number(page_index));
+        spraw.SetParam(value, GetHTMLPara5(spraw.para5(page_index)));
+
+    }
 
     QList<QString> keys = spraw.GetParamKeys();
     QListIterator<QString> it(keys);
@@ -172,7 +205,7 @@ QStringList Exporter::PrintSpraw(SprawModel spraw ) {
 
 int Exporter::PrintHeader(QTextStream *out) {
 
-    QFile sec(k_head);
+    QFile sec(kHead);
     sec.open(QIODevice::ReadOnly);
 
     QTextStream reader(&sec);
