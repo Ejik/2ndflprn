@@ -23,7 +23,7 @@ void Processor::debug(const QString line, QChar symb)
 QString Processor::input_file() {
 
     return input_file_;
-\
+
 }
 
 int Processor::spraw_count() const {

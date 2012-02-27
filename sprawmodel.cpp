@@ -1,3 +1,4 @@
+#include "common.h"
 #include "sprawmodel.h"
 
 SprawModel::SprawModel() {
@@ -6,16 +7,11 @@ SprawModel::SprawModel() {
 
 void SprawModel::Append(int page_num, const QString value) {
 
-    if (page_num == 1) {
-        page1_.append(value);
-    } else if (page_num == 2) {
-        page2_.append(value);
-    }
+    pages_[page_num].append(value);
+
 }
 
-void SprawModel::SplitPages() {
-
-    QChar pagebreak(0x0C);    
+void SprawModel::SplitPages() {   
 
     QMutableStringListIterator i(page1_);
     QString line;
@@ -23,7 +19,7 @@ void SprawModel::SplitPages() {
     while (i.hasNext() ) {
 
         line = i.next();
-        if (line[0] == pagebreak) {
+        if (line[0] == kPageBreak) {
 
             while (i.hasNext()) {
 
@@ -36,9 +32,10 @@ void SprawModel::SplitPages() {
     }
 }
 
-int SprawModel::PageCount() const {
+int SprawModel::PagesCount() const {
 
-    return page2_.count() > 0 ? 2 : 1 ;
+    return pages_.count();
+
 }
 
 QStringList SprawModel::page1() {
@@ -55,34 +52,30 @@ QStringList SprawModel::page2() {
 
 QString SprawModel::GetParam(const QString param_name) {
 
-    return params_[param_name];
+    return params_.value(param_name);
 
+}
+void SprawModel::SetParam(const QString param_name, const QString value) {
+
+    params_[param_name] = value;
 }
 
 QList<QString> SprawModel::GetParamKeys() {
 
     return params_.keys();
+
 }
 
-void SprawModel::SetParam(const QString paramname, const QString value) {
+QList<QStringList> SprawModel::tbl(int tbl_index) {
 
-    params_[paramname] = value;
+    return tables_.value(tbl_index);
+
 }
 
-QList<QStringList> SprawModel::tbl(int tbl_num) {
+void SprawModel::set_tbl(int tbl_index, const QList<QStringList> value) {
 
-    if (tbl_num == 1)
-        return tbl1_;
+    tables_[tbl_index] = value;
 
-    return tbl2_;
-}
-
-void SprawModel::set_tbl(int tbl_num, const QList<QStringList> value) {
-
-    if (tbl_num == 1)
-        tbl1_ = value;
-    else
-        tbl2_ = value;
 }
 
 QStringList SprawModel::para4() {
@@ -97,17 +90,17 @@ void SprawModel::set_para4(QStringList value) {
 
 QList<QStringList> SprawModel::para5(int para_num) {
 
-    if (para_num == 1)
-        return para5_1_;
-
-    return para5_2_;
+    return para5_.value(para_num);
 }
 
 void SprawModel::set_para5(int para_num, const QList<QStringList> value) {
 
-    if (para_num == 1)
-        para5_1_ = value;
-    else
-        para5_2_ = value;
+    para5_[para_num] = value;
+
+}
+
+QMap<int, QStringList> SprawModel::pages() {
+
+    return pages_;
 
 }

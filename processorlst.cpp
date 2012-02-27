@@ -19,35 +19,36 @@ int ProcessorLST::Import() {
     QTextStream in(&file);
     in.setCodec("IBM 866");
 
-    SprawModel *new_spraw;
+    SprawModel *new_spraw = new SprawModel();
+    int page_index = 1;
 
     while (!in.atEnd()) {
 
         QString utf_line = in.readLine();
 
-        if (utf_line.contains(UTFtoUnicode("Приложение N 1"))) {
+        if (utf_line.contains(kPageBreak)) {
 
-            SprawModel spraw;
-            spraw_list_ << spraw;
-            new_spraw = &spraw_list_.last();
+            utf_line = in.readLine();
+            if (utf_line.contains(UTFtoUnicode("Страница "))) {
+
+                page_index++;
+
+            } else {
+
+                spraw_list_.append(*new_spraw);
+                new_spraw = new SprawModel();
+                page_index = 1;
+            }
+
         }
 
-        new_spraw->Append(1, utf_line);
-
+        new_spraw->Append(page_index, utf_line);
     }
 
-    SprawModel *spraw;
-    QMutableListIterator<SprawModel> i(spraw_list_);
-
-    while (i.hasNext()) {
-
-        spraw = &i.next();
-        spraw->SplitPages();
-    }
-
+    spraw_list_.append(*new_spraw);
 
     return 0;
-    }
+}
 
 // Получаем данные из страниц с текстом
 int ProcessorLST::ParseData() {
@@ -59,8 +60,7 @@ int ProcessorLST::ParseData() {
 
         current_model = &i.next();
 
-        QStringList page1 = current_model->page1();
-        QStringList page2 = current_model->page2();
+        QStringList page1 = current_model->pages().value(1);
 
         QString priznak = GetValue(page1, "признак", 3);
         QString ifns = GetValue(page1, "в ИФНС", 4);        
@@ -87,18 +87,14 @@ int ProcessorLST::ParseData() {
         QString kvartira = GetValue(page1, "Квартира", 5);
         QString kodstraniprojivaniya = "";
         QString adresvstraneprojivaniya = "";
-        QString stavka1 = GetValue(page1, "ОБЛАГАЕМЫЕ НАЛОГОМ ПО СТАВКЕ", 5);
-        QString stavka2 = GetValue(page2, "ОБЛАГАЕМЫЕ НАЛОГОМ ПО СТАВКЕ", 5);
+        QString stavka1 = GetValue(page1, "ОБЛАГАЕМЫЕ НАЛОГОМ ПО СТАВКЕ", 5);        
         QList<QStringList> tbl1 = GetTable(page1);
-        QList<QStringList> tbl2 = GetTable(page2);
         QStringList para4 = GetPara4(page1);
         QString nomeruvedomleniya = GetValue(page1, "имущественный налог.вычет", 8);
         QString datauvedomleniya = GetValue(page1, "4.3. Дата выдачи", 15);
         QString kodifns = GetValue(page1, "Код ИФНС, выдавшей уведомление", 5);
         QString para5_text1 = GetValue(page1, "суммы дохода и налога по итогам налогового периода", 17);
-        QString para5_text2 = GetValue(page2, "суммы дохода и налога по итогам налогового периода", 17);
         QList<QStringList> para5_1 = GetPara5(page1);
-        QList<QStringList> para5_2 = GetPara5(page2);
         QString agentdoljnost = GetValue(page1, "Налоговый агент", 23);
         QString agentfio = GetValue(page1, "Налоговый агент", 73);
         agentfio = agentfio.split("/")[1].trimmed();
@@ -131,32 +127,49 @@ int ProcessorLST::ParseData() {
         current_model->SetParam(UTFtoUnicode("{{КОДСТРАНЫПРОЖИВАНИЯ}}"), kodstraniprojivaniya);
         current_model->SetParam(UTFtoUnicode("{{АДРЕСВСТРАНЕПРОЖИВАНИЯ}}"), adresvstraneprojivaniya);
         current_model->SetParam(UTFtoUnicode("{{СТАВКА1}}"), stavka1);
-        current_model->SetParam(UTFtoUnicode("{{СТАВКА2}}"), stavka2);
         current_model->SetParam(UTFtoUnicode("{{ТАБЛИЦА1}}"), "");
-        current_model->SetParam(UTFtoUnicode("{{ТАБЛИЦА2}}"), "");
         current_model->SetParam(UTFtoUnicode("{{ПУНКТ4.1}}"), "");
         current_model->SetParam(UTFtoUnicode("{{НОМЕРУВЕДОМЛЕНИЯ}}"), nomeruvedomleniya);
         current_model->SetParam(UTFtoUnicode("{{ДАТАУВЕДОМЛЕНИЯ}}"), datauvedomleniya);
         current_model->SetParam(UTFtoUnicode("{{КОДИФНС}}"), kodifns);
         current_model->SetParam(UTFtoUnicode("{{ПУНКТ5СТРАНИЦА1}}"), para5_text1);
-        current_model->SetParam(UTFtoUnicode("{{ПУНКТ5СТРАНИЦА2}}"), para5_text2);
         current_model->SetParam(UTFtoUnicode("{{ПУНКТЫ5СТРАНИЦА1}}"), "");
-        current_model->SetParam(UTFtoUnicode("{{ПУНКТЫ5СТРАНИЦА2}}"), "");
         current_model->SetParam(UTFtoUnicode("{{НАЛОГОВЫЙАГЕНТДОЛЖНОСТЬ}}"), agentdoljnost);
         current_model->SetParam(UTFtoUnicode("{{НАЛОГОВЫЙАГЕНТФИО}}"), agentfio);
 
         current_model->set_tbl(1, tbl1);
-        current_model->set_tbl(2, tbl2);
+
         current_model->set_para4(para4);
         current_model->set_para5(1, para5_1);
-        current_model->set_para5(2, para5_2);
-   }
+
+        // Обрабатываем остальные страницы
+        for (int j = 0; j < current_model->PagesCount() - 1; j++) {
+
+            int page_index = j + 2;
+            QStringList page = current_model->pages().value(page_index);
+
+            QString stavka = GetValue(page, "ОБЛАГАЕМЫЕ НАЛОГОМ ПО СТАВКЕ", 5);
+            QList<QStringList> tbl = GetTable(page);
+            QString para5_text = GetValue(page, "суммы дохода и налога по итогам налогового периода", 17);
+            QList<QStringList> para5 = GetPara5(page);
+
+            current_model->SetParam(UTFtoUnicode("{{ТАБЛИЦА" + QString::number(page_index) + "}}"), "");
+            current_model->SetParam(UTFtoUnicode("{{ПУНКТ5СТРАНИЦА" + QString::number(page_index) + "}}"), para5_text);
+            current_model->SetParam(UTFtoUnicode("{{ПУНКТЫ5СТРАНИЦА" + QString::number(page_index) + "}}"), "");
+            current_model->SetParam(UTFtoUnicode("{{СТАВКА" + QString::number(page_index) + "}}"), stavka);
+            current_model->SetParam(UTFtoUnicode("{{НОМЕРСТРАНИЦЫ" + QString::number(page_index) + "}}"), UTFtoUnicode("Страница №" + QString::number(page_index)));
+
+            current_model->set_tbl(page_index, tbl);
+            current_model->set_para5(page_index, para5);
+        }
+
+    }
 
 
     return 0;
 }
 
-// Методы парзинга
+// Методы парзинга уникальных данных
 QString ProcessorLST::GetTitle(QStringList pagedata) {
 
     QString result = "";
@@ -205,8 +218,6 @@ QString ProcessorLST::GetValue(QStringList pagedata, const QString valuename, in
         if (position != -1) {
 
             result = line.mid(position + value.length() + 1 , len).trimmed();
-
-            qDebug() << UTFtoUnicode(valuename) << result;
 
             return result;
         }
